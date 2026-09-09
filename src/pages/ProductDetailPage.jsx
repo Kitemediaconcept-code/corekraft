@@ -480,7 +480,7 @@ export default function ProductDetailPage({
       {/* PRODUCT DETAIL INFORMATION TABS */}
       <div className="bg-white rounded-3xl border border-[#ECE7E8] p-6 lg:p-8 space-y-6">
         <div className="flex border-b border-[#ECE7E8] gap-6 text-sm font-bold">
-          {['description', 'specifications', 'branding', 'shipping'].map(tab => (
+          {['description', 'specifications', 'branding', 'shipping', 'reviews'].map(tab => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
@@ -488,7 +488,7 @@ export default function ProductDetailPage({
                 activeTab === tab ? 'border-[#EE3364] text-[#EE3364]' : 'border-transparent text-gray-500 hover:text-gray-900'
               }`}
             >
-              {tab === 'branding' ? 'Branding Options' : tab === 'shipping' ? 'Shipping & Returns' : tab}
+              {tab === 'branding' ? 'Branding Options' : tab === 'shipping' ? 'Shipping & Returns' : tab === 'reviews' ? 'Reviews & Ratings' : tab}
             </button>
           ))}
         </div>
@@ -546,6 +546,67 @@ export default function ProductDetailPage({
             <p>
               Free PAN India express shipping on all orders over ₹5,000. Sample dispatch within 48 hours. Mass production order turnaround is typically 5-7 business days from vector proof approval.
             </p>
+          )}
+
+          {activeTab === 'reviews' && (
+            <div className="space-y-8">
+              {/* Rating Summary */}
+              <div className="flex flex-col sm:flex-row gap-8 items-center sm:items-start bg-gray-50 p-6 rounded-2xl">
+                <div className="text-center sm:text-left">
+                  <h3 className="text-5xl font-extrabold text-gray-900">{product.rating || "4.8"}</h3>
+                  <div className="flex text-amber-400 my-2 justify-center sm:justify-start">
+                    {[...Array(5)].map((_, i) => <Star key={i} size={18} className="fill-amber-400" />)}
+                  </div>
+                  <p className="text-xs text-gray-500">Based on {product.reviewCount || "24"} reviews</p>
+                </div>
+                
+                <div className="flex-1 w-full space-y-2">
+                  {[
+                    { stars: 5, pct: 85 },
+                    { stars: 4, pct: 10 },
+                    { stars: 3, pct: 5 },
+                    { stars: 2, pct: 0 },
+                    { stars: 1, pct: 0 }
+                  ].map((row) => (
+                    <div key={row.stars} className="flex items-center gap-3 text-xs">
+                      <span className="w-12 text-gray-600 font-medium">{row.stars} Stars</span>
+                      <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                        <div className="h-full bg-amber-400 rounded-full" style={{ width: `${row.pct}%` }}></div>
+                      </div>
+                      <span className="w-8 text-right text-gray-500">{row.pct}%</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Featured Testimonial */}
+              <div className="space-y-4">
+                <h4 className="font-bold text-gray-900">Featured Testimonial</h4>
+                <div className="bg-white border border-[#ECE7E8] p-5 rounded-2xl shadow-sm relative">
+                  <div className="absolute top-4 right-4 text-gray-200">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.038 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z" />
+                    </svg>
+                  </div>
+                  <div className="flex text-amber-400 mb-3">
+                    {[...Array(5)].map((_, i) => <Star key={i} size={14} className="fill-amber-400" />)}
+                  </div>
+                  <p className="text-gray-700 italic mb-4 relative z-10 leading-relaxed">
+                    "We ordered these for our annual corporate retreat, and the quality completely exceeded our expectations. 
+                    The custom laser engraving was precise, and the packaging felt incredibly premium. Our employees loved them!"
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-[#FFF3F6] text-[#EE3364] flex items-center justify-center font-bold">
+                      SK
+                    </div>
+                    <div>
+                      <p className="font-bold text-gray-900 text-sm">Sarah K.</p>
+                      <p className="text-xs text-gray-500">HR Director, TechFlow Inc.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           )}
         </div>
       </div>
