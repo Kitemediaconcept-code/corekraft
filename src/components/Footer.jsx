@@ -112,6 +112,13 @@ export default function Footer({ setActivePage, setSelectedCategory }) {
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
           <p>© 2026 Corekraft. All rights reserved.</p>
           <p className="font-semibold text-gray-700">Thoughtful Gifting. Stronger Relationships.</p>
+          <button
+            onClick={() => setActivePage('admin')}
+            className="text-gray-300 hover:text-gray-500 transition-colors text-[10px] tracking-widest"
+            title="Admin"
+          >
+            ••••
+          </button>
         </div>
       </div>
     </footer>
