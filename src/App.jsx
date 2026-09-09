@@ -28,6 +28,7 @@ export default function App() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [products, setProducts] = useState(PRODUCTS); // fallback to static data until Supabase loads
   const [selectedProduct, setSelectedProduct] = useState(PRODUCTS[0]);
+  const [productOptions, setProductOptions] = useState({});
   const [cartItems, setCartItems] = useState([
     {
       ...PRODUCTS[0],
@@ -118,8 +119,9 @@ export default function App() {
     showToast('Item removed from cart');
   };
 
-  const handleSelectProduct = (prod) => {
+  const handleSelectProduct = (prod, options = {}) => {
     setSelectedProduct(prod);
+    setProductOptions(options);
     setActivePage('product-detail');
   };
 
@@ -183,6 +185,7 @@ export default function App() {
         {activePage === 'product-detail' && (
           <ProductDetailPage 
             product={selectedProduct}
+            options={productOptions}
             onAddToCart={handleAddToCart}
             onToggleWishlist={handleToggleWishlist}
             isWishlisted={wishlist.some(item => item.id === selectedProduct?.id)}

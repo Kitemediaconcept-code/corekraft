@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   Star, 
   Heart, 
@@ -24,7 +24,8 @@ export default function ProductDetailPage({
   onToggleWishlist, 
   isWishlisted, 
   onSelectProduct, 
-  onNavigateQuote 
+  onNavigateQuote,
+  options
 }) {
   const [selectedImgIndex, setSelectedImgIndex] = useState(0);
   const [selectedColor, setSelectedColor] = useState(product?.colors?.[0]?.name || 'Red');
@@ -34,6 +35,26 @@ export default function ProductDetailPage({
   const [quantity, setQuantity] = useState(product?.moq || 10);
   const [activeTab, setActiveTab] = useState('description');
   const [zoomModal, setZoomModal] = useState(false);
+
+  // New Customizer Form State
+  const customizeRef = useRef(null);
+  const [custName, setCustName] = useState('');
+  const [custCompany, setCustCompany] = useState('');
+  const [custPhone, setCustPhone] = useState('');
+  const [custEmail, setCustEmail] = useState('');
+  const [custNotes, setCustNotes] = useState('');
+  const [logoPlacement, setLogoPlacement] = useState('Front');
+  const [logoSize, setLogoSize] = useState('Medium');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (options?.openCustomize && customizeRef.current) {
+      setTimeout(() => {
+        customizeRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+  }, [options, product]);
 
   if (!product) return null;
 
@@ -186,61 +207,21 @@ export default function ProductDetailPage({
             </div>
           )}
 
-          {/* Personalization Options */}
-          <div className="space-y-3 bg-[#FFF3F6]/50 p-4 rounded-2xl border border-[#FAD9E2]">
-            <label className="text-xs font-bold text-gray-700 uppercase tracking-wider block">
-              Personalization
-            </label>
-            <div className="grid grid-cols-2 gap-2">
-              <button
-                onClick={() => setPersonalizationMode('with-logo')}
-                className={`py-2 px-4 rounded-xl text-xs font-bold transition border ${
-                  personalizationMode === 'with-logo' 
-                    ? 'bg-[#EE3364] text-white border-[#EE3364] shadow-md' 
-                    : 'bg-white text-gray-700 border-gray-200 hover:border-gray-300'
-                }`}
-              >
-                With Logo
-              </button>
-              <button
-                onClick={() => setPersonalizationMode('without-logo')}
-                className={`py-2 px-4 rounded-xl text-xs font-bold transition border ${
-                  personalizationMode === 'without-logo' 
-                    ? 'bg-[#EE3364] text-white border-[#EE3364] shadow-md' 
-                    : 'bg-white text-gray-700 border-gray-200 hover:border-gray-300'
-                }`}
-              >
-                Without Logo
-              </button>
+          {/* Customization Link */}
+          <button
+            onClick={() => {
+              if (customizeRef.current) {
+                customizeRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }}
+            className="w-full bg-[#FFF3F6] hover:bg-[#FAD9E2] text-[#EE3364] border border-[#FAD9E2] border-dashed font-bold py-3 px-4 rounded-xl transition flex items-center justify-between"
+          >
+            <div className="flex items-center gap-2">
+              <Upload size={18} />
+              <span>Add Your Logo & Customize</span>
             </div>
-
-            {personalizationMode === 'with-logo' && (
-              <div className="space-y-3 pt-2 animate-fade-in">
-                {/* Logo File Upload */}
-                <div className="border-2 border-dashed border-[#EE3364]/40 bg-white p-3 rounded-xl text-center relative cursor-pointer hover:border-[#EE3364] transition">
-                  <input 
-                    type="file" 
-                    accept=".jpg,.png,.svg" 
-                    onChange={handleLogoChange}
-                    className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
-                  />
-                  <div className="flex items-center justify-center gap-2 text-xs font-bold text-gray-800">
-                    <Upload size={16} className="text-[#EE3364]" />
-                    <span>{logoFile ? `✓ ${logoFile.name}` : 'Upload Logo (JPG / PNG / SVG)'}</span>
-                  </div>
-                </div>
-
-                {/* Optional Custom Message */}
-                <input 
-                  type="text" 
-                  placeholder="Optional custom message or employee tagline"
-                  value={customMessage}
-                  onChange={(e) => setCustomMessage(e.target.value)}
-                  className="w-full text-xs p-2.5 rounded-xl border border-gray-200 outline-none focus:border-[#EE3364] bg-white"
-                />
-              </div>
-            )}
-          </div>
+            <ArrowRight size={16} />
+          </button>
 
           {/* Quantity Selector */}
           <div className="flex items-center gap-4">
@@ -293,6 +274,205 @@ export default function ProductDetailPage({
               <Headphones size={18} className="text-[#EE3364]" />
               <span>Dedicated Support</span>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* CUSTOMIZE THIS PRODUCT FORM */}
+      <div 
+        ref={customizeRef} 
+        className="bg-white rounded-3xl border border-[#ECE7E8] p-6 lg:p-10 shadow-sm relative overflow-hidden"
+      >
+        {/* Success Overlay */}
+        {isSubmitted ? (
+          <div className="absolute inset-0 z-10 bg-white/95 backdrop-blur-sm flex flex-col items-center justify-center text-center animate-fade-in px-4">
+            <div className="w-16 h-16 bg-[#EE3364] text-white rounded-full flex items-center justify-center mb-6 shadow-xl">
+              <CheckCircle2 size={32} />
+            </div>
+            <h2 className="text-3xl font-extrabold text-gray-900 mb-2">Request Submitted!</h2>
+            <p className="text-gray-500 max-w-md mx-auto mb-8">
+              Thank you for choosing Corekraft. Our team will review your customization requirements and get back to you with a mock-up and quote within 24 hours.
+            </p>
+            <button 
+              onClick={() => setIsSubmitted(false)}
+              className="btn btn-secondary px-8 py-3 font-bold"
+            >
+              Submit Another Request
+            </button>
+          </div>
+        ) : null}
+
+        <div className="flex flex-col md:flex-row gap-8 lg:gap-12">
+          {/* Left Column: Intro */}
+          <div className="md:w-1/3">
+            <span className="badge-label mb-2">MAKE IT YOURS</span>
+            <h2 className="text-3xl font-extrabold text-gray-900 leading-tight mb-4">
+              Customize This Product
+            </h2>
+            <p className="text-sm text-gray-500 leading-relaxed mb-6">
+              Add your company logo, choose placements, and get a professional mock-up. Perfect for corporate gifting, events, and brand merchandise.
+            </p>
+            <div className="bg-[#FFF3F6] rounded-2xl p-5 border border-[#FAD9E2]">
+              <div className="flex gap-4 items-start mb-4">
+                <div className="w-10 h-10 rounded-full bg-white text-[#EE3364] flex items-center justify-center shrink-0 shadow-sm">
+                  <Upload size={18} />
+                </div>
+                <div>
+                  <h4 className="font-bold text-gray-900 text-sm">Upload Your Logo</h4>
+                  <p className="text-xs text-gray-500 mt-1">We support PNG, JPG, SVG, AI, and PDF formats.</p>
+                </div>
+              </div>
+              <div className="flex gap-4 items-start">
+                <div className="w-10 h-10 rounded-full bg-white text-[#EE3364] flex items-center justify-center shrink-0 shadow-sm">
+                  <FileText size={18} />
+                </div>
+                <div>
+                  <h4 className="font-bold text-gray-900 text-sm">Get a Free Mockup</h4>
+                  <p className="text-xs text-gray-500 mt-1">Our design team will send you a digital proof before production.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Form */}
+          <div className="md:w-2/3">
+            <form 
+              onSubmit={(e) => {
+                e.preventDefault();
+                setIsSubmitting(true);
+                setTimeout(() => {
+                  setIsSubmitting(false);
+                  setIsSubmitted(true);
+                }, 1500);
+              }} 
+              className="space-y-6"
+            >
+              {/* Your Details */}
+              <div className="space-y-4">
+                <h3 className="text-base font-bold text-gray-900 border-b pb-2">Your Details</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-gray-700">Name *</label>
+                    <input type="text" required value={custName} onChange={e=>setCustName(e.target.value)} className="w-full text-sm p-3 rounded-xl border border-gray-200 outline-none focus:border-[#EE3364] focus:ring-1 focus:ring-[#EE3364] transition bg-gray-50" placeholder="John Doe" />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-gray-700">Company Name *</label>
+                    <input type="text" required value={custCompany} onChange={e=>setCustCompany(e.target.value)} className="w-full text-sm p-3 rounded-xl border border-gray-200 outline-none focus:border-[#EE3364] focus:ring-1 focus:ring-[#EE3364] transition bg-gray-50" placeholder="Your Company Ltd." />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-gray-700">Phone / WhatsApp *</label>
+                    <input type="tel" required value={custPhone} onChange={e=>setCustPhone(e.target.value)} className="w-full text-sm p-3 rounded-xl border border-gray-200 outline-none focus:border-[#EE3364] focus:ring-1 focus:ring-[#EE3364] transition bg-gray-50" placeholder="+91 98765 43210" />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-gray-700">Email Address *</label>
+                    <input type="email" required value={custEmail} onChange={e=>setCustEmail(e.target.value)} className="w-full text-sm p-3 rounded-xl border border-gray-200 outline-none focus:border-[#EE3364] focus:ring-1 focus:ring-[#EE3364] transition bg-gray-50" placeholder="john@company.com" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Logo & Customization */}
+              <div className="space-y-4">
+                <h3 className="text-base font-bold text-gray-900 border-b pb-2">Logo & Branding</h3>
+                
+                <div className="space-y-1.5">
+                  <label className="text-xs font-bold text-gray-700">Upload Your Logo *</label>
+                  <div className="border-2 border-dashed border-gray-300 hover:border-[#EE3364] bg-gray-50 p-6 rounded-xl text-center relative cursor-pointer transition">
+                    <input 
+                      type="file" 
+                      accept=".jpg,.png,.svg,.pdf,.ai" 
+                      onChange={handleLogoChange}
+                      required
+                      className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
+                    />
+                    <div className="flex flex-col items-center justify-center gap-2">
+                      <div className="w-12 h-12 bg-white rounded-full shadow-sm flex items-center justify-center text-[#EE3364]">
+                        <Upload size={20} />
+                      </div>
+                      <span className="font-bold text-sm text-gray-800">
+                        {logoFile ? `Selected: ${logoFile.name}` : 'Click to upload your logo'}
+                      </span>
+                      <span className="text-xs text-gray-500">PNG, JPG, PDF, SVG or AI (Max 10MB)</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  {/* Placement */}
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold text-gray-700">Logo Placement *</label>
+                    <div className="flex flex-wrap gap-2">
+                      {['Front', 'Back', 'Left', 'Right', 'Custom'].map(pos => (
+                        <button
+                          key={pos}
+                          type="button"
+                          onClick={() => setLogoPlacement(pos)}
+                          className={`px-3 py-1.5 text-xs font-bold rounded-lg border transition ${
+                            logoPlacement === pos 
+                              ? 'bg-[#EE3364] text-white border-[#EE3364]' 
+                              : 'bg-white text-gray-600 border-gray-200 hover:border-gray-300'
+                          }`}
+                        >
+                          {pos}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Size */}
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold text-gray-700">Logo Size *</label>
+                    <div className="flex flex-wrap gap-2">
+                      {['Small', 'Medium', 'Large'].map(sz => (
+                        <button
+                          key={sz}
+                          type="button"
+                          onClick={() => setLogoSize(sz)}
+                          className={`px-3 py-1.5 text-xs font-bold rounded-lg border transition ${
+                            logoSize === sz 
+                              ? 'bg-[#EE3364] text-white border-[#EE3364]' 
+                              : 'bg-white text-gray-600 border-gray-200 hover:border-gray-300'
+                          }`}
+                        >
+                          {sz}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-xs font-bold text-gray-700">Customization Notes (Optional)</label>
+                  <textarea 
+                    value={custNotes}
+                    onChange={e=>setCustNotes(e.target.value)}
+                    rows={2}
+                    className="w-full text-sm p-3 rounded-xl border border-gray-200 outline-none focus:border-[#EE3364] focus:ring-1 focus:ring-[#EE3364] transition bg-gray-50 resize-none"
+                    placeholder="Tell us about specific colors, taglines, or positioning..."
+                  ></textarea>
+                </div>
+              </div>
+
+              {/* Submit CTA */}
+              <div className="pt-4 flex items-center justify-between border-t border-gray-100">
+                <label className="flex items-center gap-2 cursor-pointer group">
+                  <input type="checkbox" required className="w-4 h-4 rounded text-[#EE3364] focus:ring-[#EE3364] cursor-pointer" />
+                  <span className="text-xs text-gray-500 group-hover:text-gray-800 transition">I agree to be contacted about this request. *</span>
+                </label>
+                <button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="bg-[#EE3364] hover:bg-[#D92756] text-white font-bold py-3.5 px-8 rounded-full shadow-lg transition flex items-center justify-center gap-2 disabled:opacity-70"
+                >
+                  {isSubmitting ? (
+                    <span className="flex items-center gap-2">
+                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> Processing
+                    </span>
+                  ) : (
+                    <>Submit Customization <ArrowRight size={18} /></>
+                  )}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>

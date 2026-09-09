@@ -60,6 +60,14 @@ export default function ProductCard({
           </div>
         </div>
 
+        {/* Customization Quick Link */}
+        <button
+          onClick={() => onSelectProduct(product, { openCustomize: true })}
+          className="w-full text-xs font-bold text-[#EE3364] hover:text-[#D92756] transition mb-2 flex items-center justify-center gap-1 bg-[#FFF3F6] py-1.5 rounded-lg border border-transparent hover:border-[#FAD9E2]"
+        >
+          Add Your Logo <span className="text-[10px]">→</span>
+        </button>
+
         {/* Add to Cart Button */}
         <button 
           onClick={() => onAddToCart(product)}
