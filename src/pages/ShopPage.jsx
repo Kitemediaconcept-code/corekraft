@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Filter, SlidersHorizontal, ChevronDown, Check, X, RotateCcw } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
-import { PRODUCTS, CATEGORIES, OCCASIONS } from '../data/products';
+import { CATEGORIES, OCCASIONS } from '../data/products';
 
 export default function ShopPage({ 
   selectedCategory, 
@@ -9,7 +9,8 @@ export default function ShopPage({
   onSelectProduct, 
   onAddToCart, 
   onToggleWishlist, 
-  wishlist 
+  wishlist,
+  products = []
 }) {
   const [selectedOccasion, setSelectedOccasion] = useState('all');
   const [maxPrice, setMaxPrice] = useState(5000);
@@ -21,7 +22,7 @@ export default function ShopPage({
   const isWishlisted = (id) => wishlist.some(item => item.id === id);
 
   // Filter products logic
-  let filtered = PRODUCTS.filter(p => {
+  let filtered = products.filter(p => {
     if (selectedCategory !== 'all' && p.category !== selectedCategory) return false;
     if (p.price > maxPrice) return false;
     if (inStockOnly && !p.inStock) return false;
@@ -113,7 +114,7 @@ export default function ShopPage({
                 }`}
               >
                 <span>All Categories</span>
-                <span>({PRODUCTS.length})</span>
+                <span>({products.length})</span>
               </button>
               {CATEGORIES.map(c => (
                 <button 

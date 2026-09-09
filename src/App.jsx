@@ -16,13 +16,16 @@ import OrderSuccessPage from './pages/OrderSuccessPage';
 import WishlistPage from './pages/WishlistPage';
 import AccountPage from './pages/AccountPage';
 import ContactPage from './pages/ContactPage';
+import AdminDashboard from './pages/AdminDashboard';
 
 import { PRODUCTS } from './data/products';
-import { CheckCircle2, Heart } from 'lucide-react';
+import { supabase } from './supabaseClient';
+import { CheckCircle2 } from 'lucide-react';
 
 export default function App() {
   const [activePage, setActivePage] = useState('home');
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [products, setProducts] = useState(PRODUCTS); // fallback to static data until Supabase loads
   const [selectedProduct, setSelectedProduct] = useState(PRODUCTS[0]);
   const [cartItems, setCartItems] = useState([
     {
@@ -37,6 +40,32 @@ export default function App() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [lastOrder, setLastOrder] = useState(null);
   const [toastMessage, setToastMessage] = useState(null);
+
+  // Fetch products from Supabase
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const { data, error } = await supabase.from('products').select('*').order('created_at', { ascending: false });
+      if (!error && data && data.length > 0) {
+        // Map Supabase fields to match the existing product shape
+        const mapped = data.map(p => ({
+          ...p,
+          categoryName: p.category ? p.category.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : '',
+          originalPrice: p.original_price,
+          images: p.images || [],
+          colors: p.colors || [],
+          highlights: p.highlights || [],
+          inStock: p.in_stock !== false,
+          moq: p.moq || 10,
+          rating: p.rating || 4.8,
+          reviewCount: p.review_count || 0,
+          featured: p.featured || false,
+        }));
+        setProducts(mapped);
+        setSelectedProduct(mapped[0]);
+      }
+    };
+    fetchProducts();
+  }, []);
 
   // Scroll to top on page transition
   useEffect(() => {
@@ -126,6 +155,10 @@ export default function App() {
 
       {/* Main Page Routing Switcher */}
       <main className="flex-1">
+        {activePage === 'admin' && (
+          <AdminDashboard onNavigateHome={() => setActivePage('home')} />
+        )}
+
         {activePage === 'home' && (
           <HomePage 
             setActivePage={setActivePage}
@@ -134,6 +167,7 @@ export default function App() {
             onAddToCart={handleAddToCart}
             onToggleWishlist={handleToggleWishlist}
             wishlist={wishlist}
+            products={products}
           />
         )}
 
@@ -145,6 +179,7 @@ export default function App() {
             onAddToCart={handleAddToCart}
             onToggleWishlist={handleToggleWishlist}
             wishlist={wishlist}
+            products={products}
           />
         )}
 
