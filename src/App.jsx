@@ -188,7 +188,7 @@ export default function App() {
             options={productOptions}
             onAddToCart={handleAddToCart}
             onToggleWishlist={handleToggleWishlist}
-            isWishlisted={wishlist.some(item => item.id === selectedProduct?.id)}
+            isWishlisted={(id) => wishlist.some(item => item.id === id)}
             onSelectProduct={handleSelectProduct}
             onNavigateQuote={() => setActivePage('quote')}
           />

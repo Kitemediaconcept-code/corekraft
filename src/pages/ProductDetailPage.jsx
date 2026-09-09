@@ -115,12 +115,12 @@ export default function ProductDetailPage({
             <button 
               onClick={() => onToggleWishlist(product)}
               className={`absolute top-4 left-4 p-2.5 rounded-full backdrop-blur-md transition shadow-md ${
-                isWishlisted ? 'bg-[#EE3364] text-white' : 'bg-white/90 text-gray-600 hover:text-[#EE3364]'
+                isWishlisted(product.id) ? 'bg-[#EE3364] text-white' : 'bg-white/90 text-gray-600 hover:text-[#EE3364]'
               }`}
               title="Wishlist"
               aria-label="Wishlist"
             >
-              <Heart size={18} fill={isWishlisted ? "currentColor" : "none"} />
+              <Heart size={18} fill={isWishlisted(product.id) ? "currentColor" : "none"} />
             </button>
           </div>
 
