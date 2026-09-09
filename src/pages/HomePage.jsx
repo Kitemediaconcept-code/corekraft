@@ -14,10 +14,16 @@ import {
   Star
 } from 'lucide-react';
 import { CATEGORIES, PRODUCTS } from '../data/products';
+import ProductCard from '../components/ProductCard';
 
 export default function HomePage({ 
   setActivePage, 
-  setSelectedCategory 
+  setSelectedCategory,
+  onSelectProduct,
+  onAddToCart,
+  onToggleWishlist,
+  wishlist,
+  products
 }) {
   return (
     <div className="bg-white">
@@ -104,67 +110,63 @@ export default function HomePage({
         </div>
       </section>
 
-      {/* SECTION 3 — FEATURED PRODUCTS */}
-      <section className="bg-[#FFF5F8] py-20 lg:py-32">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 gap-6">
-            <div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-3">
-                F E A T U R E D &nbsp; P R O D U C T S
-              </p>
-              <h2 className="text-[32px] md:text-[40px] font-extrabold text-[#111] leading-tight">Popular Corporate Gifts</h2>
-            </div>
-            <button 
-              onClick={() => setActivePage('shop')}
-              aria-label="View all popular corporate gifts"
-              className="text-[14px] font-bold text-[#EE3364] hover:text-[#D92756] flex items-center gap-1.5 transition group pb-2"
-            >
-              View All Products <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </button>
-          </div>
+      {/* SEPARATE CATEGORY PRODUCT SECTIONS */}
+      <div className="bg-[#FFF5F8] pt-20 lg:pt-32 pb-10">
+        {[
+          { id: 'office-essentials', title: 'Top in Office Essentials', subtitle: 'P R E M I U M   W O R K S P A C E' },
+          { id: 'drinkware', title: 'Corporate Drinkware', subtitle: 'S T Y L I S H   &   S U S T A I N A B L E' },
+          { id: 'tech-gifts', title: 'Premium Tech Gifts', subtitle: 'M O D E R N   E S S E N T I A L S' },
+        ].map((section, index) => {
+          const categoryProducts = products.filter(p => p.categoryId === section.id).slice(0, 8);
+          if (categoryProducts.length === 0) return null;
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {PRODUCTS.filter(p => p.featured).slice(0, 5).map(product => (
-              <div key={product.id} className="bg-white rounded-[24px] p-5 relative group shadow-sm hover:shadow-[0_12px_24px_rgba(238,51,100,0.08)] transition-all duration-300 flex flex-col h-full border border-white hover:border-[#FAD9E2]">
-                {/* Heart Button */}
-                <button aria-label={`Add ${product.name} to wishlist`} className="absolute top-5 right-5 z-10 text-gray-400 hover:text-[#EE3364] transition">
-                  <Heart size={18} strokeWidth={2} />
-                </button>
-                
-                {/* Image */}
-                <div className="w-full aspect-square bg-white rounded-2xl overflow-hidden mb-4 flex items-center justify-center cursor-pointer">
-                  <img src={product.images[0]} alt={product.name} className="w-full h-full object-contain group-hover:scale-105 transition duration-500 p-2" />
+          return (
+            <section key={section.id} className={index !== 0 ? 'mt-16 lg:mt-24' : ''}>
+              <div className="container mx-auto px-6 lg:px-12">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 gap-4">
+                  <div>
+                    <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-2">
+                      {section.subtitle}
+                    </p>
+                    <h2 className="text-[28px] md:text-[36px] font-extrabold text-[#111] leading-tight">{section.title}</h2>
+                  </div>
+                  <button 
+                    onClick={() => { setSelectedCategory(section.id); setActivePage('shop'); }}
+                    aria-label={`View all ${section.title}`}
+                    className="text-[14px] font-bold text-[#EE3364] hover:text-[#D92756] flex items-center gap-1.5 transition group pb-2"
+                  >
+                    View Collection <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                  </button>
                 </div>
-                
-                {/* Details */}
-                <div className="flex flex-col flex-grow">
-                  <h3 className="text-[14px] font-bold text-[#111] mb-1.5 leading-snug line-clamp-1">{product.name}</h3>
-                  <div className="text-[18px] font-extrabold text-[#111] mb-2.5">
-                    ₹ {product.price.toLocaleString('en-IN')}
-                  </div>
-                  
-                  {/* Rating */}
-                  <div className="flex items-center gap-1.5 mb-5">
-                    <div className="flex text-[#FFB800]">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} size={12} fill={i < Math.floor(product.rating) ? "currentColor" : "none"} className={i < Math.floor(product.rating) ? "" : "text-gray-300"} />
-                      ))}
-                    </div>
-                    <span className="text-[11px] font-medium text-gray-400">({product.reviewCount})</span>
-                  </div>
 
-                  {/* Add to Cart Button */}
-                  <div className="mt-auto">
-                    <button aria-label={`Add ${product.name} to cart`} className="w-full flex items-center justify-center gap-2 bg-[#FFF0F4] hover:bg-[#FAD9E2] text-[#EE3364] border border-[#FAD9E2] font-bold text-[13px] py-2.5 rounded-[12px] transition shadow-sm">
-                      <ShoppingCart size={15} strokeWidth={2.5} /> Add to Cart
-                    </button>
-                  </div>
+                {/* Horizontal Scrolling Carousel */}
+                <div 
+                  className="flex overflow-x-auto gap-6 pb-8 pt-2 snap-x"
+                  style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                >
+                  {/* Hide scrollbar for webkit */}
+                  <style>{`
+                    .snap-x::-webkit-scrollbar {
+                      display: none;
+                    }
+                  `}</style>
+                  {categoryProducts.map(product => (
+                    <div key={product.id} className="snap-start shrink-0 w-[280px] md:w-[300px]">
+                      <ProductCard 
+                        product={product}
+                        onSelectProduct={onSelectProduct}
+                        onAddToCart={onAddToCart}
+                        onToggleWishlist={onToggleWishlist}
+                        isWishlisted={wishlist.some(item => item.id === product.id)}
+                      />
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </section>
+          );
+        })}
+      </div>
 
       {/* SECTION 4 — EXPLORE BY CATEGORY */}
       <section 
