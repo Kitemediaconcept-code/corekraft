@@ -592,16 +592,15 @@ export default function ProductDetailPage({
                     {[...Array(5)].map((_, i) => <Star key={i} size={14} className="fill-amber-400" />)}
                   </div>
                   <p className="text-gray-700 italic mb-4 relative z-10 leading-relaxed">
-                    "We ordered these for our annual corporate retreat, and the quality completely exceeded our expectations. 
-                    The custom laser engraving was precise, and the packaging felt incredibly premium. Our employees loved them!"
+                    "{product.testimonial?.quote || `We ordered these ${product.name} for our annual corporate retreat, and the quality completely exceeded our expectations. The custom laser engraving was precise, and the packaging felt incredibly premium. Our employees loved them!`}"
                   </p>
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-[#FFF3F6] text-[#EE3364] flex items-center justify-center font-bold">
-                      SK
+                      {product.testimonial?.initials || "SK"}
                     </div>
                     <div>
-                      <p className="font-bold text-gray-900 text-sm">Sarah K.</p>
-                      <p className="text-xs text-gray-500">HR Director, TechFlow Inc.</p>
+                      <p className="font-bold text-gray-900 text-sm">{product.testimonial?.name || "Sarah K."}</p>
+                      <p className="text-xs text-gray-500">{product.testimonial?.role || "HR Director, TechFlow Inc."}</p>
                     </div>
                   </div>
                 </div>
