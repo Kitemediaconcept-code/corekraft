@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import CartDrawer from './components/CartDrawer';
@@ -129,7 +130,7 @@ export default function App() {
     showToast(`Order ${orderData.orderNumber} placed successfully!`);
   };
 
-  return (
+  const storeUI = (
     <div className="min-h-screen flex flex-col bg-[#FFFCFC] text-[#151515] font-sans antialiased">
       {/* Toast Notification Floating */}
       {toastMessage && (
@@ -155,10 +156,6 @@ export default function App() {
 
       {/* Main Page Routing Switcher */}
       <main className="flex-1">
-        {activePage === 'admin' && (
-          <AdminDashboard onNavigateHome={() => setActivePage('home')} />
-        )}
-
         {activePage === 'home' && (
           <HomePage 
             setActivePage={setActivePage}
@@ -283,5 +280,12 @@ export default function App() {
         setSelectedCategory={setSelectedCategory}
       />
     </div>
+  );
+
+  return (
+    <Routes>
+      <Route path="/admin" element={<AdminDashboard onNavigateHome={() => { window.location.href = '/'; }} />} />
+      <Route path="/*" element={storeUI} />
+    </Routes>
   );
 }
