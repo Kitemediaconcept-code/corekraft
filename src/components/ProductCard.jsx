@@ -51,44 +51,45 @@ export default function ProductCard({
         {/* Title */}
         <h3 
           onClick={() => onSelectProduct(product)}
-          className="text-[15px] font-bold text-gray-800 cursor-pointer line-clamp-1 leading-snug mb-3"
+          className="text-[13px] sm:text-[15px] font-bold text-gray-800 cursor-pointer line-clamp-1 leading-snug mb-2 sm:mb-3"
         >
           {product.name}
         </h3>
 
         {/* Variants / Pills */}
-        <div className="flex flex-wrap gap-2 mb-3">
-          {product.colors ? product.colors.slice(0, 4).map((c, i) => (
-             <span key={i} className={`text-[10px] px-2.5 py-1 rounded-full border ${i === 0 ? 'bg-orange-100 border-orange-200 text-orange-800 font-semibold' : 'border-gray-200 text-gray-500 bg-white'}`}>
+        <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-2 sm:mb-3">
+          {product.colors ? product.colors.slice(0, 3).map((c, i) => (
+             <span key={i} className={`text-[9px] sm:text-[10px] px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full border ${i === 0 ? 'bg-orange-100 border-orange-200 text-orange-800 font-semibold' : 'border-gray-200 text-gray-500 bg-white'}`}>
                {c.name.split(' ')[0]}
              </span>
           )) : (
             <>
-              <span className="text-[10px] px-2.5 py-1 rounded-full border bg-orange-100 border-orange-200 text-orange-800 font-semibold">Standard</span>
-              <span className="text-[10px] px-2.5 py-1 rounded-full border border-gray-200 text-gray-500 bg-white">Premium</span>
+              <span className="text-[9px] sm:text-[10px] px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full border bg-orange-100 border-orange-200 text-orange-800 font-semibold">Standard</span>
+              <span className="text-[9px] sm:text-[10px] px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full border border-gray-200 text-gray-500 bg-white">Premium</span>
             </>
           )}
         </div>
 
         {/* Description */}
-        <p className="text-[11px] text-gray-500 leading-[1.6] line-clamp-3 mb-5 flex-1">
+        <p className="text-[10px] sm:text-[11px] text-gray-500 leading-[1.5] sm:leading-[1.6] line-clamp-2 md:line-clamp-3 mb-4 sm:mb-5 flex-1">
           {product.description || "Stay on top of your daily goals with this premium corporate gift featuring an innovative and functional design."}
         </p>
 
         {/* Footer */}
-        <div className="flex items-center justify-between gap-2 md:gap-3 mt-auto pt-1">
+        <div className="flex items-center justify-between gap-1.5 sm:gap-2 md:gap-3 mt-auto pt-1">
           {/* Pricing */}
-          <span className="text-[16px] md:text-[18px] font-extrabold text-gray-800 shrink-0">
+          <span className="text-[14px] sm:text-[16px] md:text-[18px] font-extrabold text-gray-800 shrink-0">
             ₹{product.price.toLocaleString()}
           </span>
 
           {/* Add to Cart Button */}
           <button 
             onClick={() => onAddToCart(product)}
-            className="flex-1 min-w-0 bg-[#EE3364] hover:bg-[#D92756] text-white py-2 md:py-2.5 px-2 md:px-4 rounded-xl text-[11px] md:text-[13px] font-bold transition duration-200 flex items-center justify-center gap-1.5 shadow-[0_4px_12px_rgba(238,51,100,0.25)] hover:shadow-[0_6px_16px_rgba(238,51,100,0.35)] whitespace-nowrap"
+            className="flex-1 min-w-0 bg-[#EE3364] hover:bg-[#D92756] text-white py-2 md:py-2.5 px-2 md:px-4 rounded-xl text-[11px] md:text-[13px] font-bold transition duration-200 flex items-center justify-center gap-1 sm:gap-1.5 shadow-[0_4px_12px_rgba(238,51,100,0.25)] hover:shadow-[0_6px_16px_rgba(238,51,100,0.35)] whitespace-nowrap"
           >
-            <ShoppingCart size={14} strokeWidth={2.5} className="shrink-0 hidden sm:block md:hidden lg:block" />
-            <span className="truncate">Add to Cart</span>
+            <ShoppingCart size={14} strokeWidth={2.5} className="shrink-0 hidden lg:block" />
+            <span className="truncate hidden sm:inline-block">Add to Cart</span>
+            <span className="inline-block sm:hidden">Add</span>
           </button>
         </div>
       </div>

@@ -131,9 +131,9 @@ export default function HomePage({
           <button 
             onClick={() => { setSelectedCategory('all'); setActivePage('shop'); }}
             aria-label="View all corporate gifting categories"
-            className="text-[15px] font-semibold text-[#EE3364] hover:text-[#D92756] flex items-center gap-1.5 transition group pb-0.5 border-b-[1.5px] border-[#EE3364]"
+            className="bg-[#EE3364] hover:bg-[#D92756] text-white px-6 py-2.5 rounded-full font-bold text-[13px] md:text-[14px] flex items-center gap-2 transition shadow-[0_4px_12px_rgba(238,51,100,0.2)] hover:shadow-[0_6px_16px_rgba(238,51,100,0.3)] hover:-translate-y-0.5"
           >
-            View All Collections <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            View All Collections <ArrowRight size={16} />
           </button>
         </div>
 
@@ -188,13 +188,13 @@ export default function HomePage({
           <button 
             onClick={() => { setSelectedCategory('all'); setActivePage('shop'); }}
             aria-label="View more products"
-            className="text-[15px] font-semibold text-[#EE3364] hover:text-[#D92756] flex items-center gap-1.5 transition group pb-0.5 border-b-[1.5px] border-[#EE3364]"
+            className="bg-[#EE3364] hover:bg-[#D92756] text-white px-6 py-2.5 rounded-full font-bold text-[13px] md:text-[14px] flex items-center gap-2 transition shadow-[0_4px_12px_rgba(238,51,100,0.2)] hover:shadow-[0_6px_16px_rgba(238,51,100,0.3)] hover:-translate-y-0.5"
           >
-            View More Collection <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            View More Collection <ArrowRight size={16} />
           </button>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 gap-y-10">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 gap-y-8 sm:gap-y-10">
           {products.slice(0, 8).map((product) => (
             <ProductCard 
               key={product.id}
@@ -205,6 +205,17 @@ export default function HomePage({
               isWishlisted={wishlist.some(item => item.id === product.id)}
             />
           ))}
+        </div>
+
+        {/* Bottom View All Button (especially useful for mobile) */}
+        <div className="mt-10 sm:mt-12 flex justify-center">
+          <button 
+            onClick={() => { setSelectedCategory('all'); setActivePage('shop'); }}
+            aria-label="View more products"
+            className="bg-white border-2 border-[#EE3364] text-[#EE3364] hover:bg-[#EE3364] hover:text-white px-8 py-3 rounded-full font-bold text-[14px] flex items-center gap-2 transition shadow-[0_4px_12px_rgba(238,51,100,0.15)] hover:shadow-[0_6px_16px_rgba(238,51,100,0.25)] hover:-translate-y-0.5"
+          >
+            View All Collections <ArrowRight size={16} />
+          </button>
         </div>
       </section>
 
