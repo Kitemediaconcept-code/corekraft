@@ -56,10 +56,9 @@ export const PRODUCTS = [
       { name: 'Olive Grey', hex: '#4A5568' }
     ],
     images: [
-      'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=1000&q=80'
+      '/Corekraft products/p1/1.jpg',
+      '/Corekraft products/p1/2.jpg',
+      '/Corekraft products/p1/3.jpg'
     ]
   },
   {
@@ -90,8 +89,9 @@ export const PRODUCTS = [
       { name: 'Slate Grey', hex: '#64748B' }
     ],
     images: [
-      'https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1589365278144-c9e705f843ba?auto=format&fit=crop&w=1000&q=80'
+      '/Corekraft products/p2/1.jpg',
+      '/Corekraft products/p2/5.jpg',
+      '/Corekraft products/p2/6.jpg'
     ]
   },
   {
@@ -121,8 +121,9 @@ export const PRODUCTS = [
       { name: 'Blush Pink', hex: '#FAD9E2' }
     ],
     images: [
-      'https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=1000&q=80'
+      '/Corekraft products/p3/8.jpg',
+      '/Corekraft products/p3/9.jpg',
+      '/Corekraft products/p3/10.jpg'
     ]
   },
   {
@@ -152,8 +153,9 @@ export const PRODUCTS = [
       { name: 'Midnight Black', hex: '#151515' }
     ],
     images: [
-      'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=1000&q=80'
+      '/Corekraft products/p4/11.jpg',
+      '/Corekraft products/p4/12.jpg',
+      '/Corekraft products/p4/13.jpg'
     ]
   },
   {
@@ -184,8 +186,9 @@ export const PRODUCTS = [
       { name: 'Matt Gold & Black', hex: '#151515' }
     ],
     images: [
-      'https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=1000&q=80'
+      '/Corekraft products/p5/14.jpg',
+      '/Corekraft products/p5/15.jpg',
+      '/Corekraft products/p5/16.jpg'
     ]
   },
   {
@@ -214,8 +217,9 @@ export const PRODUCTS = [
       { name: 'Natural Bamboo', hex: '#D4A373' }
     ],
     images: [
-      'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=1000&q=80'
+      '/Corekraft products/p6/17.jpg',
+      '/Corekraft products/p6/18.jpg',
+      '/Corekraft products/p6/19.jpg'
     ]
   },
   {
@@ -245,7 +249,9 @@ export const PRODUCTS = [
       { name: 'Corekraft Pink', hex: '#EE3364' }
     ],
     images: [
-      'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=1000&q=80'
+      '/Corekraft products/p7/20.jpg',
+      '/Corekraft products/p7/21.jpg',
+      '/Corekraft products/p7/22.jpg'
     ]
   },
   {
@@ -275,7 +281,142 @@ export const PRODUCTS = [
       { name: 'Ivory White', hex: '#F8F9FA' }
     ],
     images: [
-      'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=1000&q=80'
+      '/Corekraft products/p8/31.jpg',
+      '/Corekraft products/p8/32.jpg',
+      '/Corekraft products/p8/33.jpg'
+    ]
+  },
+  {
+    id: 'ck-sdp-1102',
+    name: 'Smart Temperature Display Flask',
+    category: 'drinkware',
+    categoryName: 'Drinkware',
+    price: 1199,
+    originalPrice: 1599,
+    discount: '25% OFF',
+    rating: 4.8,
+    reviewCount: 35,
+    sku: 'CK-SDP-1102',
+    featured: true,
+    moq: 20,
+    inStock: true,
+    description: 'Smart LED temperature display bottle, double walled stainless steel, keeps beverages hot/cold for hours.',
+    fullDescription: 'The Smart Temperature Display Flask features a built-in LED touchscreen that shows the real-time temperature of your beverage without opening the lid.',
+    highlights: [
+      'Built-in LED temperature touchscreen',
+      'Food-grade 304 stainless steel interior',
+      'Anti-slip silicone bottom',
+      'Tea infuser mesh included'
+    ],
+    colors: [
+      { name: 'Metallic Black', hex: '#151515' },
+      { name: 'Rose Gold', hex: '#B76E79' },
+      { name: 'Ocean Blue', hex: '#1E3A8A' }
+    ],
+    images: [
+      '/Corekraft products/p9/51.jpg',
+      '/Corekraft products/p9/52.jpg',
+      '/Corekraft products/p9/53.jpg'
+    ]
+  },
+  {
+    id: 'ck-ldp-1103',
+    name: 'Premium Leather Desk Pad',
+    category: 'office-essentials',
+    categoryName: 'Office Essentials',
+    price: 1499,
+    originalPrice: 1999,
+    discount: '25% OFF',
+    rating: 4.9,
+    reviewCount: 42,
+    sku: 'CK-LDP-1103',
+    featured: false,
+    moq: 15,
+    inStock: true,
+    description: 'Elegant dual-sided vegan leather desk pad, waterproof and scratch-resistant, perfect for modern workspaces.',
+    fullDescription: 'Transform any workspace with this premium vegan leather desk pad. It provides a smooth writing surface and protects your desk from scratches, stains, and spills.',
+    highlights: [
+      'Large 80x40cm surface area',
+      'Dual-sided reversible design',
+      'Waterproof and easy to clean',
+      'Includes matching leather tie-strap'
+    ],
+    colors: [
+      { name: 'Tan Brown', hex: '#D2B48C' },
+      { name: 'Navy Blue', hex: '#1E293B' },
+      { name: 'Classic Black', hex: '#151515' }
+    ],
+    images: [
+      '/Corekraft products/p10/72.jpg',
+      '/Corekraft products/p10/73.jpg',
+      '/Corekraft products/p10/74.jpg',
+      '/Corekraft products/p10/75.jpg'
+    ]
+  },
+  {
+    id: 'ck-mp-1104',
+    name: 'Executive Metal Pen Set',
+    category: 'office-essentials',
+    categoryName: 'Office Essentials',
+    price: 899,
+    originalPrice: 1299,
+    discount: '30% OFF',
+    rating: 4.7,
+    reviewCount: 22,
+    sku: 'CK-MP-1104',
+    featured: false,
+    moq: 50,
+    inStock: true,
+    description: 'Heavyweight brass barrel ballpoint pen with smooth twist mechanism, presented in a luxury velvet box.',
+    fullDescription: 'An essential corporate gift for executives. This heavyweight brass ballpoint pen offers a premium writing experience with precise ink flow.',
+    highlights: [
+      'Solid brass construction with lacquer finish',
+      'Ultra-smooth German ink cartridge',
+      'Twist-action mechanism',
+      'Laser engravable surface'
+    ],
+    colors: [
+      { name: 'Gold', hex: '#FFD700' },
+      { name: 'Silver', hex: '#C0C0C0' },
+      { name: 'Matte Black', hex: '#151515' }
+    ],
+    images: [
+      '/Corekraft products/p11/76.jpg',
+      '/Corekraft products/p11/77.jpg',
+      '/Corekraft products/p11/78.jpg'
+    ]
+  },
+  {
+    id: 'ck-ws-1105',
+    name: 'Compact Bluetooth Speaker',
+    category: 'tech-gifts',
+    categoryName: 'Tech Gifts',
+    price: 1999,
+    originalPrice: 2499,
+    discount: '20% OFF',
+    rating: 4.8,
+    reviewCount: 56,
+    sku: 'CK-WS-1105',
+    featured: true,
+    moq: 10,
+    inStock: true,
+    description: 'Portable, waterproof Bluetooth speaker with 360-degree sound and 12-hour battery life.',
+    fullDescription: 'Take your music anywhere with this rugged, compact Bluetooth speaker. Delivering impressive 360-degree sound and deep bass in a portable package.',
+    highlights: [
+      'Bluetooth 5.0 with 33ft range',
+      'IP67 waterproof and dustproof',
+      '12-hour continuous playtime',
+      'Built-in microphone for calls'
+    ],
+    colors: [
+      { name: 'Crimson Red', hex: '#DC143C' },
+      { name: 'Midnight Blue', hex: '#191970' },
+      { name: 'Slate Grey', hex: '#708090' }
+    ],
+    images: [
+      '/Corekraft products/p12/79.jpg',
+      '/Corekraft products/p12/80.jpg',
+      '/Corekraft products/p12/81.jpg'
     ]
   }
 ];

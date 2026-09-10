@@ -63,19 +63,19 @@ export default function ProductCard({
         </p>
 
         {/* Footer */}
-        <div className="flex items-center justify-between gap-3 mt-auto">
+        <div className="flex items-center justify-between gap-2 md:gap-3 mt-auto pt-1">
           {/* Pricing */}
-          <span className="text-[18px] font-extrabold text-gray-800 shrink-0">
+          <span className="text-[16px] md:text-[18px] font-extrabold text-gray-800 shrink-0">
             ₹{product.price.toLocaleString()}
           </span>
 
           {/* Add to Cart Button */}
           <button 
             onClick={() => onAddToCart(product)}
-            className="flex-1 bg-[#F97316] hover:bg-[#EA580C] text-white py-2.5 px-4 rounded-xl text-[13px] font-bold transition duration-200 flex items-center justify-center gap-2 shadow-[0_4px_12px_rgba(249,115,22,0.25)] hover:shadow-[0_6px_16px_rgba(249,115,22,0.35)]"
+            className="flex-1 min-w-0 bg-[#F97316] hover:bg-[#EA580C] text-white py-2 md:py-2.5 px-2 md:px-4 rounded-xl text-[11px] md:text-[13px] font-bold transition duration-200 flex items-center justify-center gap-1.5 shadow-[0_4px_12px_rgba(249,115,22,0.25)] hover:shadow-[0_6px_16px_rgba(249,115,22,0.35)] whitespace-nowrap"
           >
-            <ShoppingCart size={16} strokeWidth={2.5} />
-            Add to Cart
+            <ShoppingCart size={14} strokeWidth={2.5} className="shrink-0 hidden sm:block md:hidden lg:block" />
+            <span className="truncate">Add to Cart</span>
           </button>
         </div>
       </div>

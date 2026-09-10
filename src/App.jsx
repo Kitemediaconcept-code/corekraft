@@ -16,6 +16,7 @@ import CheckoutPage from './pages/CheckoutPage';
 import OrderSuccessPage from './pages/OrderSuccessPage';
 import WishlistPage from './pages/WishlistPage';
 import AccountPage from './pages/AccountPage';
+import AuthPage from './pages/AuthPage';
 import ContactPage from './pages/ContactPage';
 import AdminDashboard from './pages/AdminDashboard';
 
@@ -25,6 +26,7 @@ import { CheckCircle2 } from 'lucide-react';
 
 export default function App() {
   const [activePage, setActivePage] = useState('home');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [products, setProducts] = useState(PRODUCTS); // fallback to static data until Supabase loads
   const [selectedProduct, setSelectedProduct] = useState(PRODUCTS[0]);
@@ -132,6 +134,18 @@ export default function App() {
     showToast(`Order ${orderData.orderNumber} placed successfully!`);
   };
 
+  const handleLoginSuccess = () => {
+    setIsAuthenticated(true);
+    setActivePage('account');
+    showToast('Successfully logged in!');
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    setActivePage('home');
+    showToast('Successfully logged out.');
+  };
+
   const storeUI = (
     <div className="min-h-screen flex flex-col bg-[#FFFCFC] text-[#151515] font-sans antialiased">
       {/* Toast Notification Floating */}
@@ -148,6 +162,7 @@ export default function App() {
       <Header 
         activePage={activePage}
         setActivePage={setActivePage}
+        isAuthenticated={isAuthenticated}
         cartCount={cartItems.reduce((acc, i) => acc + i.quantity, 0)}
         wishlistCount={wishlist.length}
         onOpenSearch={() => setIsSearchOpen(true)}
@@ -244,12 +259,19 @@ export default function App() {
           />
         )}
 
+        {activePage === 'auth' && (
+          <AuthPage 
+            onLoginSuccess={handleLoginSuccess}
+          />
+        )}
+
         {activePage === 'account' && (
           <AccountPage 
             userOrders={lastOrder ? [lastOrder] : []}
             wishlist={wishlist}
             onSelectProduct={handleSelectProduct}
             onNavigateShop={() => setActivePage('shop')}
+            onLogout={handleLogout}
           />
         )}
 

@@ -85,10 +85,10 @@ export default function HomePage({
 
       {/* SECTION 2 — BENEFITS */}
       <section 
-        className="container mx-auto px-6 lg:px-12 border-b border-[#ECE7E8]"
+        className="container mx-auto px-4 md:px-6 lg:px-12 border-b border-[#ECE7E8]"
         style={{ paddingTop: '30px', paddingBottom: '90px' }}
       >
-        <div className="flex flex-wrap justify-between items-start gap-8">
+        <div className="flex flex-wrap justify-center md:justify-between items-start gap-y-8 md:gap-y-0 md:gap-8">
           {[
             { icon: Gift, title: 'Premium Quality', desc: 'Curated products with lasting value' },
             { icon: Settings, title: 'Custom Branding', desc: 'Make it uniquely yours' },
@@ -98,12 +98,12 @@ export default function HomePage({
           ].map((b, i) => {
             const IconComp = b.icon;
             return (
-              <div key={i} className="text-center group flex flex-col items-center flex-1 min-w-[140px]">
-                <div className="w-[72px] h-[72px] mb-4 rounded-full bg-[#FFF0F4] text-[#EE3364] flex items-center justify-center transition duration-300 hover:scale-105">
-                  <IconComp size={32} strokeWidth={1.75} />
+              <div key={i} className="text-center group flex flex-col items-center basis-1/3 md:basis-auto md:flex-1 px-1 md:px-0">
+                <div className="w-[52px] h-[52px] md:w-[72px] md:h-[72px] mb-2.5 md:mb-4 rounded-full bg-[#FFF0F4] text-[#EE3364] flex items-center justify-center transition duration-300 hover:scale-105 mx-auto">
+                  <IconComp className="w-[22px] h-[22px] md:w-8 md:h-8" strokeWidth={1.75} />
                 </div>
-                <h3 className="text-[15px] font-bold text-[#111] mb-1.5">{b.title}</h3>
-                <p className="text-[13px] text-[#888] font-medium leading-[1.3] max-w-[150px]">{b.desc}</p>
+                <h3 className="text-[11px] md:text-[15px] font-bold text-[#111] mb-1 md:mb-1.5 leading-tight">{b.title}</h3>
+                <p className="text-[9px] md:text-[13px] text-[#888] font-medium leading-[1.25] md:leading-[1.3] max-w-[100px] md:max-w-[150px] mx-auto">{b.desc}</p>
               </div>
             );
           })}
@@ -164,6 +164,41 @@ export default function HomePage({
                 View Collection <ArrowRight size={12} />
               </p>
             </div>
+          ))}
+        </div>
+      </section>
+
+      {/* SECTION 4.5 — FEATURED PRODUCTS */}
+      <section 
+        className="container mx-auto px-6 lg:px-12"
+        style={{ paddingBottom: '120px' }}
+      >
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 gap-6">
+          <div>
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-500 mb-2">
+              T R E N D I N G &nbsp; N O W
+            </p>
+            <h2 className="text-[32px] md:text-[40px] font-extrabold text-gray-900 leading-tight">Featured Products</h2>
+          </div>
+          <button 
+            onClick={() => { setSelectedCategory('all'); setActivePage('shop'); }}
+            aria-label="View more products"
+            className="text-[15px] font-semibold text-[#EE3364] hover:text-[#D92756] flex items-center gap-1.5 transition group pb-0.5 border-b-[1.5px] border-[#EE3364]"
+          >
+            View More Collection <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 gap-y-10">
+          {products.slice(0, 8).map((product) => (
+            <ProductCard 
+              key={product.id}
+              product={product}
+              onSelectProduct={onSelectProduct}
+              onAddToCart={onAddToCart}
+              onToggleWishlist={onToggleWishlist}
+              isWishlisted={wishlist.some(item => item.id === product.id)}
+            />
           ))}
         </div>
       </section>
@@ -270,6 +305,78 @@ export default function HomePage({
             >
               Get a Quote <ArrowRight size={16} />
             </button>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 7 — MORE COLLECTIONS */}
+      <section className="container mx-auto px-6 lg:px-12" style={{ paddingBottom: '100px' }}>
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 gap-4">
+          <div>
+            <h2 className="text-[28px] md:text-[32px] font-extrabold text-gray-900 leading-tight mb-2">More Collections</h2>
+            <p className="text-[14px] text-gray-500 font-medium">Discover more thoughtful gifting options for every need.</p>
+          </div>
+          <button 
+            onClick={() => { setSelectedCategory('all'); setActivePage('shop'); }}
+            aria-label="View all corporate gifting collections"
+            className="text-[14px] font-semibold text-[#EE3364] hover:text-[#D92756] flex items-center gap-1.5 transition group pb-0.5 border-b-[1.5px] border-[#EE3364]"
+          >
+            View All Collections <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[
+            { title: 'Premium Hampers', desc: 'Curated luxury gift hampers', image: '/collection_hampers_1789017088098.png' },
+            { title: 'Wellness & Self Care', desc: 'Relax. Rejuvenate. Recharge.', image: '/collection_wellness_1789017104422.png' },
+            { title: 'Festive Specials', desc: 'Celebrate with thoughtfulness', image: '/collection_festive_1789017118649.png' },
+            { title: 'Onboarding Kits', desc: 'Welcoming talent with care', image: '/collection_onboarding_1789017132984.png' }
+          ].map((col, idx) => (
+            <div key={idx} className="group cursor-pointer" onClick={() => { setSelectedCategory('all'); setActivePage('shop'); }}>
+              <div className="w-full aspect-[4/3] rounded-[20px] overflow-hidden bg-gradient-to-b from-[#FFF0F4] to-[#FADBE3] mb-4 relative">
+                <img 
+                  src={col.image} 
+                  alt={col.title} 
+                  className="w-full h-full object-cover group-hover:scale-105 transition duration-500 mix-blend-multiply" 
+                />
+              </div>
+              <h3 className="text-[16px] font-bold text-gray-900 group-hover:text-[#EE3364] transition mb-1">{col.title}</h3>
+              <p className="text-[13px] text-gray-500 font-medium">{col.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* SECTION 8 — CUSTOM BRANDING BANNER */}
+      <section className="container mx-auto px-6 lg:px-12" style={{ paddingBottom: '120px' }}>
+        <div className="bg-[#FFF3F6] rounded-[24px] flex flex-col md:flex-row items-center overflow-hidden shadow-sm">
+          {/* Left Content */}
+          <div className="p-10 lg:p-14 flex-1 max-w-xl">
+            <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-gray-500 mb-3">
+              C U S T O M &nbsp; B R A N D I N G
+            </p>
+            <h2 className="text-[32px] lg:text-[40px] font-extrabold text-gray-900 leading-[1.1] mb-4">
+              Your Logo. Our Creativity.
+            </h2>
+            <p className="text-[14px] text-gray-600 leading-relaxed mb-8">
+              Turn everyday gifts into powerful brand experiences. We offer custom branding solutions to showcase your logo with style and impact.
+            </p>
+            <button 
+              onClick={() => setActivePage('custom')}
+              aria-label="Explore Custom Branding Options"
+              className="bg-[#EE3364] hover:bg-[#D92756] text-white font-bold text-[14px] px-8 py-3.5 rounded-full shadow-[0_8px_20px_rgba(238,51,100,0.25)] hover:shadow-[0_10px_24px_rgba(238,51,100,0.35)] hover:-translate-y-0.5 transition flex items-center gap-2 w-max"
+            >
+              Explore Branding <ArrowRight size={16} />
+            </button>
+          </div>
+
+          {/* Right Image */}
+          <div className="flex-1 w-full relative min-h-[250px] md:min-h-[400px]">
+            <img 
+              src="/custom_branding_1789017149739.png" 
+              alt="Custom branding examples with your logo" 
+              className="absolute inset-0 w-full h-full object-cover mix-blend-multiply md:object-right" 
+            />
           </div>
         </div>
       </section>

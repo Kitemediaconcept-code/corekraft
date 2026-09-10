@@ -6,7 +6,8 @@ import {
   Menu, 
   X, 
   Home,
-  Grid
+  Grid,
+  ArrowRight
 } from 'lucide-react';
 
 export default function Header({ 
@@ -15,7 +16,8 @@ export default function Header({
   cartCount, 
   onOpenSearch, 
   onOpenCart, 
-  setSelectedCategory 
+  setSelectedCategory,
+  isAuthenticated
 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -41,7 +43,7 @@ export default function Header({
 
   return (
     <>
-      <header className={`sticky top-0 z-50 transition-all duration-300 font-sans ${(scrolled || isHoveringMega) ? 'glass-nav' : 'bg-transparent border-transparent shadow-none'}`}>
+      <header className={`sticky top-0 z-50 transition-all duration-300 font-sans ${(scrolled || isHoveringMega || mobileMenuOpen) ? 'glass-nav' : 'bg-transparent border-transparent shadow-none'}`}>
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           {/* Main Top Row */}
           <div className="flex items-center justify-between h-20">
@@ -49,8 +51,9 @@ export default function Header({
             {/* Left: Brand Logo */}
             <div className="flex items-center">
               <button 
-                className="lg:hidden p-2 -ml-2 mr-2 rounded-lg text-gray-700 hover:bg-gray-100 transition"
+                className={`lg:hidden p-2 -ml-2 mr-2 rounded-lg transition ${mobileMenuOpen ? 'text-[#EE3364] bg-[#FFF0F4]' : 'text-gray-700 hover:bg-gray-100'}`}
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle mobile menu"
               >
                 {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
@@ -191,11 +194,11 @@ export default function Header({
               </button>
 
               <button 
-                onClick={() => handleNavClick('account')}
-                className="hover:text-[#EE3364] transition flex items-center gap-2"
+                onClick={() => handleNavClick(isAuthenticated ? 'account' : 'auth')}
+                className={`transition flex items-center gap-2 ${activePage === 'account' || activePage === 'auth' ? 'text-[#EE3364]' : 'hover:text-[#EE3364]'}`}
               >
                 <User size={16} strokeWidth={2} />
-                <span className="hidden lg:inline">Login</span>
+                <span className="hidden lg:inline">{isAuthenticated ? 'Account' : 'Login'}</span>
               </button>
 
               <button 
@@ -210,6 +213,39 @@ export default function Header({
           </div>
         </div>
       </header>
+
+      {/* Mobile Menu Overlay */}
+      <div 
+        className={`lg:hidden fixed inset-0 z-40 bg-white transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
+        style={{ top: '80px' }}
+      >
+        <div className="h-full overflow-y-auto pb-32 px-6 pt-6">
+          <nav className="flex flex-col gap-6 text-[15px] font-bold text-gray-900 uppercase tracking-[0.1em]">
+            <button onClick={() => handleNavClick('home')} className={`text-left pb-4 border-b border-gray-100 ${activePage === 'home' ? 'text-[#EE3364]' : ''}`}>Shop</button>
+            
+            <div className="pb-4 border-b border-gray-100">
+              <button onClick={() => handleNavClick('shop', 'all')} className={`text-left w-full flex justify-between items-center mb-6 ${activePage === 'shop' ? 'text-[#EE3364]' : ''}`}>
+                Collections
+              </button>
+              
+              <div className="grid grid-cols-2 gap-y-5 gap-x-4 pl-4 text-[13px] font-bold text-gray-600 capitalize tracking-normal mb-6">
+                <button onClick={() => handleNavClick('shop', 'office-essentials')} className="text-left hover:text-[#EE3364] flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#EE3364]"></div>Office Essentials</button>
+                <button onClick={() => handleNavClick('shop', 'drinkware')} className="text-left hover:text-[#EE3364] flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#EE3364]"></div>Drinkware</button>
+                <button onClick={() => handleNavClick('shop', 'tech-gifts')} className="text-left hover:text-[#EE3364] flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#EE3364]"></div>Tech Gifts</button>
+                <button onClick={() => handleNavClick('shop', 'gift-sets')} className="text-left hover:text-[#EE3364] flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#EE3364]"></div>Gift Sets</button>
+                <button onClick={() => handleNavClick('shop', 'eco-friendly')} className="text-left hover:text-[#EE3364] flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#EE3364]"></div>Eco-Friendly</button>
+                <button onClick={() => handleNavClick('shop', 'lifestyle')} className="text-left hover:text-[#EE3364] flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#EE3364]"></div>Lifestyle</button>
+              </div>
+              <button onClick={() => handleNavClick('shop', 'all')} className="pl-4 text-[13px] font-bold text-[#EE3364] flex items-center gap-1.5">
+                View All Collections <ArrowRight size={14} />
+              </button>
+            </div>
+
+            <button onClick={() => handleNavClick('about')} className={`text-left pb-4 border-b border-gray-100 ${activePage === 'about' ? 'text-[#EE3364]' : ''}`}>About</button>
+            <button onClick={() => handleNavClick('solutions')} className={`text-left pb-4 border-b border-gray-100 ${activePage === 'solutions' ? 'text-[#EE3364]' : ''}`}>In Situ</button>
+          </nav>
+        </div>
+      </div>
 
       {/* Mobile Bottom Quick Navigation Bar (Visible on sm/md screens) */}
       <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-t border-[#ECE7E8] py-2 px-4 flex justify-around items-center z-40 shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">

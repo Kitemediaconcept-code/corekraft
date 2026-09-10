@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { User, Package, MapPin, Building, Heart, LogOut, Search, Clock, CheckCircle2, Truck } from 'lucide-react';
 
-export default function AccountPage({ userOrders, wishlist, onSelectProduct, onNavigateShop }) {
+export default function AccountPage({ userOrders, wishlist, onSelectProduct, onNavigateShop, onLogout }) {
   const [activeTab, setActiveTab] = useState('orders');
   const [trackInput, setTrackInput] = useState('');
   const [trackResult, setTrackResult] = useState(null);
@@ -33,6 +33,14 @@ export default function AccountPage({ userOrders, wishlist, onSelectProduct, onN
     setTrackResult(found || { notFound: true });
   };
 
+  const handleTabClick = (tabId) => {
+    if (tabId === 'logout') {
+      onLogout && onLogout();
+    } else {
+      setActiveTab(tabId);
+    }
+  };
+
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl space-y-8">
       <div className="flex items-center gap-4 bg-gradient-to-r from-[#FFF3F6] to-white p-6 rounded-3xl border border-[#ECE7E8]">
@@ -61,7 +69,7 @@ export default function AccountPage({ userOrders, wishlist, onSelectProduct, onN
             return (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
+                onClick={() => handleTabClick(tab.id)}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-xs font-bold transition text-left ${
                   activeTab === tab.id 
                     ? 'bg-[#EE3364] text-white shadow-md' 
