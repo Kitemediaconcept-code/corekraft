@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Star, ShoppingCart } from 'lucide-react';
+import { Heart, ShoppingCart } from 'lucide-react';
 
 export default function ProductCard({ 
   product, 
@@ -9,73 +9,75 @@ export default function ProductCard({
   isWishlisted 
 }) {
   return (
-    <div className="group glass-card glass-card-overflow rounded-2xl hover:shadow-lg transition-all duration-300 flex flex-col relative">
+    <div className="bg-white rounded-[24px] p-3 shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_32px_rgba(0,0,0,0.1)] transition-shadow duration-300 flex flex-col relative w-full border border-gray-100 h-full">
       {/* Product Image Container */}
       <div 
-        className="relative pt-6 pb-4 px-4 cursor-pointer flex justify-center items-center" 
+        className="relative bg-gray-100 rounded-[18px] mb-4 cursor-pointer overflow-hidden aspect-[4/5] flex justify-center items-center group"
         onClick={() => onSelectProduct(product)}
       >
         <img 
           src={product.images ? product.images[0] : product.image} 
           alt={product.name} 
-          className="h-48 w-auto object-contain group-hover:scale-105 transition-transform duration-500"
+          className="w-[90%] h-[90%] object-contain group-hover:scale-105 transition-transform duration-500 mix-blend-multiply"
           loading="lazy"
         />
         
         {/* Wishlist Heart Action */}
         <button 
           onClick={(e) => { e.stopPropagation(); onToggleWishlist(product); }}
-          className="absolute top-4 right-4 text-gray-500 hover:text-[#EE3364] transition"
+          className="absolute top-3 right-3 bg-white w-8 h-8 rounded-full flex items-center justify-center text-gray-400 hover:text-[#EE3364] shadow-sm transition z-10 hover:scale-110"
           title={isWishlisted ? "Remove from Wishlist" : "Add to Wishlist"}
           aria-label={isWishlisted ? "Remove from Wishlist" : "Add to Wishlist"}
         >
-          <Heart size={20} strokeWidth={1.5} fill={isWishlisted ? "#EE3364" : "none"} className={isWishlisted ? "text-[#EE3364]" : ""} />
+          <Heart size={16} strokeWidth={2.5} fill={isWishlisted ? "#EE3364" : "none"} className={isWishlisted ? "text-[#EE3364]" : ""} />
         </button>
       </div>
 
       {/* Content Body */}
-      <div className="px-5 pb-5 flex flex-col justify-between flex-1">
-        <div>
-          {/* Title */}
-          <h3 
-            onClick={() => onSelectProduct(product)}
-            className="text-sm font-bold text-gray-900 hover:text-[#EE3364] transition cursor-pointer line-clamp-1 leading-snug mb-1"
-          >
-            {product.name}
-          </h3>
+      <div className="px-1 pb-1 flex flex-col flex-1">
+        {/* Title */}
+        <h3 
+          onClick={() => onSelectProduct(product)}
+          className="text-[15px] font-bold text-gray-800 cursor-pointer line-clamp-1 leading-snug mb-3"
+        >
+          {product.name}
+        </h3>
 
-          {/* Pricing */}
-          <div className="flex items-baseline gap-1.5 mb-2">
-            <span className="text-[17px] font-extrabold text-gray-900">₹ {product.price.toLocaleString()}</span>
-          </div>
-
-          {/* Rating */}
-          <div className="flex items-center gap-1 mb-4">
-            <div className="flex text-amber-400">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} size={12} fill="currentColor" strokeWidth={0} />
-              ))}
-            </div>
-            <span className="text-gray-400 text-[11px] font-medium ml-1">({product.reviewCount || 24})</span>
-          </div>
+        {/* Variants / Pills */}
+        <div className="flex flex-wrap gap-2 mb-3">
+          {product.colors ? product.colors.slice(0, 4).map((c, i) => (
+             <span key={i} className={`text-[10px] px-2.5 py-1 rounded-full border ${i === 0 ? 'bg-orange-100 border-orange-200 text-orange-800 font-semibold' : 'border-gray-200 text-gray-500 bg-white'}`}>
+               {c.name.split(' ')[0]}
+             </span>
+          )) : (
+            <>
+              <span className="text-[10px] px-2.5 py-1 rounded-full border bg-orange-100 border-orange-200 text-orange-800 font-semibold">Standard</span>
+              <span className="text-[10px] px-2.5 py-1 rounded-full border border-gray-200 text-gray-500 bg-white">Premium</span>
+            </>
+          )}
         </div>
 
-        {/* Customization Quick Link */}
-        <button
-          onClick={() => onSelectProduct(product, { openCustomize: true })}
-          className="w-full text-xs font-bold text-[#EE3364] hover:text-[#D92756] transition mb-2 flex items-center justify-center gap-1 bg-[#FFF3F6] py-1.5 rounded-lg border border-transparent hover:border-[#FAD9E2]"
-        >
-          Add Your Logo <span className="text-[10px]">→</span>
-        </button>
+        {/* Description */}
+        <p className="text-[11px] text-gray-500 leading-[1.6] line-clamp-3 mb-5 flex-1">
+          {product.description || "Stay on top of your daily goals with this premium corporate gift featuring an innovative and functional design."}
+        </p>
 
-        {/* Add to Cart Button */}
-        <button 
-          onClick={() => onAddToCart(product)}
-          className="w-full bg-[#FFF3F6] hover:bg-[#EE3364] text-[#EE3364] hover:text-white border border-[#FAD9E2] hover:border-[#EE3364] py-2 rounded-xl text-[13px] font-bold transition duration-200 flex items-center justify-center gap-2"
-        >
-          <ShoppingCart size={16} strokeWidth={2} />
-          Add to Cart
-        </button>
+        {/* Footer */}
+        <div className="flex items-center justify-between gap-3 mt-auto">
+          {/* Pricing */}
+          <span className="text-[18px] font-extrabold text-gray-800 shrink-0">
+            ₹{product.price.toLocaleString()}
+          </span>
+
+          {/* Add to Cart Button */}
+          <button 
+            onClick={() => onAddToCart(product)}
+            className="flex-1 bg-[#F97316] hover:bg-[#EA580C] text-white py-2.5 px-4 rounded-xl text-[13px] font-bold transition duration-200 flex items-center justify-center gap-2 shadow-[0_4px_12px_rgba(249,115,22,0.25)] hover:shadow-[0_6px_16px_rgba(249,115,22,0.35)]"
+          >
+            <ShoppingCart size={16} strokeWidth={2.5} />
+            Add to Cart
+          </button>
+        </div>
       </div>
     </div>
   );

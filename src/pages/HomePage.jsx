@@ -110,72 +110,15 @@ export default function HomePage({
         </div>
       </section>
 
-      {/* SEPARATE CATEGORY PRODUCT SECTIONS */}
-      <div className="bg-[#FFF5F8] pt-20 lg:pt-32 pb-10">
-        {[
-          { id: 'office-essentials', title: 'Top in Office Essentials', subtitle: 'P R E M I U M   W O R K S P A C E' },
-          { id: 'drinkware', title: 'Corporate Drinkware', subtitle: 'S T Y L I S H   &   S U S T A I N A B L E' },
-          { id: 'tech-gifts', title: 'Premium Tech Gifts', subtitle: 'M O D E R N   E S S E N T I A L S' },
-        ].map((section, index) => {
-          const categoryProducts = products.filter(p => p.categoryId === section.id).slice(0, 8);
-          if (categoryProducts.length === 0) return null;
-
-          return (
-            <section key={section.id} className={index !== 0 ? 'mt-16 lg:mt-24' : ''}>
-              <div className="container mx-auto px-6 lg:px-12">
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 gap-4">
-                  <div>
-                    <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-2">
-                      {section.subtitle}
-                    </p>
-                    <h2 className="text-[28px] md:text-[36px] font-extrabold text-[#111] leading-tight">{section.title}</h2>
-                  </div>
-                  <button 
-                    onClick={() => { setSelectedCategory(section.id); setActivePage('shop'); }}
-                    aria-label={`View all ${section.title}`}
-                    className="text-[14px] font-bold text-[#EE3364] hover:text-[#D92756] flex items-center gap-1.5 transition group pb-2"
-                  >
-                    View Collection <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </div>
-
-                {/* Horizontal Scrolling Carousel */}
-                <div 
-                  className="flex overflow-x-auto gap-6 pb-8 pt-2 snap-x"
-                  style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-                >
-                  {/* Hide scrollbar for webkit */}
-                  <style>{`
-                    .snap-x::-webkit-scrollbar {
-                      display: none;
-                    }
-                  `}</style>
-                  {categoryProducts.map(product => (
-                    <div key={product.id} className="snap-start shrink-0 w-[280px] md:w-[300px]">
-                      <ProductCard 
-                        product={product}
-                        onSelectProduct={onSelectProduct}
-                        onAddToCart={onAddToCart}
-                        onToggleWishlist={onToggleWishlist}
-                        isWishlisted={wishlist.some(item => item.id === product.id)}
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </section>
-          );
-        })}
-      </div>
 
       {/* SECTION 4 — EXPLORE BY CATEGORY */}
       <section 
         className="container mx-auto px-6 lg:px-12"
         style={{ paddingTop: '90px', paddingBottom: '120px' }}
       >
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-16 gap-6 border-b border-[#ECE7E8] pb-6">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 gap-6">
           <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-2">
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-500 mb-2">
               E X P L O R E &nbsp; B Y &nbsp; C A T E G O R Y
             </p>
             <h2 className="text-[32px] md:text-[40px] font-extrabold text-gray-900 leading-tight">Gifts for every occasion</h2>
@@ -183,30 +126,42 @@ export default function HomePage({
           <button 
             onClick={() => { setSelectedCategory('all'); setActivePage('shop'); }}
             aria-label="View all corporate gifting categories"
-            className="text-[14px] font-bold text-[#EE3364] hover:text-[#D92756] flex items-center gap-1.5 transition group pb-2"
+            className="text-[15px] font-semibold text-[#EE3364] hover:text-[#D92756] flex items-center gap-1.5 transition group pb-0.5 border-b-[1.5px] border-[#EE3364]"
           >
             View All Collections <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-10">
-          {CATEGORIES.slice(0, 6).map(cat => (
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          {[
+            { id: 'office-essentials', name: 'Office Essentials', image: '/cat_office_1789015697247.png' },
+            { id: 'drinkware', name: 'Drinkware', image: '/cat_drinkware_1789015713218.png' },
+            { id: 'tech-gifts', name: 'Tech Gifts', image: '/cat_tech_1789015727273.png' },
+            { id: 'lifestyle', name: 'Lifestyle', image: '/cat_lifestyle_1789015751823.png' },
+            { id: 'gift-sets', name: 'Gift Sets', image: '/cat_giftsets_1789015768693.png' },
+            { id: 'eco-friendly', name: 'Eco-Friendly', image: '/cat_eco_1789015784200.png' }
+          ].map(cat => (
             <div 
               key={cat.id}
               onClick={() => { setSelectedCategory(cat.id); setActivePage('shop'); }}
               className="group cursor-pointer flex flex-col items-center"
             >
-              <div className="w-full aspect-square rounded-2xl overflow-hidden bg-[#FFF3F6] mb-5 flex items-center justify-center p-6 transition-all duration-300 group-hover:shadow-[0_12px_24px_rgba(238,51,100,0.12)] border border-transparent group-hover:border-[#FAD9E2] relative">
-                <div className="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at center, #EE3364 2px, transparent 2px)', backgroundSize: '24px 24px' }}></div>
+              <div className="w-full aspect-square rounded-[20px] overflow-hidden bg-gradient-to-b from-[#FFF0F4] to-[#FADBE3] mb-4 flex items-center justify-center p-0 transition-all duration-300 group-hover:shadow-[0_12px_24px_rgba(238,51,100,0.15)] relative">
+                {/* Decorative sparkles top-left */}
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-4 left-4 opacity-90 z-20">
+                  <path d="M10 2L12 8L18 10L12 12L10 18L8 12L2 10L8 8L10 2Z" fill="white"/>
+                  <path d="M26 4L27 7L30 8L27 9L26 12L25 9L22 8L25 7L26 4Z" fill="white"/>
+                  <path d="M6 24L7.5 28.5L12 30L7.5 31.5L6 36L4.5 31.5L0 30L4.5 28.5L6 24Z" fill="white"/>
+                </svg>
                 <img 
                   src={cat.image} 
                   alt={cat.name} 
-                  className="w-full h-full object-contain group-hover:scale-110 transition duration-500 drop-shadow-md relative z-10"
+                  className="w-[90%] h-[90%] object-cover group-hover:scale-105 transition duration-500 relative z-10 mix-blend-multiply"
                 />
               </div>
-              <h3 className="text-[14px] font-bold text-gray-900 group-hover:text-[#EE3364] transition text-center mb-1">{cat.name}</h3>
-              <p className="text-[11px] font-semibold text-[#EE3364] flex items-center gap-1">
-                View Collection <ArrowRight size={10} />
+              <h3 className="text-[15px] font-bold text-gray-900 group-hover:text-[#EE3364] transition text-center mb-1">{cat.name}</h3>
+              <p className="text-[12px] font-medium text-[#EE3364] flex items-center gap-1">
+                View Collection <ArrowRight size={12} />
               </p>
             </div>
           ))}
