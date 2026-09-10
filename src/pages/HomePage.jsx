@@ -263,7 +263,7 @@ export default function HomePage({
                 <button 
                   onClick={() => setActivePage('about')}
                   aria-label="Know more about Corekraft corporate gifting"
-                  className="btn-glass rounded-full font-bold text-[13px] px-7 py-3 flex items-center gap-2"
+                  className="bg-[#EE3364] hover:bg-[#D92756] text-white px-8 py-3 rounded-full font-bold text-[13px] md:text-[14px] flex items-center gap-2 transition shadow-[0_4px_12px_rgba(238,51,100,0.2)] hover:shadow-[0_6px_16px_rgba(238,51,100,0.3)] hover:-translate-y-0.5"
                 >
                   Know More <ArrowRight size={16} />
                 </button>
