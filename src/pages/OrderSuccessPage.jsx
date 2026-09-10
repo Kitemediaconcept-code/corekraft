@@ -12,12 +12,15 @@ export default function OrderSuccessPage({ order, onNavigateAccount, onNavigateH
       </div>
 
       <div className="space-y-2">
-        <span className="badge-label">ORDER CONFIRMED</span>
+        <span className="badge-label">
+          {order.status === 'Awaiting Call' ? 'ORDER REQUEST SUBMITTED' : 'ORDER CONFIRMED'}
+        </span>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
-          Thank You for Your Order!
+          {order.status === 'Awaiting Call' ? 'Request Received!' : 'Thank You for Your Order!'}
         </h1>
         <p className="text-sm text-gray-600">
-          Your order <strong className="text-[#EE3364]">{order.orderNumber}</strong> has been successfully placed.
+          Your order <strong className="text-[#EE3364]">{order.orderNumber}</strong> has been successfully {order.status === 'Awaiting Call' ? 'submitted' : 'placed'}.
+          {order.status === 'Awaiting Call' && <span className="block mt-1 font-bold text-gray-800">Our sales team will call you shortly to finalize the bulk order and PO.</span>}
         </p>
       </div>
 
@@ -56,7 +59,7 @@ export default function OrderSuccessPage({ order, onNavigateAccount, onNavigateH
 
         {/* Total Footer */}
         <div className="flex justify-between items-center pt-2 font-bold text-sm">
-          <span>Total Paid Amount:</span>
+          <span>{order.status === 'Awaiting Call' ? 'Estimated Total:' : 'Total Paid Amount:'}</span>
           <span className="text-lg text-[#EE3364]">₹{order.total?.toLocaleString()}</span>
         </div>
       </div>

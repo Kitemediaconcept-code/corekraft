@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ShieldCheck, Truck, CreditCard, Building, CheckCircle2, Lock, ArrowRight } from 'lucide-react';
+import DummyRazorpayModal from '../components/DummyRazorpayModal';
 
 export default function CheckoutPage({ cartItems, onCompleteOrder, onNavigateShop }) {
   const [step, setStep] = useState(1);
@@ -16,6 +17,8 @@ export default function CheckoutPage({ cartItems, onCompleteOrder, onNavigateSho
     paymentMethod: 'upi'
   });
 
+  const [isRazorpayOpen, setIsRazorpayOpen] = useState(false);
+
   const subtotal = cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
   const tax = Math.round(subtotal * 0.18);
   const shipping = subtotal > 5000 || subtotal === 0 ? 0 : 250;
@@ -29,24 +32,49 @@ export default function CheckoutPage({ cartItems, onCompleteOrder, onNavigateSho
     e.preventDefault();
     if (step === 1) {
       setStep(2);
-    } else if (step === 2) {
-      onCompleteOrder({
-        orderNumber: 'CK-2026-' + Math.floor(100000 + Math.random() * 900000),
-        items: cartItems,
-        total,
-        formData,
-        date: new Date().toLocaleDateString()
-      });
     }
+  };
+
+  const handleDirectCallOrder = () => {
+    onCompleteOrder({
+      orderNumber: 'CK-2026-' + Math.floor(100000 + Math.random() * 900000),
+      items: cartItems,
+      total,
+      formData,
+      date: new Date().toLocaleDateString(),
+      status: 'Awaiting Call',
+      paymentMethod: 'Direct Call'
+    });
+  };
+
+  const handleOnlinePaymentSuccess = () => {
+    setIsRazorpayOpen(false);
+    onCompleteOrder({
+      orderNumber: 'CK-2026-' + Math.floor(100000 + Math.random() * 900000),
+      items: cartItems,
+      total,
+      formData,
+      date: new Date().toLocaleDateString(),
+      status: 'Paid',
+      paymentMethod: 'Razorpay (Online)'
+    });
   };
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl space-y-8">
+      <DummyRazorpayModal 
+        isOpen={isRazorpayOpen} 
+        onClose={() => setIsRazorpayOpen(false)} 
+        amount={total} 
+        onSuccess={handleOnlinePaymentSuccess}
+        userEmail={formData.email}
+        userPhone={formData.phone}
+      />
       {/* 3-Step Header Stepper */}
       <div className="flex justify-between items-center max-w-2xl mx-auto py-4">
         {[
           { num: 1, title: 'Delivery Details' },
-          { num: 2, title: 'Payment' },
+          { num: 2, title: 'Checkout Method' },
           { num: 3, title: 'Confirmation' }
         ].map((s) => (
           <div key={s.num} className="flex items-center gap-2">
@@ -183,7 +211,7 @@ export default function CheckoutPage({ cartItems, onCompleteOrder, onNavigateSho
               </div>
 
               <button type="submit" className="w-full bg-[#EE3364] hover:bg-[#D92756] text-white font-bold py-3.5 rounded-full shadow-lg transition">
-                Continue to Payment →
+                Continue to Checkout Method →
               </button>
             </div>
           )}
@@ -191,47 +219,57 @@ export default function CheckoutPage({ cartItems, onCompleteOrder, onNavigateSho
           {step === 2 && (
             <div className="space-y-6 animate-fade-in">
               <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                <CreditCard className="text-[#EE3364]" size={20} /> 2. Select Payment Method
+                <CreditCard className="text-[#EE3364]" size={20} /> 2. Choose Checkout Method
               </h2>
 
-              <div className="space-y-3">
-                {[
-                  { id: 'upi', title: 'UPI / QR Code', desc: 'Google Pay, PhonePe, Paytm, BHIM' },
-                  { id: 'card', title: 'Credit / Debit Card', desc: 'Visa, Mastercard, RuPay, Amex' },
-                  { id: 'netbanking', title: 'Net Banking', desc: 'HDFC, ICICI, SBI, Axis & all major banks' },
-                  { id: 'po', title: 'Corporate Purchase Order (PO)', desc: 'Submit approved PO for 30-day corporate credit' },
-                  { id: 'bank', title: 'Direct Bank Transfer / NEFT / RTGS', desc: 'Wire payment to Corekraft business account' }
-                ].map((pm) => (
-                  <label 
-                    key={pm.id} 
-                    className={`flex items-start gap-3 p-4 rounded-2xl border cursor-pointer transition ${
-                      formData.paymentMethod === pm.id 
-                        ? 'border-[#EE3364] bg-[#FFF3F6]' 
-                        : 'border-gray-200 hover:border-gray-300'
-                    }`}
+              <p className="text-sm text-gray-600 font-medium">
+                We offer flexible checkout options tailored for B2B and corporate orders. Choose the one that works best for you.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                {/* Option A: Direct Call */}
+                <div className="border border-gray-200 rounded-2xl p-5 hover:border-[#EE3364] hover:shadow-md transition bg-white flex flex-col h-full">
+                  <div className="w-12 h-12 bg-[#FFF3F6] text-[#EE3364] rounded-full flex items-center justify-center mb-4">
+                    <Building size={24} />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">Order via Direct Call</h3>
+                  <p className="text-sm text-gray-500 mb-6 flex-1">
+                    Perfect for large volume B2B orders. Submit your request now, and our sales team will call you to finalize the order, pricing, and PO.
+                  </p>
+                  <button 
+                    type="button"
+                    onClick={handleDirectCallOrder}
+                    className="w-full bg-white text-[#EE3364] border border-[#EE3364] hover:bg-[#FFF3F6] font-bold py-3 rounded-xl transition flex items-center justify-center gap-2"
                   >
-                    <input 
-                      type="radio" 
-                      name="paymentMethod" 
-                      value={pm.id} 
-                      checked={formData.paymentMethod === pm.id} 
-                      onChange={handleInputChange}
-                      className="mt-1 accent-[#EE3364]"
-                    />
-                    <div>
-                      <h4 className="text-sm font-bold text-gray-900">{pm.title}</h4>
-                      <p className="text-xs text-gray-500">{pm.desc}</p>
-                    </div>
-                  </label>
-                ))}
+                    Request Call <ArrowRight size={16} />
+                  </button>
+                </div>
+
+                {/* Option B: Pay Online */}
+                <div className="border border-gray-200 rounded-2xl p-5 hover:border-[#EE3364] hover:shadow-md transition bg-gradient-to-br from-white to-gray-50 flex flex-col h-full relative overflow-hidden">
+                  <div className="absolute top-0 right-0 bg-blue-100 text-blue-700 text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider">
+                    E-Commerce
+                  </div>
+                  <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mb-4">
+                    <CreditCard size={24} />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">Pay Online (Razorpay)</h3>
+                  <p className="text-sm text-gray-500 mb-6 flex-1">
+                    Fast and secure checkout for immediate processing. Pay instantly via Credit Card, Netbanking, or UPI.
+                  </p>
+                  <button 
+                    type="button"
+                    onClick={() => setIsRazorpayOpen(true)}
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl shadow-md transition flex items-center justify-center gap-2"
+                  >
+                    Pay ₹{total.toLocaleString()} <ArrowRight size={16} />
+                  </button>
+                </div>
               </div>
 
-              <div className="flex gap-3">
-                <button type="button" onClick={() => setStep(1)} className="btn btn-secondary flex-1">
-                  ← Back
-                </button>
-                <button type="submit" className="btn btn-primary flex-[2] font-bold">
-                  Place Order Now (₹{total.toLocaleString()})
+              <div className="pt-4 border-t">
+                <button type="button" onClick={() => setStep(1)} className="btn btn-secondary text-sm">
+                  ← Back to Details
                 </button>
               </div>
             </div>

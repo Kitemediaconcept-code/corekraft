@@ -29,9 +29,20 @@ export default function HomePage({
     <div className="bg-white">
       {/* SECTION 1 — HERO */}
       <section 
-        className="relative -mt-[80px] pt-[140px] pb-20 lg:pt-[180px] lg:pb-32 overflow-hidden bg-cover bg-center border-b border-[#ECE7E8]"
-        style={{ backgroundImage: "url('/hero.png')" }}
+        className="relative -mt-[80px] pt-[140px] pb-20 lg:pt-[180px] lg:pb-32 overflow-hidden border-b border-[#ECE7E8]"
       >
+        {/* Responsive Background Images */}
+        <img 
+          src="/mobile hero.png" 
+          alt="Corporate Gifts Background" 
+          className="absolute inset-0 w-full h-full object-cover object-center lg:hidden z-0" 
+        />
+        <img 
+          src="/hero.png" 
+          alt="Corporate Gifts Background" 
+          className="absolute inset-0 w-full h-full object-cover object-center hidden lg:block z-0" 
+        />
+
         <div className="container mx-auto px-6 lg:px-12 relative z-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
             {/* Left Content */}
@@ -72,12 +83,6 @@ export default function HomePage({
 
             {/* Right side is intentionally empty to let the background image shine through */}
             <div className="lg:col-span-7 relative h-full min-h-[400px] hidden lg:block">
-              {/* Handwritten Tag */}
-              <div className="absolute top-12 right-12 transform rotate-[-8deg] z-10 drop-shadow-xl">
-                <span className="font-['Caveat'] text-[40px] text-white font-bold leading-tight drop-shadow-[0_4px_4px_rgba(0,0,0,0.15)] block">
-                  Gifts that Work <br />for Your Brand!
-                </span>
-              </div>
             </div>
           </div>
         </div>

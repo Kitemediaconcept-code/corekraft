@@ -15,12 +15,25 @@ export default function ProductCard({
         className="relative bg-gray-100 rounded-[18px] mb-4 cursor-pointer overflow-hidden aspect-[4/5] flex justify-center items-center group"
         onClick={() => onSelectProduct(product)}
       >
+        {/* Default Image */}
         <img 
           src={product.images ? product.images[0] : product.image} 
           alt={product.name} 
-          className="w-[90%] h-[90%] object-contain group-hover:scale-105 transition-transform duration-500 mix-blend-multiply"
+          className={`absolute inset-0 m-auto w-[90%] h-[90%] object-contain transition-all duration-500 mix-blend-multiply ${
+            product.images && product.images.length > 1 ? 'group-hover:opacity-0 group-hover:scale-95' : 'group-hover:scale-105'
+          }`}
           loading="lazy"
         />
+        
+        {/* Hover Image (only if second image exists) */}
+        {product.images && product.images.length > 1 && (
+          <img 
+            src={product.images[1]} 
+            alt={`${product.name} alternate view`} 
+            className="absolute inset-0 m-auto w-[90%] h-[90%] object-contain transition-all duration-500 mix-blend-multiply opacity-0 scale-105 group-hover:opacity-100 group-hover:scale-100"
+            loading="lazy"
+          />
+        )}
         
         {/* Wishlist Heart Action */}
         <button 
@@ -72,7 +85,7 @@ export default function ProductCard({
           {/* Add to Cart Button */}
           <button 
             onClick={() => onAddToCart(product)}
-            className="flex-1 min-w-0 bg-[#F97316] hover:bg-[#EA580C] text-white py-2 md:py-2.5 px-2 md:px-4 rounded-xl text-[11px] md:text-[13px] font-bold transition duration-200 flex items-center justify-center gap-1.5 shadow-[0_4px_12px_rgba(249,115,22,0.25)] hover:shadow-[0_6px_16px_rgba(249,115,22,0.35)] whitespace-nowrap"
+            className="flex-1 min-w-0 bg-[#EE3364] hover:bg-[#D92756] text-white py-2 md:py-2.5 px-2 md:px-4 rounded-xl text-[11px] md:text-[13px] font-bold transition duration-200 flex items-center justify-center gap-1.5 shadow-[0_4px_12px_rgba(238,51,100,0.25)] hover:shadow-[0_6px_16px_rgba(238,51,100,0.35)] whitespace-nowrap"
           >
             <ShoppingCart size={14} strokeWidth={2.5} className="shrink-0 hidden sm:block md:hidden lg:block" />
             <span className="truncate">Add to Cart</span>
