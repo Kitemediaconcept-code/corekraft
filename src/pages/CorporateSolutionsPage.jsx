@@ -32,23 +32,23 @@ export default function CorporateSolutionsPage({ onNavigateQuote }) {
         {solutions.map((sol, idx) => {
           const IconComp = sol.icon;
           return (
-            <div key={idx} className="bg-white rounded-2xl border border-[#ECE7E8] overflow-hidden hover:border-[#FAD9E2] hover:shadow-xl transition flex flex-col justify-between group">
+            <div key={idx} className="bg-white rounded-2xl border border-[#ECE7E8] overflow-hidden hover:border-[#E5E5E5] hover:shadow-xl transition flex flex-col justify-between group">
               <div>
                 <div className="aspect-video bg-gray-100 overflow-hidden relative">
                   <img src={sol.image} alt={sol.title} className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
-                  <div className="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 text-[#EE3364] flex items-center justify-center shadow-md">
+                  <div className="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 text-[#000000] flex items-center justify-center shadow-md">
                     <IconComp size={18} />
                   </div>
                 </div>
                 <div className="p-5 space-y-2">
-                  <h4 className="text-base font-bold text-gray-900 group-hover:text-[#EE3364] transition">{sol.title}</h4>
+                  <h4 className="text-base font-bold text-gray-900 group-hover:text-[#000000] transition">{sol.title}</h4>
                   <p className="text-xs text-gray-500 leading-relaxed">{sol.desc}</p>
                 </div>
               </div>
               <div className="p-5 pt-0">
                 <button 
                   onClick={onNavigateQuote}
-                  className="w-full bg-[#FFF3F6] hover:bg-[#EE3364] text-[#EE3364] hover:text-white text-xs font-bold py-2.5 rounded-xl transition flex items-center justify-center gap-1"
+                  className="w-full bg-[#F5F5F5] hover:bg-[#000000] text-[#000000] hover:text-white text-xs font-bold py-2.5 rounded-xl transition flex items-center justify-center gap-1"
                 >
                   Get Solution Quote <ArrowRight size={14} />
                 </button>

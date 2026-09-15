@@ -21,7 +21,7 @@ export default function CustomBrandingPage({ onNavigateShop, onNavigateQuote }) 
           <span className="badge-label">BRANDING STUDIO</span>
           <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight">
             Make Every Gift <br />
-            <span className="text-[#EE3364]">Uniquely Yours.</span>
+            <span className="text-[#000000]">Uniquely Yours.</span>
           </h1>
           <p className="text-gray-600 text-sm">
             Elevate your corporate identity with precision laser engraving, deep leather debossing, and custom luxury gift box packaging.
@@ -57,7 +57,7 @@ export default function CustomBrandingPage({ onNavigateShop, onNavigateQuote }) 
                 <img src={tech.image} alt={tech.name} className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
               </div>
               <div className="p-5 space-y-2">
-                <h4 className="text-lg font-bold text-gray-900 group-hover:text-[#EE3364] transition">{tech.name}</h4>
+                <h4 className="text-lg font-bold text-gray-900 group-hover:text-[#000000] transition">{tech.name}</h4>
                 <p className="text-xs text-gray-500 leading-relaxed">{tech.desc}</p>
               </div>
             </div>

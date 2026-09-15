@@ -35,7 +35,7 @@ export default function BrandingPreviewer() {
   return (
     <div className="bg-white rounded-3xl border border-[#ECE7E8] shadow-xl p-6 lg:p-8">
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 rounded-2xl bg-[#FFF3F6] text-[#EE3364] flex items-center justify-center">
+        <div className="w-10 h-10 rounded-2xl bg-[#F5F5F5] text-[#000000] flex items-center justify-center">
           <Sparkles size={20} />
         </div>
         <div>
@@ -52,7 +52,7 @@ export default function BrandingPreviewer() {
             <label className="text-xs font-bold text-gray-700 uppercase tracking-wider block">
               1. Upload Company Logo
             </label>
-            <div className="border-2 border-dashed border-[#FAD9E2] hover:border-[#EE3364] bg-[#FFF3F6]/50 rounded-2xl p-4 text-center cursor-pointer transition relative">
+            <div className="border-2 border-dashed border-[#E5E5E5] hover:border-[#000000] bg-[#F5F5F5]/50 rounded-2xl p-4 text-center cursor-pointer transition relative">
               <input 
                 type="file" 
                 accept="image/png, image/jpeg, image/svg+xml"
@@ -60,7 +60,7 @@ export default function BrandingPreviewer() {
                 className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
               />
               <div className="flex flex-col items-center gap-2">
-                <Upload size={24} className="text-[#EE3364]" />
+                <Upload size={24} className="text-[#000000]" />
                 <p className="text-xs font-bold text-gray-800">
                   {uploadedLogo ? '✓ Logo Loaded (Click to Change)' : 'Click to Upload Logo (PNG, JPG, SVG)'}
                 </p>
@@ -81,7 +81,7 @@ export default function BrandingPreviewer() {
                   onClick={() => setSelectedProduct(p.id)}
                   className={`p-2.5 rounded-xl border text-xs font-semibold flex items-center gap-2 transition text-left ${
                     selectedProduct === p.id 
-                      ? 'border-[#EE3364] bg-[#FFF3F6] text-[#EE3364]' 
+                      ? 'border-[#000000] bg-[#F5F5F5] text-[#000000]' 
                       : 'border-gray-200 text-gray-700 hover:border-gray-300'
                   }`}
                 >
@@ -104,7 +104,7 @@ export default function BrandingPreviewer() {
                   onClick={() => setTechnique(t.id)}
                   className={`p-2.5 rounded-xl border text-xs font-semibold text-left transition ${
                     technique === t.id 
-                      ? 'border-[#EE3364] bg-[#FFF3F6] text-[#EE3364]' 
+                      ? 'border-[#000000] bg-[#F5F5F5] text-[#000000]' 
                       : 'border-gray-200 text-gray-700 hover:border-gray-300'
                   }`}
                 >
@@ -129,7 +129,7 @@ export default function BrandingPreviewer() {
                 step="0.1" 
                 value={logoScale}
                 onChange={(e) => setLogoScale(parseFloat(e.target.value))}
-                className="w-full accent-[#EE3364]"
+                className="w-full accent-[#000000]"
               />
             </div>
           )}
@@ -177,7 +177,7 @@ export default function BrandingPreviewer() {
 
             {/* Watermark badge */}
             <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full border text-[11px] font-bold text-gray-800 shadow-sm flex items-center gap-1">
-              <CheckCircle2 size={12} className="text-[#EE3364]" /> Corekraft Preview
+              <CheckCircle2 size={12} className="text-[#000000]" /> Corekraft Preview
             </div>
           </div>
           

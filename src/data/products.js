@@ -50,7 +50,7 @@ export const PRODUCTS = [
       'Delivered in an elegant matte black & Corekraft pink presentation gift box'
     ],
     colors: [
-      { name: 'Red', hex: '#D92756' },
+      { name: 'Red', hex: '#111111' },
       { name: 'Black', hex: '#151515' },
       { name: 'Navy Blue', hex: '#1E293B' },
       { name: 'Olive Grey', hex: '#4A5568' }
@@ -85,7 +85,7 @@ export const PRODUCTS = [
     ],
     colors: [
       { name: 'Matte Black', hex: '#151515' },
-      { name: 'Corekraft Pink', hex: '#EE3364' },
+      { name: 'Corekraft Pink', hex: '#000000' },
       { name: 'Slate Grey', hex: '#64748B' }
     ],
     images: [
@@ -118,7 +118,7 @@ export const PRODUCTS = [
     ],
     colors: [
       { name: 'Charcoal Black', hex: '#151515' },
-      { name: 'Blush Pink', hex: '#FAD9E2' }
+      { name: 'Blush Pink', hex: '#E5E5E5' }
     ],
     images: [
       '/Corekraft products/p3/8.jpg',
@@ -182,7 +182,7 @@ export const PRODUCTS = [
       'Personalized greeting card with custom message'
     ],
     colors: [
-      { name: 'Corekraft Royal Pink', hex: '#EE3364' },
+      { name: 'Corekraft Royal Pink', hex: '#000000' },
       { name: 'Matt Gold & Black', hex: '#151515' }
     ],
     images: [
@@ -246,7 +246,7 @@ export const PRODUCTS = [
     colors: [
       { name: 'Jet Black', hex: '#151515' },
       { name: 'Cognac Brown', hex: '#8B4513' },
-      { name: 'Corekraft Pink', hex: '#EE3364' }
+      { name: 'Corekraft Pink', hex: '#000000' }
     ],
     images: [
       '/Corekraft products/p7/20.jpg',

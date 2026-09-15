@@ -7,7 +7,7 @@ export default function OrderSuccessPage({ order, onNavigateAccount, onNavigateH
   return (
     <div className="container mx-auto px-4 py-12 max-w-3xl text-center space-y-8 animate-fade-in">
       {/* Animated Success Badge */}
-      <div className="w-24 h-24 bg-[#FFF3F6] text-[#EE3364] rounded-full flex items-center justify-center mx-auto shadow-xl">
+      <div className="w-24 h-24 bg-[#F5F5F5] text-[#000000] rounded-full flex items-center justify-center mx-auto shadow-xl">
         <CheckCircle2 size={56} className="animate-bounce" />
       </div>
 
@@ -19,7 +19,7 @@ export default function OrderSuccessPage({ order, onNavigateAccount, onNavigateH
           {order.status === 'Awaiting Call' ? 'Request Received!' : 'Thank You for Your Order!'}
         </h1>
         <p className="text-sm text-gray-600">
-          Your order <strong className="text-[#EE3364]">{order.orderNumber}</strong> has been successfully {order.status === 'Awaiting Call' ? 'submitted' : 'placed'}.
+          Your order <strong className="text-[#000000]">{order.orderNumber}</strong> has been successfully {order.status === 'Awaiting Call' ? 'submitted' : 'placed'}.
           {order.status === 'Awaiting Call' && <span className="block mt-1 font-bold text-gray-800">Our sales team will call you shortly to finalize the bulk order and PO.</span>}
         </p>
       </div>
@@ -34,7 +34,7 @@ export default function OrderSuccessPage({ order, onNavigateAccount, onNavigateH
           </div>
           <div className="sm:text-right">
             <p className="text-xs text-gray-400 font-bold uppercase">Estimated Delivery</p>
-            <p className="text-sm font-bold text-[#EE3364] flex items-center gap-1 sm:justify-end">
+            <p className="text-sm font-bold text-[#000000] flex items-center gap-1 sm:justify-end">
               <Calendar size={14} /> Sept 14, 2026 (5 Business Days)
             </p>
           </div>
@@ -60,7 +60,7 @@ export default function OrderSuccessPage({ order, onNavigateAccount, onNavigateH
         {/* Total Footer */}
         <div className="flex justify-between items-center pt-2 font-bold text-sm">
           <span>{order.status === 'Awaiting Call' ? 'Estimated Total:' : 'Total Paid Amount:'}</span>
-          <span className="text-lg text-[#EE3364]">₹{order.total?.toLocaleString()}</span>
+          <span className="text-lg text-[#000000]">₹{order.total?.toLocaleString()}</span>
         </div>
       </div>
 

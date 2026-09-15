@@ -26,16 +26,16 @@ export default function Footer({ setActivePage, setSelectedCategory }) {
               Thoughtful corporate gifting solutions to help your brand make a lasting impression.
             </p>
             <div className="flex items-center gap-3 pt-2">
-              <a href="#" className="w-9 h-9 rounded-full bg-gray-100 hover:bg-[#FFF3F6] text-gray-600 hover:text-[#EE3364] flex items-center justify-center transition" aria-label="LinkedIn">
+              <a href="#" className="w-9 h-9 rounded-full bg-gray-100 hover:bg-[#F5F5F5] text-gray-600 hover:text-[#000000] flex items-center justify-center transition" aria-label="LinkedIn">
                 <Linkedin size={18} />
               </a>
-              <a href="#" className="w-9 h-9 rounded-full bg-gray-100 hover:bg-[#FFF3F6] text-gray-600 hover:text-[#EE3364] flex items-center justify-center transition" aria-label="Instagram">
+              <a href="#" className="w-9 h-9 rounded-full bg-gray-100 hover:bg-[#F5F5F5] text-gray-600 hover:text-[#000000] flex items-center justify-center transition" aria-label="Instagram">
                 <Instagram size={18} />
               </a>
-              <a href="#" className="w-9 h-9 rounded-full bg-gray-100 hover:bg-[#FFF3F6] text-gray-600 hover:text-[#EE3364] flex items-center justify-center transition" aria-label="Facebook">
+              <a href="#" className="w-9 h-9 rounded-full bg-gray-100 hover:bg-[#F5F5F5] text-gray-600 hover:text-[#000000] flex items-center justify-center transition" aria-label="Facebook">
                 <Facebook size={18} />
               </a>
-              <a href="#" className="w-9 h-9 rounded-full bg-gray-100 hover:bg-[#FFF3F6] text-gray-600 hover:text-[#EE3364] flex items-center justify-center transition" aria-label="YouTube">
+              <a href="#" className="w-9 h-9 rounded-full bg-gray-100 hover:bg-[#F5F5F5] text-gray-600 hover:text-[#000000] flex items-center justify-center transition" aria-label="YouTube">
                 <Youtube size={18} />
               </a>
             </div>
@@ -46,19 +46,19 @@ export default function Footer({ setActivePage, setSelectedCategory }) {
             <h4 className="text-base font-bold text-gray-900 mb-4">Quick Links</h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <button onClick={() => setActivePage('home')} className="hover:text-[#EE3364] transition">Home</button>
+                <button onClick={() => setActivePage('home')} className="hover:text-[#000000] transition">Home</button>
               </li>
               <li>
-                <button onClick={() => setActivePage('about')} className="hover:text-[#EE3364] transition">About Us</button>
+                <button onClick={() => setActivePage('about')} className="hover:text-[#000000] transition">About Us</button>
               </li>
               <li>
-                <button onClick={() => { setSelectedCategory('all'); setActivePage('shop'); }} className="hover:text-[#EE3364] transition">Gifts</button>
+                <button onClick={() => { setSelectedCategory('all'); setActivePage('shop'); }} className="hover:text-[#000000] transition">Gifts</button>
               </li>
               <li>
-                <button onClick={() => setActivePage('solutions')} className="hover:text-[#EE3364] transition">Corporate Solutions</button>
+                <button onClick={() => setActivePage('solutions')} className="hover:text-[#000000] transition">Corporate Solutions</button>
               </li>
               <li>
-                <button onClick={() => setActivePage('contact')} className="hover:text-[#EE3364] transition">Contact Us</button>
+                <button onClick={() => setActivePage('contact')} className="hover:text-[#000000] transition">Contact Us</button>
               </li>
             </ul>
           </div>
@@ -67,11 +67,11 @@ export default function Footer({ setActivePage, setSelectedCategory }) {
           <div>
             <h4 className="text-base font-bold text-gray-900 mb-4">Help</h4>
             <ul className="space-y-2.5 text-sm text-gray-600">
-              <li><button onClick={() => setActivePage('contact')} className="hover:text-[#EE3364] transition">FAQs</button></li>
-              <li><button onClick={() => setActivePage('contact')} className="hover:text-[#EE3364] transition">Shipping & Delivery</button></li>
-              <li><button onClick={() => setActivePage('contact')} className="hover:text-[#EE3364] transition">Returns & Refunds</button></li>
-              <li><button onClick={() => setActivePage('contact')} className="hover:text-[#EE3364] transition">Terms & Conditions</button></li>
-              <li><button onClick={() => setActivePage('contact')} className="hover:text-[#EE3364] transition">Privacy Policy</button></li>
+              <li><button onClick={() => setActivePage('contact')} className="hover:text-[#000000] transition">FAQs</button></li>
+              <li><button onClick={() => setActivePage('contact')} className="hover:text-[#000000] transition">Shipping & Delivery</button></li>
+              <li><button onClick={() => setActivePage('contact')} className="hover:text-[#000000] transition">Returns & Refunds</button></li>
+              <li><button onClick={() => setActivePage('contact')} className="hover:text-[#000000] transition">Terms & Conditions</button></li>
+              <li><button onClick={() => setActivePage('contact')} className="hover:text-[#000000] transition">Privacy Policy</button></li>
             </ul>
           </div>
 
@@ -83,7 +83,7 @@ export default function Footer({ setActivePage, setSelectedCategory }) {
             </p>
             
             {subscribed ? (
-              <div className="bg-[#FFF3F6] text-[#EE3364] text-xs font-semibold p-3 rounded-xl flex items-center gap-2 animate-fade-in">
+              <div className="bg-[#F5F5F5] text-[#000000] text-xs font-semibold p-3 rounded-xl flex items-center gap-2 animate-fade-in">
                 <CheckCircle2 size={16} /> Thank you for subscribing!
               </div>
             ) : (
@@ -94,12 +94,12 @@ export default function Footer({ setActivePage, setSelectedCategory }) {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email" 
                   required
-                  className="w-full bg-[#F5F5F7] border border-[#ECE7E8] text-sm py-2.5 pl-4 pr-12 rounded-full outline-none focus:border-[#EE3364] transition"
+                  className="w-full bg-[#F5F5F7] border border-[#ECE7E8] text-sm py-2.5 pl-4 pr-12 rounded-full outline-none focus:border-[#000000] transition"
                 />
                 <button 
                   type="submit" 
                   aria-label="Subscribe to newsletter"
-                  className="absolute right-1 w-8 h-8 rounded-full bg-[#EE3364] text-white flex items-center justify-center hover:bg-[#D92756] transition"
+                  className="absolute right-1 w-8 h-8 rounded-full bg-[#000000] text-white flex items-center justify-center hover:bg-[#111111] transition"
                 >
                   <ArrowRight size={16} />
                 </button>

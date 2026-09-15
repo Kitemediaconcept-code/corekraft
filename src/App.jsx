@@ -152,7 +152,7 @@ export default function App() {
       {toastMessage && (
         <div className="toast-container">
           <div className="toast">
-            <CheckCircle2 size={18} className="text-[#EE3364]" />
+            <CheckCircle2 size={18} className="text-[#000000]" />
             <span>{toastMessage}</span>
           </div>
         </div>

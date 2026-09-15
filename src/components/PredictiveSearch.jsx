@@ -31,8 +31,8 @@ export default function PredictiveSearch({ isOpen, onClose, onSelectProduct, onS
       <div className="relative min-h-screen flex items-start justify-center pt-16 px-4 pb-12">
         <div className="relative bg-white rounded-3xl shadow-2xl border border-[#ECE7E8] w-full max-w-2xl overflow-hidden z-10">
           {/* Input Header */}
-          <div className="p-4 sm:p-5 border-b border-[#ECE7E8] flex items-center gap-3 bg-gradient-to-r from-[#FFF3F6] to-white">
-            <Search size={22} className="text-[#EE3364]" />
+          <div className="p-4 sm:p-5 border-b border-[#ECE7E8] flex items-center gap-3 bg-gradient-to-r from-[#F5F5F5] to-white">
+            <Search size={22} className="text-[#000000]" />
             <input 
               ref={inputRef}
               type="text" 
@@ -61,14 +61,14 @@ export default function PredictiveSearch({ isOpen, onClose, onSelectProduct, onS
             {query === '' && (
               <div>
                 <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3 flex items-center gap-1.5">
-                  <TrendingUp size={14} className="text-[#EE3364]" /> Popular Corporate Searches
+                  <TrendingUp size={14} className="text-[#000000]" /> Popular Corporate Searches
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {popularSearches.map(term => (
                     <button
                       key={term}
                       onClick={() => setQuery(term)}
-                      className="bg-[#F5F5F7] hover:bg-[#FFF3F6] hover:text-[#EE3364] text-gray-700 text-xs font-medium px-3.5 py-1.5 rounded-full transition border border-gray-200"
+                      className="bg-[#F5F5F7] hover:bg-[#F5F5F5] hover:text-[#000000] text-gray-700 text-xs font-medium px-3.5 py-1.5 rounded-full transition border border-gray-200"
                     >
                       {term}
                     </button>
@@ -94,7 +94,7 @@ export default function PredictiveSearch({ isOpen, onClose, onSelectProduct, onS
                     <div 
                       key={product.id}
                       onClick={() => { onSelectProduct(product); onClose(); }}
-                      className="flex items-center justify-between p-3 rounded-2xl hover:bg-[#FFF3F6] transition cursor-pointer group border border-transparent hover:border-[#FAD9E2]"
+                      className="flex items-center justify-between p-3 rounded-2xl hover:bg-[#F5F5F5] transition cursor-pointer group border border-transparent hover:border-[#E5E5E5]"
                     >
                       <div className="flex items-center gap-3.5">
                         <img 
@@ -103,14 +103,14 @@ export default function PredictiveSearch({ isOpen, onClose, onSelectProduct, onS
                           className="w-12 h-12 object-cover rounded-xl bg-gray-100 border"
                         />
                         <div>
-                          <h4 className="text-sm font-bold text-gray-900 group-hover:text-[#EE3364] transition">
+                          <h4 className="text-sm font-bold text-gray-900 group-hover:text-[#000000] transition">
                             {product.name}
                           </h4>
                           <div className="flex items-center gap-2 text-xs text-gray-500 mt-0.5">
                             <span>{product.categoryName}</span>
                             <span>•</span>
-                            <span className="flex items-center gap-0.5 text-[#EE3364]">
-                              <Star size={10} className="fill-[#EE3364]" /> {product.rating}
+                            <span className="flex items-center gap-0.5 text-[#000000]">
+                              <Star size={10} className="fill-[#000000]" /> {product.rating}
                             </span>
                           </div>
                         </div>
@@ -118,7 +118,7 @@ export default function PredictiveSearch({ isOpen, onClose, onSelectProduct, onS
 
                       <div className="flex items-center gap-3">
                         <span className="text-sm font-extrabold text-gray-900">₹{product.price.toLocaleString()}</span>
-                        <ChevronRight size={16} className="text-gray-400 group-hover:text-[#EE3364] transition" />
+                        <ChevronRight size={16} className="text-gray-400 group-hover:text-[#000000] transition" />
                       </div>
                     </div>
                   ))}

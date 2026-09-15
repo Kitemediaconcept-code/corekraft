@@ -79,7 +79,7 @@ export default function CheckoutPage({ cartItems, onCompleteOrder, onNavigateSho
         ].map((s) => (
           <div key={s.num} className="flex items-center gap-2">
             <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition ${
-              step >= s.num ? 'bg-[#EE3364] text-white shadow-md' : 'bg-gray-200 text-gray-500'
+              step >= s.num ? 'bg-[#000000] text-white shadow-md' : 'bg-gray-200 text-gray-500'
             }`}>
               {s.num}
             </div>
@@ -97,7 +97,7 @@ export default function CheckoutPage({ cartItems, onCompleteOrder, onNavigateSho
           {step === 1 && (
             <div className="space-y-4 animate-fade-in">
               <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                <Truck className="text-[#EE3364]" size={20} /> 1. Delivery & Company Details
+                <Truck className="text-[#000000]" size={20} /> 1. Delivery & Company Details
               </h2>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -109,7 +109,7 @@ export default function CheckoutPage({ cartItems, onCompleteOrder, onNavigateSho
                     value={formData.fullName} 
                     onChange={handleInputChange} 
                     required 
-                    className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#EE3364]"
+                    className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#000000]"
                   />
                 </div>
                 <div>
@@ -120,7 +120,7 @@ export default function CheckoutPage({ cartItems, onCompleteOrder, onNavigateSho
                     value={formData.companyName} 
                     onChange={handleInputChange} 
                     required 
-                    className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#EE3364]"
+                    className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#000000]"
                   />
                 </div>
               </div>
@@ -134,7 +134,7 @@ export default function CheckoutPage({ cartItems, onCompleteOrder, onNavigateSho
                     value={formData.email} 
                     onChange={handleInputChange} 
                     required 
-                    className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#EE3364]"
+                    className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#000000]"
                   />
                 </div>
                 <div>
@@ -145,7 +145,7 @@ export default function CheckoutPage({ cartItems, onCompleteOrder, onNavigateSho
                     value={formData.phone} 
                     onChange={handleInputChange} 
                     required 
-                    className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#EE3364]"
+                    className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#000000]"
                   />
                 </div>
               </div>
@@ -158,7 +158,7 @@ export default function CheckoutPage({ cartItems, onCompleteOrder, onNavigateSho
                   value={formData.gstin} 
                   onChange={handleInputChange} 
                   placeholder="e.g. 27AAAAA0000A1Z5"
-                  className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#EE3364] font-mono uppercase"
+                  className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#000000] font-mono uppercase"
                 />
               </div>
 
@@ -170,7 +170,7 @@ export default function CheckoutPage({ cartItems, onCompleteOrder, onNavigateSho
                   value={formData.address} 
                   onChange={handleInputChange} 
                   required 
-                  className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#EE3364]"
+                  className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#000000]"
                 />
               </div>
 
@@ -183,7 +183,7 @@ export default function CheckoutPage({ cartItems, onCompleteOrder, onNavigateSho
                     value={formData.city} 
                     onChange={handleInputChange} 
                     required 
-                    className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#EE3364]"
+                    className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#000000]"
                   />
                 </div>
                 <div>
@@ -194,7 +194,7 @@ export default function CheckoutPage({ cartItems, onCompleteOrder, onNavigateSho
                     value={formData.state} 
                     onChange={handleInputChange} 
                     required 
-                    className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#EE3364]"
+                    className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#000000]"
                   />
                 </div>
                 <div>
@@ -205,12 +205,12 @@ export default function CheckoutPage({ cartItems, onCompleteOrder, onNavigateSho
                     value={formData.pincode} 
                     onChange={handleInputChange} 
                     required 
-                    className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#EE3364]"
+                    className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#000000]"
                   />
                 </div>
               </div>
 
-              <button type="submit" className="w-full bg-[#EE3364] hover:bg-[#D92756] text-white font-bold py-3.5 rounded-full shadow-lg transition">
+              <button type="submit" className="w-full bg-[#000000] hover:bg-[#111111] text-white font-bold py-3.5 rounded-full shadow-lg transition">
                 Continue to Checkout Method →
               </button>
             </div>
@@ -219,7 +219,7 @@ export default function CheckoutPage({ cartItems, onCompleteOrder, onNavigateSho
           {step === 2 && (
             <div className="space-y-6 animate-fade-in">
               <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                <CreditCard className="text-[#EE3364]" size={20} /> 2. Choose Checkout Method
+                <CreditCard className="text-[#000000]" size={20} /> 2. Choose Checkout Method
               </h2>
 
               <p className="text-sm text-gray-600 font-medium">
@@ -228,8 +228,8 @@ export default function CheckoutPage({ cartItems, onCompleteOrder, onNavigateSho
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                 {/* Option A: Direct Call */}
-                <div className="border border-gray-200 rounded-2xl p-5 hover:border-[#EE3364] hover:shadow-md transition bg-white flex flex-col h-full">
-                  <div className="w-12 h-12 bg-[#FFF3F6] text-[#EE3364] rounded-full flex items-center justify-center mb-4">
+                <div className="border border-gray-200 rounded-2xl p-5 hover:border-[#000000] hover:shadow-md transition bg-white flex flex-col h-full">
+                  <div className="w-12 h-12 bg-[#F5F5F5] text-[#000000] rounded-full flex items-center justify-center mb-4">
                     <Building size={24} />
                   </div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">Order via Direct Call</h3>
@@ -239,14 +239,14 @@ export default function CheckoutPage({ cartItems, onCompleteOrder, onNavigateSho
                   <button 
                     type="button"
                     onClick={handleDirectCallOrder}
-                    className="w-full bg-white text-[#EE3364] border border-[#EE3364] hover:bg-[#FFF3F6] font-bold py-3 rounded-xl transition flex items-center justify-center gap-2"
+                    className="w-full bg-white text-[#000000] border border-[#000000] hover:bg-[#F5F5F5] font-bold py-3 rounded-xl transition flex items-center justify-center gap-2"
                   >
                     Request Call <ArrowRight size={16} />
                   </button>
                 </div>
 
                 {/* Option B: Pay Online */}
-                <div className="border border-gray-200 rounded-2xl p-5 hover:border-[#EE3364] hover:shadow-md transition bg-gradient-to-br from-white to-gray-50 flex flex-col h-full relative overflow-hidden">
+                <div className="border border-gray-200 rounded-2xl p-5 hover:border-[#000000] hover:shadow-md transition bg-gradient-to-br from-white to-gray-50 flex flex-col h-full relative overflow-hidden">
                   <div className="absolute top-0 right-0 bg-blue-100 text-blue-700 text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider">
                     E-Commerce
                   </div>
@@ -310,7 +310,7 @@ export default function CheckoutPage({ cartItems, onCompleteOrder, onNavigateSho
             </div>
             <div className="flex justify-between text-sm font-extrabold text-gray-900 pt-2 border-t">
               <span>Total Payable</span>
-              <span className="text-[#EE3364]">₹{total.toLocaleString()}</span>
+              <span className="text-[#000000]">₹{total.toLocaleString()}</span>
             </div>
           </div>
         </div>

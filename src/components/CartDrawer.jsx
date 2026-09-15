@@ -43,10 +43,10 @@ export default function CartDrawer({
       <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
         <div className="w-screen max-w-md bg-white shadow-2xl flex flex-col justify-between">
           {/* Drawer Header */}
-          <div className="p-5 border-b border-[#ECE7E8] flex items-center justify-between bg-gradient-to-r from-[#FFF3F6] to-white">
+          <div className="p-5 border-b border-[#ECE7E8] flex items-center justify-between bg-gradient-to-r from-[#F5F5F5] to-white">
             <div className="flex items-center gap-2">
               <h3 className="text-lg font-bold text-gray-900">Your Shopping Cart</h3>
-              <span className="bg-[#EE3364] text-white text-xs font-bold px-2.5 py-0.5 rounded-full">
+              <span className="bg-[#000000] text-white text-xs font-bold px-2.5 py-0.5 rounded-full">
                 {cartItems.reduce((acc, i) => acc + i.quantity, 0)} items
               </span>
             </div>
@@ -63,7 +63,7 @@ export default function CartDrawer({
           <div className="flex-1 overflow-y-auto p-5 space-y-4">
             {cartItems.length === 0 ? (
               <div className="h-full flex flex-col items-center justify-center text-center p-6 space-y-4">
-                <div className="w-20 h-20 bg-[#FFF3F6] rounded-full flex items-center justify-center text-[#EE3364]">
+                <div className="w-20 h-20 bg-[#F5F5F5] rounded-full flex items-center justify-center text-[#000000]">
                   <Tag size={36} />
                 </div>
                 <h4 className="text-lg font-bold text-gray-900">Your cart is empty</h4>
@@ -72,14 +72,14 @@ export default function CartDrawer({
                 </p>
                 <button 
                   onClick={onClose}
-                  className="bg-[#EE3364] text-white font-semibold px-6 py-2.5 rounded-full hover:bg-[#D92756] transition"
+                  className="bg-[#000000] text-white font-semibold px-6 py-2.5 rounded-full hover:bg-[#111111] transition"
                 >
                   Start Shopping
                 </button>
               </div>
             ) : (
               cartItems.map((item, idx) => (
-                <div key={idx} className="flex gap-4 p-3 rounded-xl border border-[#ECE7E8] bg-white hover:border-[#FAD9E2] transition">
+                <div key={idx} className="flex gap-4 p-3 rounded-xl border border-[#ECE7E8] bg-white hover:border-[#E5E5E5] transition">
                   <img 
                     src={item.images ? item.images[0] : item.image} 
                     alt={item.name} 
@@ -104,7 +104,7 @@ export default function CartDrawer({
                           <p>Color: <span className="font-semibold text-gray-700">{item.selectedColor}</span></p>
                         )}
                         {item.hasLogo ? (
-                          <span className="inline-block bg-[#FFF3F6] text-[#EE3364] px-1.5 py-0.5 rounded text-[10px] font-bold">
+                          <span className="inline-block bg-[#F5F5F5] text-[#000000] px-1.5 py-0.5 rounded text-[10px] font-bold">
                             ✓ Custom Logo Included
                           </span>
                         ) : (
@@ -150,7 +150,7 @@ export default function CartDrawer({
                   placeholder="Promo Code (e.g. CORE10)"
                   value={promoCode}
                   onChange={(e) => setPromoCode(e.target.value)}
-                  className="flex-1 text-xs py-2 px-3 border border-gray-200 rounded-lg outline-none focus:border-[#EE3364]"
+                  className="flex-1 text-xs py-2 px-3 border border-gray-200 rounded-lg outline-none focus:border-[#000000]"
                 />
                 <button type="submit" className="bg-gray-900 text-white text-xs font-semibold px-3 py-2 rounded-lg hover:bg-gray-800 transition">
                   Apply
@@ -183,27 +183,27 @@ export default function CartDrawer({
                 </div>
                 <div className="flex justify-between text-sm font-extrabold text-gray-900 pt-2 border-t">
                   <span>Total Amount</span>
-                  <span className="text-[#EE3364]">₹{total.toLocaleString()}</span>
+                  <span className="text-[#000000]">₹{total.toLocaleString()}</span>
                 </div>
               </div>
 
               {/* Checkout Action */}
               <button 
                 onClick={() => { onClose(); onNavigateCheckout(); }}
-                className="w-full bg-[#EE3364] hover:bg-[#D92756] text-white font-bold py-3.5 rounded-full flex items-center justify-center gap-2 shadow-lg transition"
+                className="w-full bg-[#000000] hover:bg-[#111111] text-white font-bold py-3.5 rounded-full flex items-center justify-center gap-2 shadow-lg transition"
               >
                 Proceed to Checkout <ArrowRight size={16} />
               </button>
 
               {/* Corporate B2B Quote Switcher */}
-              <div className="bg-[#FFF3F6] p-3 rounded-xl flex items-center justify-between text-xs">
+              <div className="bg-[#F5F5F5] p-3 rounded-xl flex items-center justify-between text-xs">
                 <div>
                   <p className="font-bold text-gray-900">Ordering 100+ units?</p>
                   <p className="text-gray-500 text-[10px]">Get custom B2B tiered volume pricing.</p>
                 </div>
                 <button 
                   onClick={() => { onClose(); onNavigateQuote(); }}
-                  className="text-[#EE3364] font-bold hover:underline"
+                  className="text-[#000000] font-bold hover:underline"
                 >
                   Request Quote →
                 </button>

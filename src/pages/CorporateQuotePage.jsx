@@ -52,7 +52,7 @@ export default function CorporateQuotePage() {
         <div className="lg:col-span-8 bg-white p-6 sm:p-10 rounded-3xl border border-[#ECE7E8] shadow-sm">
           {submitted ? (
             <div className="text-center py-12 space-y-4 animate-fade-in">
-              <div className="w-16 h-16 bg-[#FFF3F6] text-[#EE3364] rounded-full flex items-center justify-center mx-auto">
+              <div className="w-16 h-16 bg-[#F5F5F5] text-[#000000] rounded-full flex items-center justify-center mx-auto">
                 <CheckCircle2 size={40} />
               </div>
               <h3 className="text-2xl font-bold text-gray-900">Quote Request Submitted!</h3>
@@ -76,7 +76,7 @@ export default function CorporateQuotePage() {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="e.g. Vikram Sharma"
-                    className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#EE3364]"
+                    className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#000000]"
                   />
                 </div>
                 <div>
@@ -87,7 +87,7 @@ export default function CorporateQuotePage() {
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                     placeholder="e.g. Infosys Ltd"
-                    className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#EE3364]"
+                    className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#000000]"
                   />
                 </div>
               </div>
@@ -101,7 +101,7 @@ export default function CorporateQuotePage() {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="name@company.com"
-                    className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#EE3364]"
+                    className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#000000]"
                   />
                 </div>
                 <div>
@@ -112,7 +112,7 @@ export default function CorporateQuotePage() {
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     placeholder="+91 98765 43210"
-                    className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#EE3364]"
+                    className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#000000]"
                   />
                 </div>
               </div>
@@ -126,7 +126,7 @@ export default function CorporateQuotePage() {
                     value={formData.quantity}
                     onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
                     placeholder="e.g. 100"
-                    className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#EE3364]"
+                    className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#000000]"
                   />
                 </div>
 
@@ -135,7 +135,7 @@ export default function CorporateQuotePage() {
                   <select 
                     value={formData.budget}
                     onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                    className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#EE3364] bg-white font-medium"
+                    className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#000000] bg-white font-medium"
                   >
                     <option value="below-500">Below ₹500</option>
                     <option value="500-1000">₹500 – ₹1,000</option>
@@ -152,7 +152,7 @@ export default function CorporateQuotePage() {
                   <select 
                     value={formData.occasion}
                     onChange={(e) => setFormData({ ...formData, occasion: e.target.value })}
-                    className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#EE3364] bg-white font-medium"
+                    className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#000000] bg-white font-medium"
                   >
                     <option value="Employee Gifting">Employee Gifting</option>
                     <option value="Client Gifting">Client Gifting</option>
@@ -171,7 +171,7 @@ export default function CorporateQuotePage() {
                     value={formData.products}
                     onChange={(e) => setFormData({ ...formData, products: e.target.value })}
                     placeholder="e.g. Notebooks, Bottles, Powerbank"
-                    className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#EE3364]"
+                    className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#000000]"
                   />
                 </div>
               </div>
@@ -186,7 +186,7 @@ export default function CorporateQuotePage() {
                         type="checkbox" 
                         checked={formData.branding.includes(option)} 
                         onChange={() => handleCheckboxChange(option)}
-                        className="accent-[#EE3364] rounded"
+                        className="accent-[#000000] rounded"
                       />
                       <span>{option}</span>
                     </label>
@@ -197,8 +197,8 @@ export default function CorporateQuotePage() {
               {/* Logo Upload */}
               <div>
                 <label className="text-xs font-bold text-gray-700 block mb-1">Upload Brand Logo (Optional)</label>
-                <div className="border-2 border-dashed border-gray-200 rounded-xl p-3 text-center bg-gray-50 text-xs text-gray-500 cursor-pointer hover:border-[#EE3364] transition">
-                  <Upload size={18} className="mx-auto text-[#EE3364] mb-1" />
+                <div className="border-2 border-dashed border-gray-200 rounded-xl p-3 text-center bg-gray-50 text-xs text-gray-500 cursor-pointer hover:border-[#000000] transition">
+                  <Upload size={18} className="mx-auto text-[#000000] mb-1" />
                   <span>Drop your logo file here or click to browse (PNG, SVG, AI, PDF)</span>
                 </div>
               </div>
@@ -211,11 +211,11 @@ export default function CorporateQuotePage() {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder="Mention delivery deadlines, specific color codes, or custom packaging preferences..."
-                  className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#EE3364]"
+                  className="w-full text-xs p-3 rounded-xl border border-gray-200 outline-none focus:border-[#000000]"
                 ></textarea>
               </div>
 
-              <button type="submit" className="w-full bg-[#EE3364] hover:bg-[#D92756] text-white font-bold py-3.5 rounded-full shadow-lg transition flex items-center justify-center gap-2">
+              <button type="submit" className="w-full bg-[#000000] hover:bg-[#111111] text-white font-bold py-3.5 rounded-full shadow-lg transition flex items-center justify-center gap-2">
                 Request a Quote <Send size={16} />
               </button>
             </form>
@@ -236,7 +236,7 @@ export default function CorporateQuotePage() {
               const IconComp = feature.icon;
               return (
                 <div key={idx} className="flex items-start gap-3.5">
-                  <div className="w-10 h-10 rounded-xl bg-[#FFF3F6] text-[#EE3364] flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-[#F5F5F5] text-[#000000] flex items-center justify-center shrink-0">
                     <IconComp size={20} />
                   </div>
                   <div>
@@ -248,11 +248,11 @@ export default function CorporateQuotePage() {
             })}
           </div>
 
-          <div className="bg-gradient-to-br from-[#FFF3F6] to-[#FAD9E2] p-6 rounded-3xl text-center space-y-3">
-            <PhoneCall size={28} className="mx-auto text-[#EE3364]" />
+          <div className="bg-gradient-to-br from-[#F5F5F5] to-[#E5E5E5] p-6 rounded-3xl text-center space-y-3">
+            <PhoneCall size={28} className="mx-auto text-[#000000]" />
             <h4 className="text-sm font-bold text-gray-900">Need Immediate Assistance?</h4>
             <p className="text-xs text-gray-600">Speak directly with our Corporate Gifting Specialist.</p>
-            <a href="tel:+919876543210" className="inline-block bg-white text-[#EE3364] font-bold text-xs px-4 py-2 rounded-full shadow-sm hover:shadow-md transition">
+            <a href="tel:+919876543210" className="inline-block bg-white text-[#000000] font-bold text-xs px-4 py-2 rounded-full shadow-sm hover:shadow-md transition">
               Call +91 98765 43210
             </a>
           </div>

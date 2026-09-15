@@ -88,7 +88,7 @@ export default function AuthPage({ onLoginSuccess }) {
   return (
     <div className="min-h-[calc(100vh-80px)] bg-gradient-to-br from-[#FFF5F8] to-white flex items-center justify-center p-4 lg:p-8 animate-fade-in relative overflow-hidden">
       {/* Decorative background elements */}
-      <div className="absolute top-10 left-10 w-64 h-64 bg-[#EE3364]/5 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-10 left-10 w-64 h-64 bg-[#000000]/5 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute bottom-10 right-10 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="w-full max-w-[440px] bg-white/70 backdrop-blur-2xl border border-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] rounded-[32px] overflow-hidden relative z-10 my-8 transition-all duration-500">
@@ -124,7 +124,7 @@ export default function AuthPage({ onLoginSuccess }) {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-gray-50/50 border border-gray-200 text-gray-900 text-[14px] rounded-2xl focus:ring-2 focus:ring-[#EE3364]/20 focus:border-[#EE3364] block px-4 py-3.5 pl-11 transition-all outline-none"
+                    className="w-full bg-gray-50/50 border border-gray-200 text-gray-900 text-[14px] rounded-2xl focus:ring-2 focus:ring-[#000000]/20 focus:border-[#000000] block px-4 py-3.5 pl-11 transition-all outline-none"
                     placeholder="name@company.com"
                     required
                   />
@@ -142,7 +142,7 @@ export default function AuthPage({ onLoginSuccess }) {
                     type={showPassword ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full bg-gray-50/50 border border-gray-200 text-gray-900 text-[14px] rounded-2xl focus:ring-2 focus:ring-[#EE3364]/20 focus:border-[#EE3364] block px-4 py-3.5 pl-11 pr-11 transition-all outline-none"
+                    className="w-full bg-gray-50/50 border border-gray-200 text-gray-900 text-[14px] rounded-2xl focus:ring-2 focus:ring-[#000000]/20 focus:border-[#000000] block px-4 py-3.5 pl-11 pr-11 transition-all outline-none"
                     placeholder="••••••••"
                     required
                   />
@@ -159,10 +159,10 @@ export default function AuthPage({ onLoginSuccess }) {
 
               <div className="flex items-center justify-between pt-1">
                 <div className="flex items-center gap-2">
-                  <input id="remember" type="checkbox" className="w-4 h-4 text-[#EE3364] border-gray-300 rounded focus:ring-[#EE3364] cursor-pointer" />
+                  <input id="remember" type="checkbox" className="w-4 h-4 text-[#000000] border-gray-300 rounded focus:ring-[#000000] cursor-pointer" />
                   <label htmlFor="remember" className="text-[13px] font-medium text-gray-600 cursor-pointer select-none">Remember me</label>
                 </div>
-                <button type="button" className="text-[13px] font-bold text-[#EE3364] hover:text-[#D92756] transition">Forgot Password?</button>
+                <button type="button" className="text-[13px] font-bold text-[#000000] hover:text-[#111111] transition">Forgot Password?</button>
               </div>
 
               <button
@@ -186,7 +186,7 @@ export default function AuthPage({ onLoginSuccess }) {
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full bg-gray-50/50 border border-gray-200 text-gray-900 text-[14px] rounded-2xl focus:ring-2 focus:ring-[#EE3364]/20 focus:border-[#EE3364] block px-4 py-3.5 pl-11 transition-all outline-none"
+                    className="w-full bg-gray-50/50 border border-gray-200 text-gray-900 text-[14px] rounded-2xl focus:ring-2 focus:ring-[#000000]/20 focus:border-[#000000] block px-4 py-3.5 pl-11 transition-all outline-none"
                     placeholder="Rohan Mehta"
                     required
                   />
@@ -204,7 +204,7 @@ export default function AuthPage({ onLoginSuccess }) {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-gray-50/50 border border-gray-200 text-gray-900 text-[14px] rounded-2xl focus:ring-2 focus:ring-[#EE3364]/20 focus:border-[#EE3364] block px-4 py-3.5 pl-11 transition-all outline-none"
+                    className="w-full bg-gray-50/50 border border-gray-200 text-gray-900 text-[14px] rounded-2xl focus:ring-2 focus:ring-[#000000]/20 focus:border-[#000000] block px-4 py-3.5 pl-11 transition-all outline-none"
                     placeholder="rohan@acme.com"
                     required
                   />
@@ -222,7 +222,7 @@ export default function AuthPage({ onLoginSuccess }) {
                     type="tel"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full bg-gray-50/50 border border-gray-200 text-gray-900 text-[14px] rounded-2xl focus:ring-2 focus:ring-[#EE3364]/20 focus:border-[#EE3364] block px-4 py-3.5 pl-11 transition-all outline-none"
+                    className="w-full bg-gray-50/50 border border-gray-200 text-gray-900 text-[14px] rounded-2xl focus:ring-2 focus:ring-[#000000]/20 focus:border-[#000000] block px-4 py-3.5 pl-11 transition-all outline-none"
                     placeholder="+91 98765 43210"
                     required
                   />
@@ -240,7 +240,7 @@ export default function AuthPage({ onLoginSuccess }) {
                     type={showPassword ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full bg-gray-50/50 border border-gray-200 text-gray-900 text-[14px] rounded-2xl focus:ring-2 focus:ring-[#EE3364]/20 focus:border-[#EE3364] block px-4 py-3.5 pl-11 pr-11 transition-all outline-none"
+                    className="w-full bg-gray-50/50 border border-gray-200 text-gray-900 text-[14px] rounded-2xl focus:ring-2 focus:ring-[#000000]/20 focus:border-[#000000] block px-4 py-3.5 pl-11 pr-11 transition-all outline-none"
                     placeholder="Create a strong password"
                     required
                   />
@@ -281,7 +281,7 @@ export default function AuthPage({ onLoginSuccess }) {
                     type={showConfirmPassword ? "text" : "password"}
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                    className={`w-full bg-gray-50/50 border text-gray-900 text-[14px] rounded-2xl focus:ring-2 focus:ring-[#EE3364]/20 focus:border-[#EE3364] block px-4 py-3.5 pl-11 pr-11 transition-all outline-none ${confirmPassword && confirmPassword !== password ? 'border-red-300' : 'border-gray-200'}`}
+                    className={`w-full bg-gray-50/50 border text-gray-900 text-[14px] rounded-2xl focus:ring-2 focus:ring-[#000000]/20 focus:border-[#000000] block px-4 py-3.5 pl-11 pr-11 transition-all outline-none ${confirmPassword && confirmPassword !== password ? 'border-red-300' : 'border-gray-200'}`}
                     placeholder="Confirm your password"
                     required
                   />
@@ -301,11 +301,11 @@ export default function AuthPage({ onLoginSuccess }) {
                   type="checkbox" 
                   checked={acceptTerms}
                   onChange={(e) => setAcceptTerms(e.target.checked)}
-                  className="mt-0.5 w-4 h-4 text-[#EE3364] border-gray-300 rounded focus:ring-[#EE3364] cursor-pointer" 
+                  className="mt-0.5 w-4 h-4 text-[#000000] border-gray-300 rounded focus:ring-[#000000] cursor-pointer" 
                   required
                 />
                 <label htmlFor="terms" className="text-[12px] font-medium text-gray-600 cursor-pointer select-none leading-tight">
-                  I agree to the <a href="#" className="text-[#EE3364] font-bold hover:underline">Terms of Service</a> and <a href="#" className="text-[#EE3364] font-bold hover:underline">Privacy Policy</a>
+                  I agree to the <a href="#" className="text-[#000000] font-bold hover:underline">Terms of Service</a> and <a href="#" className="text-[#000000] font-bold hover:underline">Privacy Policy</a>
                 </label>
               </div>
 
@@ -346,7 +346,7 @@ export default function AuthPage({ onLoginSuccess }) {
             <button 
               type="button"
               onClick={() => switchView(view === 'login' ? 'signup' : 'login')}
-              className="text-[#EE3364] font-bold hover:underline"
+              className="text-[#000000] font-bold hover:underline"
             >
               {view === 'login' ? 'Sign Up' : 'Login'}
             </button>

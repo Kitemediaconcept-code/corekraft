@@ -11,7 +11,7 @@ export default function AboutPage({ onNavigateShop, onNavigateQuote }) {
           <span className="badge-label">ABOUT COREKRAFT</span>
           <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight">
             Thoughtful Gifting. <br />
-            <span className="text-[#EE3364]">Stronger Relationships.</span>
+            <span className="text-[#000000]">Stronger Relationships.</span>
           </h1>
           <p className="text-gray-600 text-sm">
             Corekraft was founded with a single mission: to replace generic corporate swag with meaningful, high-utility business gifts that make employees proud and clients valued.
@@ -37,7 +37,7 @@ export default function AboutPage({ onNavigateShop, onNavigateQuote }) {
               'Free vector digital proofs and sample boxes'
             ].map((point, idx) => (
               <div key={idx} className="flex items-center gap-2.5 text-xs font-bold text-gray-800">
-                <CheckCircle2 size={16} className="text-[#EE3364]" />
+                <CheckCircle2 size={16} className="text-[#000000]" />
                 <span>{point}</span>
               </div>
             ))}
@@ -56,7 +56,7 @@ export default function AboutPage({ onNavigateShop, onNavigateQuote }) {
       {/* Sustainability & Quality Promise */}
       <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="bg-white p-8 rounded-3xl border border-[#ECE7E8] shadow-sm space-y-3">
-          <div className="w-12 h-12 rounded-2xl bg-[#FFF3F6] text-[#EE3364] flex items-center justify-center">
+          <div className="w-12 h-12 rounded-2xl bg-[#F5F5F5] text-[#000000] flex items-center justify-center">
             <Leaf size={24} />
           </div>
           <h4 className="text-lg font-bold text-gray-900">Sustainability Commitment</h4>
@@ -66,7 +66,7 @@ export default function AboutPage({ onNavigateShop, onNavigateQuote }) {
         </div>
 
         <div className="bg-white p-8 rounded-3xl border border-[#ECE7E8] shadow-sm space-y-3">
-          <div className="w-12 h-12 rounded-2xl bg-[#FFF3F6] text-[#EE3364] flex items-center justify-center">
+          <div className="w-12 h-12 rounded-2xl bg-[#F5F5F5] text-[#000000] flex items-center justify-center">
             <ShieldCheck size={24} />
           </div>
           <h4 className="text-lg font-bold text-gray-900">Quality Guarantee</h4>
@@ -76,7 +76,7 @@ export default function AboutPage({ onNavigateShop, onNavigateQuote }) {
         </div>
 
         <div className="bg-white p-8 rounded-3xl border border-[#ECE7E8] shadow-sm space-y-3">
-          <div className="w-12 h-12 rounded-2xl bg-[#FFF3F6] text-[#EE3364] flex items-center justify-center">
+          <div className="w-12 h-12 rounded-2xl bg-[#F5F5F5] text-[#000000] flex items-center justify-center">
             <HeartHandshake size={24} />
           </div>
           <h4 className="text-lg font-bold text-gray-900">PAN India Logistics</h4>

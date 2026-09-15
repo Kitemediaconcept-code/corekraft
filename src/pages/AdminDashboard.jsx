@@ -131,7 +131,7 @@ export default function AdminDashboard({ onNavigateHome }) {
             <img src="/logo.png" alt="Corekraft" className="h-8 object-contain mb-1" />
             <p className="text-xs text-white/40 font-medium tracking-widest uppercase mt-2">Admin Dashboard</p>
           </div>
-          <button className="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#EE3364]/10 text-[#EE3364] font-semibold text-sm">
+          <button className="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#000000]/10 text-[#000000] font-semibold text-sm">
             <Package size={18} /> Products
           </button>
           <button onClick={onNavigateHome} className="flex items-center gap-3 px-4 py-3 rounded-xl text-white/50 hover:text-white hover:bg-white/5 transition-colors text-sm font-medium mt-auto">
@@ -149,7 +149,7 @@ export default function AdminDashboard({ onNavigateHome }) {
             </div>
             <button
               onClick={openAddForm}
-              className="flex items-center gap-2 bg-[#EE3364] hover:bg-[#d42d59] text-white px-5 py-2.5 rounded-xl font-semibold text-sm transition-colors shadow-lg shadow-[#EE3364]/20"
+              className="flex items-center gap-2 bg-[#000000] hover:bg-[#d42d59] text-white px-5 py-2.5 rounded-xl font-semibold text-sm transition-colors shadow-lg shadow-[#000000]/20"
             >
               <Plus size={18} /> Add Product
             </button>
@@ -164,7 +164,7 @@ export default function AdminDashboard({ onNavigateHome }) {
             <div className="flex flex-col items-center justify-center h-64 text-white/40 gap-4">
               <Package size={48} className="opacity-30" />
               <p className="text-lg font-medium">No products yet</p>
-              <button onClick={openAddForm} className="text-[#EE3364] hover:underline text-sm">Add your first product →</button>
+              <button onClick={openAddForm} className="text-[#000000] hover:underline text-sm">Add your first product →</button>
             </div>
           ) : (
             <div className="bg-[#151515] rounded-2xl border border-white/10 overflow-hidden">
@@ -255,7 +255,7 @@ export default function AdminDashboard({ onNavigateHome }) {
                   value={form.name}
                   onChange={e => setForm({ ...form, name: e.target.value })}
                   placeholder="e.g. Executive Notebook Set"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#EE3364]/50 focus:bg-white/[0.07] transition-all"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#000000]/50 focus:bg-white/[0.07] transition-all"
                 />
               </div>
 
@@ -269,7 +269,7 @@ export default function AdminDashboard({ onNavigateHome }) {
                   onChange={e => setForm({ ...form, description: e.target.value })}
                   placeholder="Describe the product..."
                   rows={3}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#EE3364]/50 focus:bg-white/[0.07] transition-all resize-none"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#000000]/50 focus:bg-white/[0.07] transition-all resize-none"
                 />
               </div>
 
@@ -284,7 +284,7 @@ export default function AdminDashboard({ onNavigateHome }) {
                     value={form.price}
                     onChange={e => setForm({ ...form, price: e.target.value })}
                     placeholder="e.g. 1299"
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#EE3364]/50 focus:bg-white/[0.07] transition-all"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#000000]/50 focus:bg-white/[0.07] transition-all"
                   />
                 </div>
                 <div>
@@ -296,7 +296,7 @@ export default function AdminDashboard({ onNavigateHome }) {
                     value={form.original_price}
                     onChange={e => setForm({ ...form, original_price: e.target.value })}
                     placeholder="e.g. 1699"
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#EE3364]/50 focus:bg-white/[0.07] transition-all"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#000000]/50 focus:bg-white/[0.07] transition-all"
                   />
                 </div>
               </div>
@@ -307,7 +307,7 @@ export default function AdminDashboard({ onNavigateHome }) {
                 <select
                   value={form.category}
                   onChange={e => setForm({ ...form, category: e.target.value })}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#EE3364]/50 transition-all"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#000000]/50 transition-all"
                 >
                   {CATEGORIES.map(cat => (
                     <option key={cat} value={cat} className="bg-[#1A1A1A]">{cat.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</option>
@@ -334,7 +334,7 @@ export default function AdminDashboard({ onNavigateHome }) {
                         value={form[`image${i}`]}
                         onChange={e => setForm({ ...form, [`image${i}`]: e.target.value })}
                         placeholder={`Image ${i} URL${i === 1 ? ' (Main)' : ' (optional)'}`}
-                        className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#EE3364]/50 transition-all"
+                        className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#000000]/50 transition-all"
                       />
                     </div>
                   ))}
@@ -350,7 +350,7 @@ export default function AdminDashboard({ onNavigateHome }) {
               <button
                 onClick={handleSave}
                 disabled={saving}
-                className="flex items-center gap-2 bg-[#EE3364] hover:bg-[#d42d59] disabled:opacity-50 text-white px-6 py-2.5 rounded-xl font-semibold text-sm transition-colors"
+                className="flex items-center gap-2 bg-[#000000] hover:bg-[#d42d59] disabled:opacity-50 text-white px-6 py-2.5 rounded-xl font-semibold text-sm transition-colors"
               >
                 {saving ? <Loader2 size={16} className="animate-spin" /> : <Save size={16} />}
                 {saving ? 'Saving...' : (editingProduct ? 'Update Product' : 'Add Product')}

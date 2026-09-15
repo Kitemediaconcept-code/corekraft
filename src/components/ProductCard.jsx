@@ -38,11 +38,11 @@ export default function ProductCard({
         {/* Wishlist Heart Action */}
         <button 
           onClick={(e) => { e.stopPropagation(); onToggleWishlist(product); }}
-          className="absolute top-3 right-3 bg-white w-8 h-8 rounded-full flex items-center justify-center text-gray-400 hover:text-[#EE3364] shadow-sm transition z-10 hover:scale-110"
+          className="absolute top-3 right-3 bg-white w-8 h-8 rounded-full flex items-center justify-center text-gray-400 hover:text-[#000000] shadow-sm transition z-10 hover:scale-110"
           title={isWishlisted ? "Remove from Wishlist" : "Add to Wishlist"}
           aria-label={isWishlisted ? "Remove from Wishlist" : "Add to Wishlist"}
         >
-          <Heart size={16} strokeWidth={2.5} fill={isWishlisted ? "#EE3364" : "none"} className={isWishlisted ? "text-[#EE3364]" : ""} />
+          <Heart size={16} strokeWidth={2.5} fill={isWishlisted ? "#000000" : "none"} className={isWishlisted ? "text-[#000000]" : ""} />
         </button>
       </div>
 
@@ -59,12 +59,12 @@ export default function ProductCard({
         {/* Variants / Pills */}
         <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-2 sm:mb-3">
           {product.colors ? product.colors.slice(0, 3).map((c, i) => (
-             <span key={i} className={`text-[9px] sm:text-[10px] px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full border ${i === 0 ? 'bg-orange-100 border-orange-200 text-orange-800 font-semibold' : 'border-gray-200 text-gray-500 bg-white'}`}>
+             <span key={i} className={`text-[9px] sm:text-[10px] px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full border ${i === 0 ? 'bg-black border-black text-white font-semibold' : 'border-gray-200 text-gray-500 bg-white'}`}>
                {c.name.split(' ')[0]}
              </span>
           )) : (
             <>
-              <span className="text-[9px] sm:text-[10px] px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full border bg-orange-100 border-orange-200 text-orange-800 font-semibold">Standard</span>
+              <span className="text-[9px] sm:text-[10px] px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full border bg-black border-black text-white font-semibold">Standard</span>
               <span className="text-[9px] sm:text-[10px] px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full border border-gray-200 text-gray-500 bg-white">Premium</span>
             </>
           )}
@@ -85,7 +85,7 @@ export default function ProductCard({
           {/* Add to Cart Button */}
           <button 
             onClick={() => onAddToCart(product)}
-            className="flex-1 min-w-0 bg-[#EE3364] hover:bg-[#D92756] text-white py-2 md:py-2.5 px-2 md:px-4 rounded-xl text-[11px] md:text-[13px] font-bold transition duration-200 flex items-center justify-center gap-1 sm:gap-1.5 shadow-[0_4px_12px_rgba(238,51,100,0.25)] hover:shadow-[0_6px_16px_rgba(238,51,100,0.35)] whitespace-nowrap"
+            className="flex-1 min-w-0 bg-[#000000] hover:bg-[#111111] text-white py-2 md:py-2.5 px-2 md:px-4 rounded-xl text-[11px] md:text-[13px] font-bold transition duration-200 flex items-center justify-center gap-1 sm:gap-1.5 shadow-[0_4px_12px_rgba(0,0,0,0.25)] hover:shadow-[0_6px_16px_rgba(0,0,0,0.35)] whitespace-nowrap"
           >
             <ShoppingCart size={14} strokeWidth={2.5} className="shrink-0 hidden lg:block" />
             <span className="truncate hidden sm:inline-block">Add to Cart</span>

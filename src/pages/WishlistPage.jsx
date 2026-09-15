@@ -17,7 +17,7 @@ export default function WishlistPage({ wishlist, onSelectProduct, onAddToCart, o
 
       {wishlist.length === 0 ? (
         <div className="bg-white rounded-3xl border border-[#ECE7E8] p-12 text-center space-y-4 max-w-md mx-auto">
-          <div className="w-16 h-16 bg-[#FFF3F6] text-[#EE3364] rounded-full flex items-center justify-center mx-auto">
+          <div className="w-16 h-16 bg-[#F5F5F5] text-[#000000] rounded-full flex items-center justify-center mx-auto">
             <Heart size={32} />
           </div>
           <h3 className="text-xl font-bold text-gray-900">Your wishlist is empty</h3>
