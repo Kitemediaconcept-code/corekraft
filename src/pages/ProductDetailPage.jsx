@@ -78,7 +78,7 @@ export default function ProductDetailPage({
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 space-y-12">
+    <div className="container mx-auto px-4 py-6 lg:py-8 space-y-8 lg:space-y-12">
       {/* Breadcrumb Navigation */}
       <nav className="text-xs font-semibold text-gray-500 flex items-center gap-2">
         <a href="#" className="hover:text-[#000000]">Home</a>
@@ -89,7 +89,7 @@ export default function ProductDetailPage({
       </nav>
 
       {/* Main Two-Column Product Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
         {/* LEFT: Multi-Thumbnail Gallery & Zoom */}
         <div className="lg:col-span-7 flex flex-col md:flex-row-reverse gap-4">
           {/* Large Main Image Viewer */}
@@ -281,7 +281,7 @@ export default function ProductDetailPage({
       {/* CUSTOMIZE THIS PRODUCT FORM */}
       <div 
         ref={customizeRef} 
-        className="bg-white rounded-3xl border border-[#ECE7E8] p-6 lg:p-10 shadow-sm relative overflow-hidden"
+        className="bg-white rounded-3xl border border-[#ECE7E8] p-5 lg:p-10 shadow-sm relative overflow-hidden"
       >
         {/* Success Overlay */}
         {isSubmitted ? (
@@ -302,7 +302,7 @@ export default function ProductDetailPage({
           </div>
         ) : null}
 
-        <div className="flex flex-col md:flex-row gap-8 lg:gap-12">
+        <div className="flex flex-col md:flex-row gap-6 lg:gap-12">
           {/* Left Column: Intro */}
           <div className="md:w-1/3">
             <span className="badge-label mb-2">MAKE IT YOURS</span>
@@ -478,7 +478,7 @@ export default function ProductDetailPage({
       </div>
 
       {/* PRODUCT DETAIL INFORMATION TABS */}
-      <div className="bg-white rounded-3xl border border-[#ECE7E8] p-6 lg:p-8 space-y-6">
+      <div className="bg-white rounded-3xl border border-[#ECE7E8] p-5 lg:p-8 space-y-4 lg:space-y-6">
         <div className="flex border-b border-[#ECE7E8] gap-6 text-sm font-bold">
           {['description', 'specifications', 'branding', 'shipping', 'reviews'].map(tab => (
             <button

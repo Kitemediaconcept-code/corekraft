@@ -49,7 +49,7 @@ export default function ShopPage({
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 space-y-6">
+    <div className="container mx-auto px-4 py-6 lg:py-8 space-y-6">
       {/* Breadcrumb */}
       <nav className="text-xs font-semibold text-gray-500 flex items-center gap-2">
         <a href="#" onClick={(e) => { e.preventDefault(); setSelectedCategory('all'); }} className="hover:text-[#000000]">Home</a>
@@ -58,7 +58,7 @@ export default function ShopPage({
       </nav>
 
       {/* Header Banner */}
-      <div className="bg-gradient-to-r from-[#F5F5F5] via-white to-[#F5F5F5] p-6 lg:p-8 rounded-3xl border border-[#ECE7E8] flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div className="bg-gradient-to-r from-[#F5F5F5] via-white to-[#F5F5F5] p-5 lg:p-8 rounded-3xl border border-[#ECE7E8] flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
           <span className="badge-label mb-1">CATALOG</span>
           <h1 className="text-3xl font-extrabold text-gray-900">Corporate Gifts</h1>
@@ -91,7 +91,7 @@ export default function ShopPage({
       </div>
 
       {/* Main Content Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
         {/* Left Filter Sidebar (Desktop) */}
         <aside className="hidden lg:block lg:col-span-3 bg-white rounded-3xl border border-[#ECE7E8] p-6 space-y-6 sticky top-24 shadow-sm">
           <div className="flex items-center justify-between border-b pb-3">

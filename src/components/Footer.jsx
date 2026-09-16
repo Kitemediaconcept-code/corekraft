@@ -15,10 +15,10 @@ export default function Footer({ setActivePage, setSelectedCategory }) {
   };
 
   return (
-    <footer className="bg-white border-t border-[#ECE7E8] pt-16 pb-24 lg:pb-12 text-gray-700">
+    <footer className="bg-white border-t border-[#ECE7E8] pt-10 pb-20 lg:pt-16 lg:pb-12 text-gray-700">
       <div className="container mx-auto px-4">
         {/* Main 4-Column Footer */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-[#ECE7E8]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 pb-12 border-b border-[#ECE7E8]">
           {/* Column 1: Brand & Bio */}
           <div className="space-y-4">
             <img src="/logo.png" alt="Corekraft Logo" className="h-10 object-contain" />

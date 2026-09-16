@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   ArrowRight,
   Settings,
@@ -21,6 +21,8 @@ import {
 } from 'lucide-react';
 import { CATEGORIES, PRODUCTS } from '../data/products';
 import ProductCard from '../components/ProductCard';
+import { DotPattern } from '../components/DotPattern';
+
 
 export default function HomePage({ 
   setActivePage, 
@@ -31,25 +33,119 @@ export default function HomePage({
   wishlist,
   products
 }) {
+  const heroImages = [
+    '/hero_product_box.png',
+    '/collection_hampers_1789017088098.png',
+    '/collection_wellness_1789017104422.png',
+    '/collection_festive_1789017118649.png',
+    '/collection_onboarding_1789017132984.png',
+    '/cat_lifestyle_1789015751823.png'
+  ];
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="bg-white">
       {/* SECTION 1 — HERO */}
       <section 
-        className="relative -mt-[80px] pt-[140px] pb-20 lg:pt-[180px] lg:pb-32 overflow-hidden border-b border-[#ECE7E8] bg-gray-50"
+        className="relative -mt-[80px] pt-[90px] pb-8 lg:pt-[180px] lg:pb-32 overflow-hidden border-b border-[#ECE7E8] bg-white lg:bg-gray-50"
       >
-        {/* Background Images */}
-        <img 
-          src="/mobile hero.png" 
-          alt="Corporate Gifts Background" 
-          className="absolute inset-0 w-full h-full object-cover object-center lg:hidden z-0" 
-        />
+        {/* Desktop Background Images */}
         <img 
           src="/hero.png" 
           alt="Corporate Gifts Background" 
           className="absolute inset-0 w-full h-full object-cover object-center hidden lg:block z-0 opacity-40" 
         />
 
-        <div className="container mx-auto px-6 lg:px-12 relative z-10 w-full">
+        {/* Mobile Background Dot Pattern */}
+        <div className="absolute inset-0 z-0 lg:hidden overflow-hidden pointer-events-none">
+          <DotPattern
+            glow={true}
+            cr={1.5}
+            className="text-black/20 [mask-image:radial-gradient(ellipse_at_center,white_40%,transparent_100%)]"
+          />
+        </div>
+
+        {/* Mobile Layout (Visible only on mobile) */}
+        <div className="lg:hidden px-5 relative z-10 w-full pt-6">
+          <h1 className="text-[38px] font-extrabold text-black leading-[1.05] tracking-tight mb-4">
+            Complete corporate<br />Gifting Solution
+          </h1>
+          
+          <p className="text-[15px] text-gray-500 font-medium leading-[1.4] mb-5 pr-4">
+            Thoughtful gifts. Lasting impressions.<br />
+            Explore premium corporate gifting<br />
+            solutions for every occasion.
+          </p>
+
+          <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-1.5">
+              <Truck size={15} className="text-slate-700" />
+              <span className="text-[12px] font-bold text-slate-700">Pan India Delivery</span>
+            </div>
+            <div className="w-[1px] h-3.5 bg-slate-300"></div>
+            <div className="flex items-center gap-1.5">
+              <Star size={15} className="text-slate-700" />
+              <span className="text-[12px] font-bold text-slate-700">Trusted by 100+ Businesses</span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3 mb-8">
+            <button 
+              onClick={() => { setSelectedCategory('all'); setActivePage('shop'); }}
+              className="bg-black text-white font-bold text-[14px] px-6 py-3.5 rounded-full flex items-center gap-2"
+            >
+              Shop Now <ArrowRight size={16} />
+            </button>
+            <button 
+              onClick={() => { setSelectedCategory('all'); setActivePage('shop'); }}
+              className="bg-[#FFF4F4] text-[#111] font-bold text-[14px] px-6 py-3.5 rounded-full"
+            >
+              View Collections
+            </button>
+          </div>
+
+          <div className="mb-4">
+            <img 
+              src={heroImages[currentSlide]} 
+              alt="Featured Corporate Gift Box" 
+              className="w-full h-auto object-contain mix-blend-multiply transition-all duration-500 ease-in-out" 
+            />
+          </div>
+
+          <div className="flex gap-2.5 overflow-x-auto pb-4 mb-2 no-scrollbar">
+            {heroImages.map((src, i) => (
+              <div 
+                key={i} 
+                onClick={() => setCurrentSlide(i)}
+                className={`w-[72px] h-[72px] rounded-lg overflow-hidden flex-shrink-0 flex items-center justify-center p-1 transition-all cursor-pointer ${currentSlide === i ? 'border-[1.5px] border-black bg-white' : 'bg-[#F5F5F5] border border-transparent'}`}
+              >
+                <img src={src} className={`w-full h-full object-contain mix-blend-multiply transition-opacity ${currentSlide === i ? 'opacity-100' : 'opacity-70'}`} />
+              </div>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-4">
+            <span className="text-[13px] font-bold text-gray-400">
+              <span className="text-black">{(currentSlide + 1).toString().padStart(2, '0')}</span> / {heroImages.length.toString().padStart(2, '0')}
+            </span>
+            <div className="h-[2px] flex-1 bg-gray-200">
+              <div 
+                className="h-full bg-black transition-all duration-500 ease-in-out" 
+                style={{ width: `${((currentSlide + 1) / heroImages.length) * 100}%` }}
+              ></div>
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop Layout (Hidden on mobile) */}
+        <div className="hidden lg:block container mx-auto px-6 lg:px-12 relative z-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             
             {/* Left Content */}
@@ -58,7 +154,7 @@ export default function HomePage({
                 C O R P O R A T E &nbsp; G I F T I N G
               </p>
 
-              <h1 className="text-[44px] sm:text-[54px] lg:text-[64px] font-extrabold text-gray-900 leading-[1.1] tracking-tight">
+              <h1 className="text-[36px] sm:text-[54px] lg:text-[64px] font-extrabold text-gray-900 leading-[1.1] tracking-tight">
                 Complete<br />Corporate<br />Gifting Solution.
               </h1>
 
@@ -96,9 +192,9 @@ export default function HomePage({
             </div>
 
             {/* Right Form Card */}
-            <div className="lg:pl-8">
-              <div className="bg-white rounded-2xl p-8 lg:p-10 shadow-2xl border border-gray-100">
-                <h2 className="text-[26px] font-extrabold text-gray-900 leading-tight mb-2">
+            <div className="lg:pl-8 mt-4 lg:mt-0">
+              <div className="bg-white rounded-2xl p-6 lg:p-10 shadow-2xl border border-gray-100">
+                <h2 className="text-[24px] lg:text-[26px] font-extrabold text-gray-900 leading-tight mb-2">
                   Curate your perfect corporate gift
                 </h2>
                 <p className="text-[14px] text-gray-600 mb-6">
@@ -146,8 +242,6 @@ export default function HomePage({
 
               {/* Client Logos under the form */}
               <div className="mt-6 w-full overflow-hidden relative px-2">
-                
-
                 <div className="flex w-[200%] animate-marquee pause-marquee">
                   {[1, 2].map((group) => (
                     <div key={group} className="flex w-1/2 justify-around items-center">
@@ -160,17 +254,13 @@ export default function HomePage({
                   ))}
                 </div>
               </div>
-
-
             </div>
-
           </div>
         </div>
-
       </section>
 
-      {/* SECTION 1.5 — STATS BAR */}
-      <section className="bg-black py-8 lg:py-10 border-b border-gray-800">
+      {/* SECTION 1.5 — STATS BAR (Desktop only, mobile moved below footer) */}
+      <section className="hidden md:block bg-black py-8 lg:py-10 border-b border-gray-800">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex flex-col md:flex-row justify-between items-center text-center divide-y md:divide-y-0 md:divide-x divide-gray-800 gap-y-6 md:gap-y-0">
             <div className="flex-1 w-full md:w-auto pt-6 md:pt-0">
@@ -194,9 +284,9 @@ export default function HomePage({
       </section>
 
       {/* SECTION 1.75 — CLIENT LOGOS */}
-      <section className="bg-white py-12 lg:py-16 border-b border-gray-100 overflow-hidden relative">
+      <section className="bg-white py-8 lg:py-16 border-b border-gray-100 overflow-hidden relative">
         <div className="container mx-auto px-4 md:px-6 lg:px-12 relative z-10">
-          <h2 className="text-center text-[15px] md:text-[18px] font-bold text-gray-900 mb-8 md:mb-12">
+          <h2 className="text-center text-[15px] md:text-[18px] font-bold text-gray-900 mb-6 md:mb-12">
             Trusted by over 500 clients <span className="hidden md:inline px-2">|</span><span className="md:hidden block mt-1"></span> Over 1,00,000 orders fulfilled
           </h2>
           
@@ -241,8 +331,7 @@ export default function HomePage({
 
       {/* SECTION 1.85 — CURATED HAMPERS */}
       <section 
-        className="container mx-auto px-4 md:px-6 lg:px-12 border-b border-gray-200"
-        style={{ paddingTop: '80px', paddingBottom: '90px' }}
+        className="container mx-auto px-4 md:px-6 lg:px-12 border-b border-gray-200 py-12 lg:py-24"
       >
         <div className="text-center mb-8">
           <p className="text-[10px] md:text-[11px] font-bold tracking-widest text-gray-500 uppercase mb-3">Hamper Solutions</p>
@@ -305,10 +394,9 @@ export default function HomePage({
 
       {/* SECTION 2 — BENEFITS */}
       <section 
-        className="container mx-auto px-4 md:px-6 lg:px-12 border-b border-[#ECE7E8]"
-        style={{ paddingTop: '30px', paddingBottom: '90px' }}
+        className="container mx-auto px-4 md:px-6 lg:px-12 border-b border-[#ECE7E8] py-12 lg:py-24"
       >
-        <div className="flex flex-wrap justify-center md:justify-between items-start gap-y-8 md:gap-y-0 md:gap-8">
+        <div className="flex flex-wrap justify-center md:justify-between items-start gap-y-6 md:gap-y-0 md:gap-8">
           {[
             { icon: Gift, title: 'Premium Quality', desc: 'Curated products with lasting value' },
             { icon: Settings, title: 'Custom Branding', desc: 'Make it uniquely yours' },
@@ -333,8 +421,7 @@ export default function HomePage({
 
       {/* SECTION 4 — EXPLORE BY CATEGORY */}
       <section 
-        className="container mx-auto px-6 lg:px-12"
-        style={{ paddingTop: '90px', paddingBottom: '120px' }}
+        className="container mx-auto px-6 lg:px-12 py-12 lg:py-24"
       >
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 gap-6">
           <div>
@@ -390,8 +477,7 @@ export default function HomePage({
 
       {/* SECTION 4.5 — FEATURED PRODUCTS */}
       <section 
-        className="container mx-auto px-6 lg:px-12"
-        style={{ paddingBottom: '120px' }}
+        className="container mx-auto px-6 lg:px-12 pb-12 lg:pb-24"
       >
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 gap-6">
           <div>
@@ -436,10 +522,9 @@ export default function HomePage({
 
       {/* SECTION 5 — WHY COREKRAFT */}
       <section 
-        className="container mx-auto px-6 lg:px-12"
-        style={{ paddingTop: '80px', paddingBottom: '100px' }}
+        className="container mx-auto px-6 lg:px-12 py-12 lg:py-24"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-24 items-center">
           
           {/* Left Pink Card */}
           <div className="lg:col-span-5">
@@ -510,10 +595,9 @@ export default function HomePage({
 
       {/* SECTION 6 — CUSTOM GIFT SETS BANNER */}
       <section 
-        className="container mx-auto px-6 lg:px-12"
-        style={{ paddingTop: '80px', paddingBottom: '120px' }}
+        className="container mx-auto px-6 lg:px-12 py-12 lg:py-24"
       >
-        <div className="gradient-banner rounded-[32px] px-10 py-12 lg:px-16 lg:py-16 shadow-[0_20px_40px_rgba(0,0,0,0.15)] relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-12">
+        <div className="gradient-banner rounded-[32px] px-6 py-8 lg:px-16 lg:py-16 shadow-[0_20px_40px_rgba(0,0,0,0.15)] relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 lg:gap-12">
           <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at center, white 3px, transparent 3px)', backgroundSize: '40px 40px' }}></div>
           
           <div className="relative z-10 text-center md:text-left flex flex-col justify-center">
@@ -541,8 +625,8 @@ export default function HomePage({
       </section>
 
       {/* SECTION 7 — MORE COLLECTIONS */}
-      <section className="container mx-auto px-6 lg:px-12" style={{ paddingBottom: '100px' }}>
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 gap-4">
+      <section className="container mx-auto px-6 lg:px-12 pb-12 lg:pb-24">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 lg:mb-10 gap-4">
           <div>
             <h2 className="text-[28px] md:text-[32px] font-extrabold text-gray-900 leading-tight mb-2">More Collections</h2>
             <p className="text-[14px] text-gray-500 font-medium">Discover more thoughtful gifting options for every need.</p>
@@ -579,7 +663,7 @@ export default function HomePage({
       </section>
 
       {/* SECTION 8 — PAN-INDIA DELIVERY */}
-      <section className="bg-[#F9F9F9] py-16 lg:py-24 overflow-hidden relative">
+      <section className="bg-[#F9F9F9] py-12 lg:py-24 overflow-hidden relative">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-8 items-center">
             
@@ -711,16 +795,13 @@ export default function HomePage({
 
       </section>
 
-      {/* SECTION 8 — CUSTOM BRANDING BANNER */}
-      <section className="container mx-auto px-6 lg:px-12" style={{ paddingBottom: '120px' }}>
-        <div className="bg-[#F5F5F5] rounded-[24px] flex flex-col md:flex-row items-center overflow-hidden shadow-sm">
+      {/* SECTION 9 — CUSTOM BRANDING */}
+      <section className="container mx-auto px-6 lg:px-12 py-12 lg:py-24 border-t border-gray-100">
+        <div className="flex flex-col md:flex-row items-center gap-10 lg:gap-16 bg-gray-50 rounded-[32px] p-8 lg:p-12">
           {/* Left Content */}
-          <div className="p-10 lg:p-14 flex-1 max-w-xl">
-            <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-gray-500 mb-3">
-              C U S T O M &nbsp; B R A N D I N G
-            </p>
+          <div className="flex-1">
             <h2 className="text-[32px] lg:text-[40px] font-extrabold text-gray-900 leading-[1.1] mb-4">
-              Your Logo. Our Creativity.
+              Make it Yours
             </h2>
             <p className="text-[14px] text-gray-600 leading-relaxed mb-8">
               Turn everyday gifts into powerful brand experiences. We offer custom branding solutions to showcase your logo with style and impact.
@@ -735,11 +816,11 @@ export default function HomePage({
           </div>
 
           {/* Right Image */}
-          <div className="flex-1 w-full relative min-h-[250px] md:min-h-[400px]">
+          <div className="flex-1 w-full relative min-h-[250px] md:min-h-[400px] rounded-2xl overflow-hidden">
             <img 
               src="/custom_branding_1789017149739.png" 
               alt="Custom branding examples with your logo" 
-              className="absolute inset-0 w-full h-full object-cover mix-blend-multiply md:object-right" 
+              className="absolute inset-0 w-full h-full object-cover md:object-center mix-blend-multiply" 
             />
           </div>
         </div>
