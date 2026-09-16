@@ -394,9 +394,9 @@ export default function HomePage({
 
       {/* SECTION 2 — BENEFITS */}
       <section 
-        className="container mx-auto px-4 md:px-6 lg:px-12 border-b border-[#ECE7E8] py-12 lg:py-24"
+        className="container mx-auto px-4 md:px-6 lg:px-12 pt-12 pb-16 lg:py-24"
       >
-        <div className="flex flex-wrap justify-center md:justify-between items-start gap-y-6 md:gap-y-0 md:gap-8">
+        <div className="flex flex-wrap justify-center md:justify-between items-start gap-y-12 md:gap-y-0 md:gap-8">
           {[
             { icon: Gift, title: 'Premium Quality', desc: 'Curated products with lasting value' },
             { icon: Settings, title: 'Custom Branding', desc: 'Make it uniquely yours' },
@@ -406,22 +406,23 @@ export default function HomePage({
           ].map((b, i) => {
             const IconComp = b.icon;
             return (
-              <div key={i} className="text-center group flex flex-col items-center basis-1/3 md:basis-auto md:flex-1 px-1 md:px-0">
-                <div className="w-[52px] h-[52px] md:w-[72px] md:h-[72px] mb-2.5 md:mb-4 rounded-full bg-[#F9F9F9] text-[#000000] flex items-center justify-center transition duration-300 hover:scale-105 mx-auto">
-                  <IconComp className="w-[22px] h-[22px] md:w-8 md:h-8" strokeWidth={1.75} />
+              <div key={i} className="text-center group flex flex-col items-center basis-[45%] md:basis-auto md:flex-1 px-2 md:px-0">
+                <div className="w-[60px] h-[60px] md:w-[72px] md:h-[72px] mb-4 md:mb-4 rounded-full bg-[#F9F9F9] text-[#000000] flex items-center justify-center transition duration-300 hover:scale-105 mx-auto">
+                  <IconComp className="w-[24px] h-[24px] md:w-8 md:h-8" strokeWidth={1.75} />
                 </div>
-                <h3 className="text-[11px] md:text-[15px] font-bold text-[#111] mb-1 md:mb-1.5 leading-tight">{b.title}</h3>
-                <p className="text-[9px] md:text-[13px] text-[#888] font-medium leading-[1.25] md:leading-[1.3] max-w-[100px] md:max-w-[150px] mx-auto">{b.desc}</p>
+                <h3 className="text-[13px] md:text-[15px] font-bold text-[#111] mb-2 md:mb-1.5 leading-tight">{b.title}</h3>
+                <p className="text-[11px] md:text-[13px] text-[#888] font-medium leading-[1.4] md:leading-[1.3] max-w-[130px] md:max-w-[150px] mx-auto">{b.desc}</p>
               </div>
             );
           })}
         </div>
       </section>
 
+      <div className="w-full max-w-[90%] mx-auto h-[1px] bg-gray-200 my-10 md:my-16"></div>
 
       {/* SECTION 4 — EXPLORE BY CATEGORY */}
       <section 
-        className="container mx-auto px-6 lg:px-12 py-12 lg:py-24"
+        className="container mx-auto px-6 lg:px-12 pb-12 pt-4 lg:py-24"
       >
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 gap-6">
           <div>
@@ -476,8 +477,9 @@ export default function HomePage({
       </section>
 
       {/* SECTION 4.5 — FEATURED PRODUCTS */}
+      <div className="w-full h-16 md:h-24"></div>
       <section 
-        className="container mx-auto px-6 lg:px-12 pb-12 lg:pb-24"
+        className="container mx-auto px-6 lg:px-12 pt-8 pb-12 lg:py-24"
       >
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 gap-6">
           <div>
@@ -509,16 +511,17 @@ export default function HomePage({
         </div>
 
         {/* Bottom View All Button (especially useful for mobile) */}
-        <div className="mt-10 sm:mt-12 flex justify-center">
+        <div className="text-center mt-16 sm:mt-24">
           <button 
             onClick={() => { setSelectedCategory('all'); setActivePage('shop'); }}
-            aria-label="View more products"
-            className="bg-white border-2 border-[#000000] text-[#000000] hover:bg-[#000000] hover:text-white px-8 py-3 rounded-full font-bold text-[14px] flex items-center gap-2 transition shadow-[0_4px_12px_rgba(0,0,0,0.15)] hover:shadow-[0_6px_16px_rgba(0,0,0,0.25)] hover:-translate-y-0.5"
+            className="border-2 border-black hover:bg-black hover:text-white transition-colors duration-300 text-black px-8 py-3 rounded-full font-bold text-[13px] md:text-[14px] flex items-center gap-2 mx-auto"
           >
             View All Collections <ArrowRight size={16} />
           </button>
         </div>
       </section>
+
+      <div className="w-full h-16 md:h-24"></div>
 
       {/* SECTION 5 — WHY COREKRAFT */}
       <section 
@@ -591,13 +594,15 @@ export default function HomePage({
             </div>
           </div>
         </div>
-      </section>
+    </section>
+
+      <div className="w-full h-16 md:h-24"></div>
 
       {/* SECTION 6 — CUSTOM GIFT SETS BANNER */}
       <section 
-        className="container mx-auto px-6 lg:px-12 py-12 lg:py-24"
+        className="container mx-auto px-4 md:px-6 lg:px-12"
       >
-        <div className="gradient-banner rounded-[32px] px-6 py-8 lg:px-16 lg:py-16 shadow-[0_20px_40px_rgba(0,0,0,0.15)] relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 lg:gap-12">
+        <div className="gradient-banner rounded-[32px] px-6 py-10 lg:px-16 lg:py-16 shadow-[0_20px_40px_rgba(0,0,0,0.15)] relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 lg:gap-12">
           <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at center, white 3px, transparent 3px)', backgroundSize: '40px 40px' }}></div>
           
           <div className="relative z-10 text-center md:text-left flex flex-col justify-center">
@@ -616,13 +621,15 @@ export default function HomePage({
             <button 
               onClick={() => setActivePage('quote')}
               aria-label="Get a custom corporate gifting quote"
-              className="bg-white hover:bg-gray-50 text-[#000000] font-bold text-[15px] px-8 py-3.5 rounded-full shadow-xl transition-transform hover:-translate-y-0.5 flex items-center gap-2"
+              className="bg-white hover:bg-gray-50 text-[#000000] font-bold text-[15px] px-8 py-3.5 rounded-full shadow-xl transition-transform hover:-translate-y-0.5 flex items-center gap-2 mt-2 md:mt-0"
             >
               Get a Quote <ArrowRight size={16} />
             </button>
           </div>
         </div>
       </section>
+
+      <div className="w-full h-16 md:h-24"></div>
 
       {/* SECTION 7 — MORE COLLECTIONS */}
       <section className="container mx-auto px-6 lg:px-12 pb-12 lg:pb-24">

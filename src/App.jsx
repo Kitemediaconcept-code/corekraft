@@ -305,31 +305,6 @@ export default function App() {
         setSelectedCategory={setSelectedCategory}
       />
 
-      {/* Mobile Stats Bar (Moved below footer for home page) */}
-      {activePage === 'home' && (
-        <section className="block md:hidden bg-black py-8 border-b border-gray-800">
-          <div className="container mx-auto px-6">
-            <div className="flex flex-col justify-between items-center text-center divide-y divide-gray-800 gap-y-6">
-              <div className="flex-1 w-full pt-6">
-                <h3 className="text-[24px] font-extrabold !text-white leading-none mb-1.5">4,000+</h3>
-                <p className="text-[11px] text-gray-400 font-medium">pin codes served across India</p>
-              </div>
-              <div className="flex-1 w-full pt-6">
-                <h3 className="text-[24px] font-extrabold !text-white leading-none mb-1.5">₹199</h3>
-                <p className="text-[11px] text-gray-400 font-medium">starting price per gift</p>
-              </div>
-              <div className="flex-1 w-full pt-6">
-                <h3 className="text-[24px] font-extrabold !text-white leading-none mb-1.5">500+</h3>
-                <p className="text-[11px] text-gray-400 font-medium">brands trust us</p>
-              </div>
-              <div className="flex-1 w-full pt-6 pb-6">
-                <h3 className="text-[24px] font-extrabold !text-white leading-none mb-1.5">50,000+</h3>
-                <p className="text-[11px] text-gray-400 font-medium">gifts shipped to corporates</p>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
     </div>
   );
 
