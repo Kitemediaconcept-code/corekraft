@@ -418,6 +418,38 @@ export const PRODUCTS = [
       '/Corekraft products/p12/80.jpg',
       '/Corekraft products/p12/81.jpg'
     ]
+  },
+  {
+    id: 'ck-eco-1106',
+    name: 'EcoCore Executive Corporate Gift Set',
+    category: 'eco-friendly',
+    categoryName: 'Eco-Friendly',
+    price: 702.00,
+    originalPrice: 899.00,
+    discount: '22% OFF',
+    rating: 4.9,
+    reviewCount: 15,
+    sku: 'CK-ECO-1106',
+    featured: true,
+    moq: 10,
+    inStock: true,
+    description: 'A thoughtfully curated eco-friendly gifting solution designed for organizations committed to sustainability.',
+    fullDescription: 'The EcoCore Executive Corporate Gift Set is a thoughtfully curated eco-friendly gifting solution designed for organizations committed to sustainability and responsible business practices. This premium set features a natural bamboo-finish spiral notebook with button closure, a bamboo-metal hybrid pen, a wooden USB keychain, and a reusable glass water bottle with bamboo cap and jute sleeve, all precisely placed inside a matte black rigid gift box with custom foam compartments.\n\nBlending natural materials with modern utility, this set reflects the growing demand for eco-conscious corporate gifting solutions. The minimalist design, earthy textures, and reusable components make it ideal for employee onboarding, CSR initiatives, client appreciation, conferences, and sustainability-focused events.\n\nA perfect choice for brands seeking premium eco-friendly corporate gifts that communicate values, responsibility, and long-term impact.',
+    highlights: [
+      'Bamboo-finish spiral notebook with secure closure',
+      'Bamboo-metal premium pen',
+      'Wooden USB keychain accessory',
+      'Reusable glass water bottle with bamboo cap & jute sleeve',
+      'Rigid black gift box with precision foam inserts',
+      'Sustainable, minimalist & professional design'
+    ],
+    colors: [
+      { name: 'Natural Bamboo', hex: '#D4A373' },
+      { name: 'Black', hex: '#111111' }
+    ],
+    images: [
+      '/product/EcoCore Executive Corporate Gift Set.webp'
+    ]
   }
 ];
 

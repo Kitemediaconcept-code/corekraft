@@ -245,9 +245,15 @@ export default function HomePage({
                 <div className="flex w-[200%] animate-marquee pause-marquee">
                   {[1, 2].map((group) => (
                     <div key={group} className="flex w-1/2 justify-around items-center">
-                      {['TATA', 'RELIANCE', 'AMAZON', 'GOOGLE', 'WIPRO'].map((client, idx) => (
-                        <div key={idx} className="mx-2 bg-white shadow-sm border border-gray-100 rounded-full px-6 py-2.5 flex items-center justify-center grayscale hover:grayscale-0 hover:shadow-md transition-all duration-300">
-                          <span className="text-[11px] md:text-xs font-black text-gray-800 tracking-widest whitespace-nowrap uppercase">{client}</span>
+                      {[
+                        { name: 'Aster MIMS', logo: '/clientlogo/aster_a7d3779e-5dc2-4d15-89b7-7299f5ad7885.png' },
+                        { name: 'Axis Bank', logo: '/clientlogo/axis1.png' },
+                        { name: 'Bosch', logo: '/clientlogo/Bosch-Logo.png' },
+                        { name: 'Dr Agarwals', logo: '/clientlogo/1709710772198-917249936_1.png' },
+                        { name: 'Toyota', logo: '/clientlogo/toyota.png' },
+                      ].map((client, idx) => (
+                        <div key={idx} className="mx-2 bg-white shadow-sm border border-gray-100 rounded-full px-4 py-2 flex items-center justify-center grayscale hover:grayscale-0 hover:shadow-md transition-all duration-300">
+                          <img src={client.logo} alt={client.name} className="h-6 object-contain max-w-[80px]" />
                         </div>
                       ))}
                     </div>
@@ -260,24 +266,24 @@ export default function HomePage({
       </section>
 
       {/* SECTION 1.5 — STATS BAR (Desktop only, mobile moved below footer) */}
-      <section className="hidden md:block bg-black py-8 lg:py-10 border-b border-gray-800">
+      <section className="hidden md:block bg-white py-8 lg:py-10 border-b border-gray-200">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="flex flex-col md:flex-row justify-between items-center text-center divide-y md:divide-y-0 md:divide-x divide-gray-800 gap-y-6 md:gap-y-0">
+          <div className="flex flex-col md:flex-row justify-between items-center text-center divide-y md:divide-y-0 md:divide-x divide-gray-200 gap-y-6 md:gap-y-0">
             <div className="flex-1 w-full md:w-auto pt-6 md:pt-0">
-              <h3 className="text-[24px] md:text-[32px] font-extrabold !text-white leading-none mb-1.5">4,000+</h3>
-              <p className="text-[11px] md:text-[13px] text-gray-400 font-medium">pin codes served across India</p>
+              <h3 className="text-[24px] md:text-[32px] font-extrabold text-black leading-none mb-1.5">4,000+</h3>
+              <p className="text-[11px] md:text-[13px] text-gray-500 font-medium">pin codes served across India</p>
             </div>
             <div className="flex-1 w-full md:w-auto pt-6 md:pt-0">
-              <h3 className="text-[24px] md:text-[32px] font-extrabold !text-white leading-none mb-1.5">₹199</h3>
-              <p className="text-[11px] md:text-[13px] text-gray-400 font-medium">starting price per gift</p>
+              <h3 className="text-[24px] md:text-[32px] font-extrabold text-black leading-none mb-1.5">₹199</h3>
+              <p className="text-[11px] md:text-[13px] text-gray-500 font-medium">starting price per gift</p>
             </div>
             <div className="flex-1 w-full md:w-auto pt-6 md:pt-0">
-              <h3 className="text-[24px] md:text-[32px] font-extrabold !text-white leading-none mb-1.5">500+</h3>
-              <p className="text-[11px] md:text-[13px] text-gray-400 font-medium">brands trust us</p>
+              <h3 className="text-[24px] md:text-[32px] font-extrabold text-black leading-none mb-1.5">500+</h3>
+              <p className="text-[11px] md:text-[13px] text-gray-500 font-medium">brands trust us</p>
             </div>
             <div className="flex-1 w-full md:w-auto pt-6 md:pt-0 pb-6 md:pb-0">
-              <h3 className="text-[24px] md:text-[32px] font-extrabold !text-white leading-none mb-1.5">50,000+</h3>
-              <p className="text-[11px] md:text-[13px] text-gray-400 font-medium">gifts shipped to corporates</p>
+              <h3 className="text-[24px] md:text-[32px] font-extrabold text-black leading-none mb-1.5">50,000+</h3>
+              <p className="text-[11px] md:text-[13px] text-gray-500 font-medium">gifts shipped to corporates</p>
             </div>
           </div>
         </div>
@@ -295,32 +301,40 @@ export default function HomePage({
             <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
             <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
 
-            <div className="flex overflow-hidden">
-              <div className="flex flex-nowrap animate-marquee pause-marquee items-center gap-4 md:gap-5 pr-4 md:pr-5 min-w-max shrink-0">
+            <div className="overflow-hidden w-full">
+              <div className="flex w-max animate-[scrollMarquee_35s_linear_infinite] pause-marquee items-center">
                 {[
-                  'ICICI Bank', 'Skechers', 'Glenmark', 'Voltas', 'Adidas', 'SBI', 
-                  'JITO', 'OETJ', 'CDSL', 'Cipla', 'TVS', 'MAK Lubricants'
+                  { name: 'Dr Agarwals', logo: '/clientlogo/1709710772198-917249936_1.png' },
+                  { name: 'Aster MIMS', logo: '/clientlogo/aster_a7d3779e-5dc2-4d15-89b7-7299f5ad7885.png' },
+                  { name: 'Axis Bank', logo: '/clientlogo/axis1.png' },
+                  { name: 'Bosch', logo: '/clientlogo/Bosch-Logo.png' },
+                  { name: 'Eham Digital', logo: '/clientlogo/eham-digital01.png' },
+                  { name: 'IIM', logo: '/clientlogo/iim01.png' },
+                  { name: 'Jockey', logo: '/clientlogo/JOCKEY1.png' },
+                  { name: 'Kia', logo: '/clientlogo/kia-art-symbol-south-korean-260nw-2269894917.webp' },
+                  { name: 'myG', logo: '/clientlogo/myg11w.png' },
+                  { name: 'Nexa', logo: '/clientlogo/nexa.png' },
+                  { name: 'Nura', logo: '/clientlogo/nuraaa.png' },
+                  { name: 'Toyota', logo: '/clientlogo/toyota.png' },
+                  /* Duplicated for seamless looping */
+                  { name: 'Dr Agarwals', logo: '/clientlogo/1709710772198-917249936_1.png' },
+                  { name: 'Aster MIMS', logo: '/clientlogo/aster_a7d3779e-5dc2-4d15-89b7-7299f5ad7885.png' },
+                  { name: 'Axis Bank', logo: '/clientlogo/axis1.png' },
+                  { name: 'Bosch', logo: '/clientlogo/Bosch-Logo.png' },
+                  { name: 'Eham Digital', logo: '/clientlogo/eham-digital01.png' },
+                  { name: 'IIM', logo: '/clientlogo/iim01.png' },
+                  { name: 'Jockey', logo: '/clientlogo/JOCKEY1.png' },
+                  { name: 'Kia', logo: '/clientlogo/kia-art-symbol-south-korean-260nw-2269894917.webp' },
+                  { name: 'myG', logo: '/clientlogo/myg11w.png' },
+                  { name: 'Nexa', logo: '/clientlogo/nexa.png' },
+                  { name: 'Nura', logo: '/clientlogo/nuraaa.png' },
+                  { name: 'Toyota', logo: '/clientlogo/toyota.png' }
                 ].map((client, idx) => (
-                  <div 
-                    key={idx} 
-                    className="bg-white border border-gray-200 rounded-2xl px-4 py-3 md:px-6 md:py-4 flex flex-col items-center justify-center w-[130px] md:w-[160px] h-[70px] md:h-[90px] shadow-sm hover:shadow-md transition-all duration-300 group cursor-pointer"
-                  >
-                    <span className="font-extrabold text-gray-400 group-hover:text-black transition-colors duration-300 text-xs md:text-sm text-center uppercase tracking-wider">{client}</span>
-                    <span className="text-[9px] md:text-[10px] text-gray-300 mt-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">{client}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="flex flex-nowrap animate-marquee pause-marquee items-center gap-4 md:gap-5 pr-4 md:pr-5 min-w-max shrink-0" aria-hidden="true">
-                {[
-                  'ICICI Bank', 'Skechers', 'Glenmark', 'Voltas', 'Adidas', 'SBI', 
-                  'JITO', 'OETJ', 'CDSL', 'Cipla', 'TVS', 'MAK Lubricants'
-                ].map((client, idx) => (
-                  <div 
-                    key={idx} 
-                    className="bg-white border border-gray-200 rounded-2xl px-4 py-3 md:px-6 md:py-4 flex flex-col items-center justify-center w-[130px] md:w-[160px] h-[70px] md:h-[90px] shadow-sm hover:shadow-md transition-all duration-300 group cursor-pointer"
-                  >
-                    <span className="font-extrabold text-gray-400 group-hover:text-black transition-colors duration-300 text-xs md:text-sm text-center uppercase tracking-wider">{client}</span>
-                    <span className="text-[9px] md:text-[10px] text-gray-300 mt-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">{client}</span>
+                  <div key={idx} className="px-2 md:px-3 shrink-0">
+                    <div className="bg-white border border-gray-200 rounded-2xl px-4 py-3 md:px-6 md:py-4 flex flex-col items-center justify-center w-[130px] md:w-[160px] h-[70px] md:h-[90px] shadow-sm hover:shadow-md transition-all duration-300 group cursor-pointer grayscale hover:grayscale-0">
+                      <img src={client.logo} alt={client.name} className="h-8 md:h-10 object-contain w-full" />
+                      <span className="sr-only">{client.name}</span>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -329,72 +343,53 @@ export default function HomePage({
         </div>
       </section>
 
-      {/* SECTION 1.85 — CURATED HAMPERS */}
-      <section 
-        className="container mx-auto px-4 md:px-6 lg:px-12 border-b border-gray-200 py-12 lg:py-24"
-      >
-        <div className="text-center mb-8">
-          <p className="text-[10px] md:text-[11px] font-bold tracking-widest text-gray-500 uppercase mb-3">Hamper Solutions</p>
-          <h2 className="text-[28px] md:text-[40px] font-extrabold text-black mb-4 leading-tight">Curated Corporate Gifts For Employees</h2>
-          <p className="text-[13px] md:text-[15px] text-gray-500 max-w-2xl mx-auto">Every hamper is custom-branded, assembled with care, and delivered fresh across India.</p>
-        </div>
-
-        <div className="w-full h-px bg-gray-200 mb-8"></div>
-
-        <div className="flex flex-col sm:flex-row justify-between items-center mb-10 gap-4">
-          <div className="border border-gray-300 rounded-full px-5 py-2.5 text-[12px] md:text-[13px] font-semibold text-gray-700 bg-white shadow-sm">
-            Starting ₹199 / unit <span className="mx-2 text-gray-300">•</span> MOQ: 30 units
-          </div>
-          <button className="bg-black text-white hover:bg-gray-800 transition-colors duration-300 rounded px-8 py-3 text-[13px] font-bold w-full sm:w-auto shadow-md hover:shadow-lg">
-            Enquire All
-          </button>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-          {[
-            {
-              title: "Desk Essentials",
-              desc: "Minimal self-watering plants and planters designed to elevate modern workspaces and desks."
-            },
-            {
-              title: "Festive Gifting",
-              desc: "Thoughtfully designed festive hampers that combine greenery, aesthetics, and brand recall."
-            },
-            {
-              title: "Premium Executive Gifts",
-              desc: "Sophisticated gifting experiences for leadership teams, partners, and premium clientele."
-            },
-            {
-              title: "Luxury Green Hampers",
-              desc: "Plant gifting hampers curated to leave a lasting impression on employees, clients & teams."
-            }
-          ].map((item, idx) => (
-            <div key={idx} className="group relative rounded-2xl overflow-hidden bg-[#111] border border-gray-800 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col h-full">
-              {/* Image Container */}
-              <div className="relative aspect-[5/4] md:aspect-[4/3] overflow-hidden">
-                <img 
-                  src="/premium_gift_hamper.png" 
-                  alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
-                />
-              </div>
-              {/* Text Block */}
-              <div className="p-5 flex flex-col flex-grow bg-[#111]">
-                <span className="text-[9px] md:text-[10px] font-bold tracking-widest text-gray-400 uppercase mb-2">FEATURED +</span>
-                <h3 className="text-white text-[18px] md:text-[20px] font-bold leading-tight mb-2.5">{item.title}</h3>
-                <p className="text-gray-400 text-[11px] md:text-[12px] leading-relaxed mb-6 flex-grow">{item.desc}</p>
-                <button className="bg-white text-black hover:bg-gray-200 transition-colors text-[11px] md:text-[12px] font-bold py-2 px-5 rounded self-start mt-auto shadow-sm">
-                  Enquire Now
-                </button>
-              </div>
+      {/* SECTION 1.85 — PROMOTIONAL BANNERS */}
+      <section className="container mx-auto px-4 md:px-6 lg:px-12 py-12 lg:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          
+          {/* Banner 1 */}
+          <div className="group relative rounded-3xl overflow-hidden h-[320px] md:h-[400px] cursor-pointer shadow-md hover:shadow-xl transition-all">
+            <img 
+              src="/premium_gift_hamper.png" 
+              alt="Premium Corporate Gifts" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
+            <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-center z-10">
+              <span className="text-[10px] md:text-[12px] font-bold tracking-widest uppercase mb-3 drop-shadow-lg" style={{ color: '#ffffff' }}>Premium Quality</span>
+              <h3 className="text-2xl md:text-3xl lg:text-4xl font-extrabold leading-tight mb-4 max-w-[280px] drop-shadow-lg" style={{ color: '#ffffff' }}>Curated Corporate Gifts</h3>
+              <p className="text-sm mb-6 max-w-[280px] hidden sm:block drop-shadow-lg" style={{ color: '#ffffff' }}>Elevate your brand with our hand-picked selection of luxury hampers.</p>
+              <button className="bg-transparent border-2 text-xs md:text-sm font-bold px-6 py-3 rounded-full self-start hover:bg-white transition-colors shadow-lg backdrop-blur-sm group-hover:text-black" style={{ color: '#ffffff', borderColor: '#ffffff' }}>
+                Explore Collection
+              </button>
             </div>
-          ))}
+          </div>
+
+          {/* Banner 2 */}
+          <div className="group relative rounded-3xl overflow-hidden h-[320px] md:h-[400px] cursor-pointer shadow-md hover:shadow-xl transition-all">
+            <img 
+              src="/product/EcoCore Executive Corporate Gift Set.webp" 
+              alt="Sustainable Gifting" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
+            <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-center z-10">
+              <span className="text-[10px] md:text-[12px] font-bold tracking-widest uppercase mb-3 drop-shadow-lg" style={{ color: '#ffffff' }}>Eco-Friendly</span>
+              <h3 className="text-2xl md:text-3xl lg:text-4xl font-extrabold leading-tight mb-4 max-w-[280px] drop-shadow-lg" style={{ color: '#ffffff' }}>Sustainable Gifting</h3>
+              <p className="text-sm mb-6 max-w-[280px] hidden sm:block drop-shadow-lg" style={{ color: '#ffffff' }}>Make a positive impact with our eco-conscious corporate solutions.</p>
+              <button className="bg-transparent border-2 text-xs md:text-sm font-bold px-6 py-3 rounded-full self-start hover:bg-white transition-colors shadow-lg backdrop-blur-sm group-hover:text-black" style={{ color: '#ffffff', borderColor: '#ffffff' }}>
+                Shop Sustainable
+              </button>
+            </div>
+          </div>
+
         </div>
       </section>
 
       {/* SECTION 2 — BENEFITS */}
       <section 
-        className="container mx-auto px-4 md:px-6 lg:px-12 pt-12 pb-16 lg:py-24"
+        className="container mx-auto px-4 md:px-6 lg:px-12 pb-16 lg:pb-24"
+        style={{ paddingTop: '11rem' }}
       >
         <div className="flex flex-wrap justify-center md:justify-between items-start gap-y-12 md:gap-y-0 md:gap-8">
           {[
