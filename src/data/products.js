@@ -450,6 +450,66 @@ export const PRODUCTS = [
     images: [
       '/product/EcoCore Executive Corporate Gift Set.webp'
     ]
+  },
+  {
+    id: 'ck-tm-1107',
+    name: 'Travel Mug for Car with Leakproof Lid',
+    category: 'drinkware',
+    categoryName: 'Drinkware',
+    price: 894,
+    originalPrice: 1192,
+    discount: '25% OFF',
+    rating: 4.8,
+    reviewCount: 42,
+    sku: 'CK-TM-1107',
+    featured: true,
+    moq: 25,
+    inStock: true,
+    description: 'This Travel Mug for Car is designed with a leakproof lid to keep your beverage safe and secure while on the go.',
+    fullDescription: 'This Travel Mug for Car is designed with a leakproof lid to keep your beverage safe and secure while on the go. Its sleek design and durable construction make it the perfect companion for your daily commute. Keep your drink at the perfect temperature, and your car clean and dry, with this must-have travel mug.',
+    highlights: [
+      'Sealed design lid prevents sideways leaks',
+      'Ideal design in line with car cup holders',
+      'Double-walled 304 stainless steel material',
+      'Non-slip silicone pad on the bottom'
+    ],
+    colors: [
+      { name: 'Matte Black', hex: '#151515' }
+    ],
+    images: [
+      'https://images.unsplash.com/photo-1572097561845-a9f4fb76b2bd?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1614806687036-7c653063f92d?auto=format&fit=crop&w=800&q=80'
+    ]
+  },
+  {
+    id: 'ck-ccm-1108',
+    name: 'Ceramic Coffee Cup Mug with lid and Cork Bottom',
+    category: 'drinkware',
+    categoryName: 'Drinkware',
+    price: 535,
+    originalPrice: 799,
+    discount: '33% OFF',
+    rating: 4.7,
+    reviewCount: 38,
+    sku: 'CK-CCM-1108',
+    featured: true,
+    moq: 25,
+    inStock: true,
+    description: 'Versatile Ceramic Coffee Mug with Lid and cork bottom, perfect for daily drinks and corporate gifting.',
+    fullDescription: "Upgrade your drinkware with our versatile Ceramic Coffee Mug with Lid, perfect for coffee lovers and ideal for best corporate gifting services. With its 440ml capacity, it's great for daily drinks. The cork bottom acts as a built-in coaster, preventing scratches and stains. The splash-proof slider lid with a rubber gasket ensures heat retention and spill prevention. Crafted from high-quality ceramic with a matte finish, it's stylish and durable.",
+    highlights: [
+      '440ml capacity with splash-proof slider lid',
+      'Built-in cork bottom coaster prevents scratches and stains',
+      'High-quality ceramic with a sleek matte finish',
+      'Dimensions: 7 x 11.5 x 7 cm'
+    ],
+    colors: [
+      { name: 'Matte Black', hex: '#151515' }
+    ],
+    images: [
+      'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1481833722749-d3e92ce01d89?auto=format&fit=crop&w=800&q=80'
+    ]
   }
 ];
 
