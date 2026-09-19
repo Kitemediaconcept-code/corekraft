@@ -211,8 +211,8 @@ export default function AdminDashboard({ onNavigateHome }) {
               <button onClick={openAddForm} className="text-black font-medium hover:underline text-sm">Add your first product →</button>
             </div>
           ) : (
-            <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
-              <table className="w-full">
+            <div className="bg-white rounded-2xl border border-slate-200 overflow-x-auto shadow-sm">
+              <table className="w-full min-w-[800px]">
                 <thead>
                   <tr className="border-b border-slate-200 text-slate-500 text-xs uppercase tracking-wider bg-slate-50">
                     <th className="text-left px-6 py-4 font-semibold">Product</th>
@@ -261,11 +261,11 @@ export default function AdminDashboard({ onNavigateHome }) {
                       </td>
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-2 justify-end">
-                          <button onClick={() => openEditForm(product)} className="p-2 rounded-lg hover:bg-slate-100 text-slate-500 hover:text-blue-600 transition-colors">
-                            <Pencil size={16} />
+                          <button onClick={() => openEditForm(product)} className="flex items-center gap-1 px-3 py-1.5 rounded-lg hover:bg-slate-100 text-slate-500 hover:text-blue-600 font-medium text-sm transition-colors">
+                            <Pencil size={14} /> Edit
                           </button>
-                          <button onClick={() => setDeleteConfirm(product.id)} className="p-2 rounded-lg hover:bg-red-50 text-slate-500 hover:text-red-600 transition-colors">
-                            <Trash2 size={16} />
+                          <button onClick={() => setDeleteConfirm(product.id)} className="flex items-center gap-1 px-3 py-1.5 rounded-lg hover:bg-red-50 text-slate-500 hover:text-red-600 font-medium text-sm transition-colors">
+                            <Trash2 size={14} /> Delete
                           </button>
                         </div>
                       </td>
