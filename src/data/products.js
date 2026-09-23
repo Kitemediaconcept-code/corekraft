@@ -448,7 +448,8 @@ export const PRODUCTS = [
       { name: 'Black', hex: '#111111' }
     ],
     images: [
-      '/product/EcoCore Executive Corporate Gift Set.webp'
+      '/product/ecocore_1.png',
+      '/product/ecocore_2.png'
     ]
   },
   {

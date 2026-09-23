@@ -9,6 +9,13 @@ export default defineConfig({
   ],
   server: {
     port: 3000,
-    open: true
+    open: false,
+    proxy: {
+      '/supabase-api': {
+        target: 'https://uvviamrnvrzvdwgdxyxj.supabase.co',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/supabase-api/, '')
+      }
+    }
   }
 });
